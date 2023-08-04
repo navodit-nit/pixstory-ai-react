@@ -30,7 +30,7 @@ function Advanced () {
   // used for outOfFrame closure
   const currentIndexRef = useRef(currentIndex)
 
-  const childRefs = useMemo(
+  var childRefs = useMemo(
     () =>
       Array(db.length)
         .fill(0)
@@ -68,6 +68,14 @@ function Advanced () {
     }
   }
 
+  const resetCards = async() => {
+    childRefs = 
+        Array(db.length)
+          .fill(0)
+          .map((i) => React.createRef())
+      
+    
+  }
   // increase current index and show card
   const goBack = async () => {
     if (!canGoBack) return
@@ -86,7 +94,7 @@ function Advanced () {
         href='https://fonts.googleapis.com/css?family=Alatsi&display=swap'
         rel='stylesheet'
       />
-      <h1>React Tinder Card</h1>
+      <h1>Cards to Swipe</h1>
       <div className='cardContainer'>
         {db.map((character, index) => (
           <TinderCard
@@ -95,9 +103,9 @@ function Advanced () {
             key={character.name}
             onSwipe={(dir) => swiped(dir, character.name, index)}
             onCardLeftScreen={() => outOfFrame(character.name, index)}
-          >
+          >            
             <div
-              style={{ backgroundImage: 'url(' + character.url + ')' }}
+               style={{ backgroundImage: 'url(' + character.url + ')' }}
               className='card'
             >
               <h3>{character.name}</h3>
@@ -108,15 +116,16 @@ function Advanced () {
       <div className='buttons'>
         <button style={{ backgroundColor: !canSwipe && '#c3c4d3' }} onClick={() => swipe('left')}>Swipe left!</button>
         <button style={{ backgroundColor: !canGoBack && '#c3c4d3' }} onClick={() => goBack()}>Undo swipe!</button>
+        <button style={{ backgroundColor: !canGoBack && '#c3c4d3' }} onClick={() => resetCards()}>Reset Cards!</button>
         <button style={{ backgroundColor: !canSwipe && '#c3c4d3' }} onClick={() => swipe('right')}>Swipe right!</button>
       </div>
       {lastDirection ? (
         <h2 key={lastDirection} className='infoText'>
-          You swiped {lastDirection}
+          Swiped {lastDirection} 
         </h2>
       ) : (
         <h2 className='infoText'>
-          Swipe a card or press a button to get Restore Card button visible!
+          Play with swiping cards, restart game pressing key
         </h2>
       )}
     </div>
