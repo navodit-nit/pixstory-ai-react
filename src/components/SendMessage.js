@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import MainPage from "./MainPage";
-import Card from "./Card";
+import { useNavigate } from "react-router-dom/dist";
 const SendMessage = () => {
   const [inputValue, setInputValue] = useState();
   const [show, setShow] = useState(false);
-  const [showCard, setShowCard]=useState(false);
+  const navigate = useNavigate()
   const handlePropt = () => {
     if (show == false) {
       setShow(true);
@@ -18,12 +17,13 @@ const SendMessage = () => {
   };
 
   const handleSubmit = (event) =>{
+    setInputValue
     event.preventDefault();
-    setShowCard(true);
+    navigate('/card')
 }
   return (
     <>
-      <div className="fixed-bottom ">
+      <div className="fixed-bottom border-top py-2">
         <div className="container-fluid">
           <div className="">
             <div className="row">
@@ -34,7 +34,7 @@ const SendMessage = () => {
                   </label>
                   <div className="postion-relative">
                     <textarea
-                      className="form-control mb-2"
+                      className="form-control "
                       rows={1}
                       onFocus={handlePropt}
                       value={inputValue}
@@ -61,18 +61,17 @@ const SendMessage = () => {
                 </form>
               </div>
               {show && (
-                <div className="col-md-12 my-2">
+                <div className="col-md-12 mb-2">
                   <div className="prompt-cont">
                     <ul>
-                        <li> <span className="slide" onClick={handleSpanClick}>Prompt 1</span></li>
-                        <li> <span className="slide" onClick={handleSpanClick}>Prompt 2</span></li>
-                        <li> <span className="slide" onClick={handleSpanClick}>Prompt 3</span></li>
-                        <li> <span className="slide" onClick={handleSpanClick}>Prompt 4</span></li>
-                        <li> <span className="slide" onClick={handleSpanClick}>Prompt 5</span></li>
-                        <li> <span className="slide" onClick={handleSpanClick}>Prompt 6</span></li>
-                        <li> <span className="slide" onClick={handleSpanClick}>Prompt 7</span></li>
+                        <li> <span className="slide" onClick={handleSpanClick}>What is your favorite Google product? Why? How would you improve it?</span></li>
+                        <li> <span className="slide" onClick={handleSpanClick}>How does Google stand out from its competitors?</span></li>
+                        <li> <span className="slide" onClick={handleSpanClick}>What are some other sites you visit frequently? Why do you like them?</span></li>
+                        <li> <span className="slide" onClick={handleSpanClick}>Is there a Google product that you don’t like to use? Why?  </span></li>
+                        <li> <span className="slide" onClick={handleSpanClick}>If you don’t get hired at Google, what other companies would you be happy working for?  </span></li>
+                        <li> <span className="slide" onClick={handleSpanClick}>In your opinion, why is the Google homepage mostly blank space? </span></li>
+                       
                     </ul>
-                   
                   </div>
                 </div>
               )}

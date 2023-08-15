@@ -32,9 +32,6 @@
   align-items: center;
 }
 
-
-
-
 .swipe {
   position: absolute;
 }
@@ -60,10 +57,6 @@
 .cardContent {
   width: 100%;
   height: 100%;
-}
-
-.swipe:last-of-type {
-
 }
 
 .card h3 {
@@ -128,7 +121,7 @@ body{
   }
   .message-btn {
   right: 7px;
-  top:0px;
+  top:6px;
   }
   .landing-page-heading {
   height: 100vh;
@@ -142,7 +135,7 @@ body{
   margin-top:10px;
   
   }
-  .prompt-cont ul {padding-left: 0px;}
+  .prompt-cont ul {padding-left: 0px;margin-bottom: 0px;}
   .prompt-cont ul li{
   list-style: none;
   cursor: pointer;
@@ -156,74 +149,4 @@ body{
   border-radius: 5px;
   font-size: 11px;
   }
-  body{
-    background-repeat: no-repeat;
-    background-size:cover ;
-    }
-    .message-btn {
-    right: 7px;
-    top:0px;
-    }
-    .landing-page-heading {
-    height: 100vh;
-    }
-    .message-btn:focus {
-    outline: 0 !important;
-    }
-    .prompt-cont{
-    padding: 5px;
-    display:inline-block;
-    margin-top:10px;
-    
-    }
-    .prompt-cont ul {padding-left: 0px;}
-    .prompt-cont ul li{
-    list-style: none;
-    cursor: pointer;
-    display: inline-block;
-    margin-right: 10px;
-    }
-    .prompt-cont span{
-    margin-bottom:5px;
-    background-color:#dcdcdc;
-    padding: 3px 5px;
-    border-radius: 5px;
-    font-size: 11px;
-    }
-    
-
-    /*home page*/
-    body{
-      background-repeat: no-repeat;
-      background-size:cover ;
-      }
-      .message-btn {
-      right: 7px;
-      top:0px;
-      }
-      .landing-page-heading {
-      height: 100vh;
-      }
-      .message-btn:focus {
-      outline: 0 !important;
-      }
-      .prompt-cont{
-      padding: 5px;
-      display:inline-block;
-      margin-top:10px;
-      
-      }
-      .prompt-cont ul {padding-left: 0px;}
-      .prompt-cont ul li{
-      list-style: none;
-      cursor: pointer;
-      display: inline-block;
-      margin-right: 10px;
-      }
-      .prompt-cont span{
-      margin-bottom:5px;
-      background-color:#dcdcdc;
-      padding: 3px 5px;
-      border-radius: 5px;
-      font-size: 11px;
-      }
+  
