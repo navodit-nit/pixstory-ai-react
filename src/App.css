@@ -5,7 +5,7 @@
   width: 100vw;
   min-height: 100vh;
   overflow: hidden;
-  background:grey;
+ 
   /* background: linear-gradient(#fff, #999); */
   /* background: linear-gradient(#e66465, #9198e5); */
 }
@@ -32,23 +32,8 @@
   align-items: center;
 }
 
-.row {
-  flex-direction: row !important;
-}
 
-.row>* {
-  margin: 5px;
-}
 
-h1 {
-  /* font-family: 'Damion', cursive; */
-  color: #fff;
-  text-shadow: 0px 0px 60px 0px rgba(0,0,0,0.30);
-}
-
-h2 {
-  color: #fff;
-}
 
 .swipe {
   position: absolute;
@@ -137,3 +122,108 @@ h2 {
   64%  { transform: scale(1,1) }
   100% { transform: scale(1,1) }
 }
+body{
+  background-repeat: no-repeat;
+  background-size:cover ;
+  }
+  .message-btn {
+  right: 7px;
+  top:0px;
+  }
+  .landing-page-heading {
+  height: 100vh;
+  }
+  .message-btn:focus {
+  outline: 0 !important;
+  }
+  .prompt-cont{
+  padding: 5px;
+  display:inline-block;
+  margin-top:10px;
+  
+  }
+  .prompt-cont ul {padding-left: 0px;}
+  .prompt-cont ul li{
+  list-style: none;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 10px;
+  }
+  .prompt-cont span{
+  margin-bottom:5px;
+  background-color:#dcdcdc;
+  padding: 3px 5px;
+  border-radius: 5px;
+  font-size: 11px;
+  }
+  body{
+    background-repeat: no-repeat;
+    background-size:cover ;
+    }
+    .message-btn {
+    right: 7px;
+    top:0px;
+    }
+    .landing-page-heading {
+    height: 100vh;
+    }
+    .message-btn:focus {
+    outline: 0 !important;
+    }
+    .prompt-cont{
+    padding: 5px;
+    display:inline-block;
+    margin-top:10px;
+    
+    }
+    .prompt-cont ul {padding-left: 0px;}
+    .prompt-cont ul li{
+    list-style: none;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 10px;
+    }
+    .prompt-cont span{
+    margin-bottom:5px;
+    background-color:#dcdcdc;
+    padding: 3px 5px;
+    border-radius: 5px;
+    font-size: 11px;
+    }
+    
+
+    /*home page*/
+    body{
+      background-repeat: no-repeat;
+      background-size:cover ;
+      }
+      .message-btn {
+      right: 7px;
+      top:0px;
+      }
+      .landing-page-heading {
+      height: 100vh;
+      }
+      .message-btn:focus {
+      outline: 0 !important;
+      }
+      .prompt-cont{
+      padding: 5px;
+      display:inline-block;
+      margin-top:10px;
+      
+      }
+      .prompt-cont ul {padding-left: 0px;}
+      .prompt-cont ul li{
+      list-style: none;
+      cursor: pointer;
+      display: inline-block;
+      margin-right: 10px;
+      }
+      .prompt-cont span{
+      margin-bottom:5px;
+      background-color:#dcdcdc;
+      padding: 3px 5px;
+      border-radius: 5px;
+      font-size: 11px;
+      }
