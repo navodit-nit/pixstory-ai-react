@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import Card from "./Card";
 import MainPage from "./MainPage";
+import Button from "react";
 
-const SendMessage = () => {
-  const [inputValue, setInputValue] = useState('');
+const SendMessage = ({childToParent}) => {
+  const [inputValue, setInputValue] = useState();
   const [show, setShow] = useState(false);
   const [showCard, setShowCard] = useState(false)
-
+  const data = "This is data from Child Component to the Parent Component."
 const handlePropt = () => {
     if (show == false) {
       setShow(true);
@@ -17,7 +18,11 @@ const handlePropt = () => {
 const handleSpanClick = (event) => {
     const spanValue = event.target.textContent;
     setInputValue(spanValue);
+    childToParent(data);
+    // <Button primary onClick={() => }>Click Child</Button>
   };
+
+
 
 const handleSubmit = (event) => {
     event.preventDefault();
@@ -31,6 +36,7 @@ const handleSubmit = (event) => {
           <div className="">
             <div className="row">
               <div className="col-md-12">
+              
                 <form className="" onSubmit={handleSubmit}>
                   <label htmlFor="messageInput" hidden>
                     Enter Message
@@ -39,6 +45,7 @@ const handleSubmit = (event) => {
                     <textarea
                       className="form-control "
                       rows={1}
+                      
                       onFocus={handlePropt}
                       value={inputValue}
                       onClick={(e) => setInputValue(e.target.value)}
@@ -62,9 +69,9 @@ const handleSubmit = (event) => {
                     </button>
                   </div>
                 </form>
-              </div>
+              </div>                            
               {show && (
-                <div className="col-md-12 mb-2">
+                <div className="col-md-12 mb-2">                  
                   <div className="prompt-cont">
                     <ul>
                       <li> <span className="slide" onClick={handleSpanClick}>What is your favorite Google product? Why? How would you improve it?</span></li>
@@ -85,5 +92,6 @@ const handleSubmit = (event) => {
     </>
   );
 };
+
 
 export default SendMessage;
