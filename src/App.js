@@ -8,20 +8,21 @@ import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn"
 import SendMessage from "./components/SendMessage";
 
-// import Switch from 'react-ios-switch'
-// import Advanced from './examples/Advanced'
-// import Simple from './examples/Simple'
+import Switch from 'react-ios-switch'
+import Advanced from './examples/Advanced'
+import Simple from './examples/Simple'
 function App() {
   // const [showAdvanced, setShowAdvanced] = useState(true)
 
   return (
     <div className='app'>
 
-      {/* {showAdvanced ? <Advanced /> : <Simple />}
-      <div className='row'>
+      {/* {showAdvanced ? : <Simple />} */}
+      <Advanced /> 
+      {/* <div className='row'>
         <p style={{ color: '#fff' }}>Show advanced example</p> <Switch checked={showAdvanced} onChange={setShowAdvanced} />
       </div> */}
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <NavBar />
         
         <Routes>
@@ -32,7 +33,7 @@ function App() {
           <Route path="/login" element={<LogIn />} />
         </Routes>
         <SendMessage/>
-      </BrowserRouter>
+      </BrowserRouter> */}
     </div>
   )
 }

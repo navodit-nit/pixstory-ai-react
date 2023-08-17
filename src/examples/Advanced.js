@@ -3,30 +3,31 @@ import TinderCard from 'react-tinder-card'
 
 const db = [
   {
-    name: 'Richard Hendricks',
+    name: 'PixStory.ai, Next Gen AI search box. What are you curious about type in and see magic happening.',
     url: './img/richard.jpg'
   },
-  {
-    name: 'Erlich Bachman',
-    url: './img/erlich.jpg'
-  },
-  {
-    name: 'Monica Hall',
-    url: './img/monica.jpg'
-  },
-  {
-    name: 'Jared Dunn',
-    url: './img/jared.jpg'
-  },
-  {
-    name: 'Dinesh Chugtai',
-    url: './img/dinesh.jpg'
-  }
+  // {
+  //   name: 'Erlich Bachman',
+  //   url: './img/erlich.jpg'
+  // },
+  // {
+  //   name: 'Monica Hall',
+  //   url: './img/monica.jpg'
+  // },
+  // {
+  //   name: 'Jared Dunn',
+  //   url: './img/jared.jpg'
+  // },
+  // {
+  //   name: 'Dinesh Chugtai',
+  //   url: './img/dinesh.jpg'
+  // }
 ]
 
 function Advanced () {
   const [currentIndex, setCurrentIndex] = useState(db.length - 1)
   const [lastDirection, setLastDirection] = useState()
+   const [amountValue, setAmountValue] = useState("");
   // used for outOfFrame closure
   const currentIndexRef = useRef(currentIndex)
 
@@ -68,20 +69,48 @@ function Advanced () {
     }
   }
 
-  const resetCards = async() => {
-    childRefs = 
-        Array(db.length)
-          .fill(0)
-          .map((i) => React.createRef())
-      
+  const handleInput = (event) => {
+    const { value } = event.target;
+    setAmountValue(value);
+    console.log(`${value} left the screen!`, "")
+  };
+
+  const addCard = async() => {
+    let entry = {
+    name: `${amountValue}`,
+    url: './img/richard.jpg'
+    };
+    db.push(entry)   
+    updateCurrentIndex(db.length - 1)
+    console.log(`${db} left the screen!`, db)
+    // event.preventDefault();
+    setAmountValue("")
+    // setTimeout(function(){
+ 
+      //Put All Your Code Here, Which You Want To Execute After Some Delay Time.
+      // swipe('down')
+    
+    // }, 100);
+
+    // setTimeout(function(){
+ 
+    //   //Put All Your Code Here, Which You Want To Execute After Some Delay Time.
+    //   goBack()
+    
+    // }, 50);
+``
     
   }
   // increase current index and show card
   const goBack = async () => {
-    if (!canGoBack) return
+    // if (!canGoBack) return
     const newIndex = currentIndex + 1
     updateCurrentIndex(newIndex)
     await childRefs[newIndex].current.restoreCard()
+  }
+
+  const animateNewCard = async () => {
+    await childRefs[currentIndex].current.restoreCard()
   }
 
   return (
@@ -105,7 +134,7 @@ function Advanced () {
             onCardLeftScreen={() => outOfFrame(character.name, index)}
           >            
             <div
-               style={{ backgroundImage: 'url(' + character.url + ')' }}
+              
               className='card'
             >
               <h3>{character.name}</h3>
@@ -114,10 +143,14 @@ function Advanced () {
         ))}
       </div>
       <div className='buttons'>
-        <button style={{ backgroundColor: !canSwipe && '#c3c4d3' }} onClick={() => swipe('left')}>Swipe left!</button>
-        <button style={{ backgroundColor: !canGoBack && '#c3c4d3' }} onClick={() => goBack()}>Undo swipe!</button>
-        <button style={{ backgroundColor: !canGoBack && '#c3c4d3' }} onClick={() => resetCards()}>Reset Cards!</button>
-        <button style={{ backgroundColor: !canSwipe && '#c3c4d3' }} onClick={() => swipe('right')}>Swipe right!</button>
+         <input
+            className="form-control-lg amount bg-dark shadow"
+            placeholder="Enter Query"
+            type="text"
+            value={amountValue}
+            onChange={handleInput}
+          />
+        <button style={{ backgroundColor: !canGoBack && '#c3c4d3' }} onClick={() => addCard()}>Add Card</button>
       </div>
       {lastDirection ? (
         <h2 key={lastDirection} className='infoText'>
