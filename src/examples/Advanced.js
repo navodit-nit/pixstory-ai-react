@@ -1,5 +1,7 @@
 import React, { useState, useMemo, useRef } from 'react'
 import TinderCard from 'react-tinder-card'
+import SendMessage from '../components/SendMessage'
+
 
 const db = [
   {
@@ -28,6 +30,20 @@ function Advanced () {
   const [currentIndex, setCurrentIndex] = useState(db.length - 1)
   const [lastDirection, setLastDirection] = useState()
    const [amountValue, setAmountValue] = useState("");
+   const [show, setShow] = useState(false);
+   
+ 
+ const handlePropt = () => {
+     if (show == false) {
+       setShow(true);
+     } else {
+       setShow(false);
+     }
+   };
+ const handleSpanClick = (event) => {
+     const spanValue = event.target.textContent;
+     setAmountValue(spanValue);
+   };
   // used for outOfFrame closure
   const currentIndexRef = useRef(currentIndex)
 
@@ -72,12 +88,13 @@ function Advanced () {
   const handleInput = (event) => {
     const { value } = event.target;
     setAmountValue(value);
-    console.log(`${value} left the screen!`, "")
+    console.log(`${amountValue} left the screen!`, "")
   };
 
   const addCard = async() => {
     let entry = {
-    name: `${amountValue}`,
+    // name: `${amountValue}`,
+    name: new Date().getTime(),
     url: './img/richard.jpg'
     };
     db.push(entry)   
@@ -97,9 +114,7 @@ function Advanced () {
     //   //Put All Your Code Here, Which You Want To Execute After Some Delay Time.
     //   goBack()
     
-    // }, 50);
-``
-    
+    // }, 50);    
   }
   // increase current index and show card
   const goBack = async () => {
@@ -113,6 +128,11 @@ function Advanced () {
     await childRefs[currentIndex].current.restoreCard()
   }
 
+  const childToParent = (data) => {
+    setAmountValue(data);
+    console.log(`${data} left the screen!`, "")
+    addCard();
+ } 
   return (
     <div>
       <link
@@ -142,27 +162,22 @@ function Advanced () {
           </TinderCard>
         ))}
       </div>
-      <div className='buttons'>
+      {/* <div className='buttons'>
          <input
             className="form-control-lg amount bg-dark shadow"
             placeholder="Enter Query"
             type="text"
+            onFocus={handlePropt}
             value={amountValue}
             onChange={handleInput}
           />
         <button style={{ backgroundColor: !canGoBack && '#c3c4d3' }} onClick={() => addCard()}>Add Card</button>
-      </div>
-      {lastDirection ? (
-        <h2 key={lastDirection} className='infoText'>
-          Swiped {lastDirection} 
-        </h2>
-      ) : (
-        <h2 className='infoText'>
-          Play with swiping cards, restart game pressing key
-        </h2>
-      )}
+      </div> */}
+      <SendMessage childToParent={childToParent} />
     </div>
   )
 }
 
+
+ 
 export default Advanced
