@@ -9,7 +9,11 @@
   /* background: linear-gradient(#fff, #999); */
   /* background: linear-gradient(#e66465, #9198e5); */
 }
-
+:root {
+  --dark: #333;
+  --highlight: #ff6666;
+  --light: #f6f6f6;
+}
 * {
   user-select: none;
 }
@@ -149,4 +153,23 @@ body{
   border-radius: 5px;
   font-size: 11px;
   }
-  
+ 
+
+  .scroll-toggle {
+    align-items: center;
+    display: flex;
+    max-width: 680px;
+    justify-content: center;
+    width: 100%;
+  }
+
+
+  .scroll-toggle__list {
+    display: flex;
+    flex: 1 1 auto;
+    overflow-x: scroll;
+  }
+  .scroll-toggle__list-item {
+    flex: 0 0 auto;
+    padding: 10px;
+  }

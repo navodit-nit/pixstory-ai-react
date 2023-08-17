@@ -18,11 +18,11 @@ function App() {
     <div className='app'>
 
       {/* {showAdvanced ? : <Simple />} */}
-      <Advanced /> 
+     
       {/* <div className='row'>
         <p style={{ color: '#fff' }}>Show advanced example</p> <Switch checked={showAdvanced} onChange={setShowAdvanced} />
       </div> */}
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <NavBar />
         
         <Routes>
@@ -32,8 +32,8 @@ function App() {
           <Route path="/sign" element={<SignUp />} />
           <Route path="/login" element={<LogIn />} />
         </Routes>
-        <SendMessage/>
-      </BrowserRouter> */}
+        <Advanced /> 
+      </BrowserRouter>
     </div>
   )
 }

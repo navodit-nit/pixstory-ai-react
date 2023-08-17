@@ -30,7 +30,7 @@ const handleSubmit = (event) => {
   }
   return (
     <>
-      {showCard ? <Card item={inputValue} /> : <MainPage />}
+      {/* {showCard ? <Card item={inputValue} /> : <MainPage />} */}
       <div className="fixed-bottom bg-light shadow border-top py-2">
         <div className="container-fluid">
           <div className="">
@@ -48,7 +48,7 @@ const handleSubmit = (event) => {
                       
                       onFocus={handlePropt}
                       value={inputValue}
-                      onClick={(e) => setInputValue(e.target.value)}
+                      onChange={(e) => setInputValue(e.target.value)}
                       placeholder="type query....."
                     ></textarea>
                     <button
@@ -72,14 +72,14 @@ const handleSubmit = (event) => {
               </div>                            
               {show && (
                 <div className="col-md-12 mb-2">                  
-                  <div className="prompt-cont">
-                    <ul>
-                      <li> <span className="slide" onClick={handleSpanClick}>What is your favorite Google product? Why? How would you improve it?</span></li>
-                      <li> <span className="slide" onClick={handleSpanClick}>How does Google stand out from its competitors?</span></li>
-                      <li> <span className="slide" onClick={handleSpanClick}>What are some other sites you visit frequently? Why do you like them?</span></li>
-                      <li> <span className="slide" onClick={handleSpanClick}>Is there a Google product that you don’t like to use? Why?  </span></li>
-                      <li> <span className="slide" onClick={handleSpanClick}>If you don’t get hired at Google, what other companies would you be happy working for?  </span></li>
-                      <li> <span className="slide" onClick={handleSpanClick}>In your opinion, why is the Google homepage mostly blank space? </span></li>
+                  <div className="prompt-cont scroll-toggle">
+                    <ul className="scroll-toggle__list">
+                      <li className="scroll-toggle__list-item"> <span className="slide" onClick={handleSpanClick}>What is your favorite Google product? Why? How would you improve it?</span></li>
+                      <li className="scroll-toggle__list-item"> <span className="slide" onClick={handleSpanClick}>How does Google stand out from its competitors?</span></li>
+                      <li className="scroll-toggle__list-item"> <span className="slide" onClick={handleSpanClick}>What are some other sites you visit frequently? Why do you like them?</span></li>
+                      <li className="scroll-toggle__list-item"> <span className="slide" onClick={handleSpanClick}>Is there a Google product that you don’t like to use? Why?  </span></li>
+                      <li className="scroll-toggle__list-item"> <span className="slide" onClick={handleSpanClick}>If you don’t get hired at Google, what other companies would you be happy working for?  </span></li>
+                      <li className="scroll-toggle__list-item"> <span className="slide" onClick={handleSpanClick}>In your opinion, why is the Google homepage mostly blank space? </span></li>
 
                     </ul>
                   </div>
