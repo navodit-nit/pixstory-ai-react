@@ -3,7 +3,7 @@ import React  from "react";
 const NavBar = ()=>{
     return(
         <>
-        <div className="fixed-top">
+        <div className="fixed-top bg-light shadow ">
           <div className="container-fluid py-3 ">
               <div className="row">
                    <div className="col-md-3 col-6"><h2>Pixstory.ai</h2></div>

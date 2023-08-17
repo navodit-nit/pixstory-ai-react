@@ -1,29 +1,32 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom/dist";
+import Card from "./Card";
+import MainPage from "./MainPage";
+
 const SendMessage = () => {
-  const [inputValue, setInputValue] = useState();
+  const [inputValue, setInputValue] = useState('');
   const [show, setShow] = useState(false);
-  const navigate = useNavigate()
-  const handlePropt = () => {
+  const [showCard, setShowCard] = useState(false)
+
+const handlePropt = () => {
     if (show == false) {
       setShow(true);
     } else {
       setShow(false);
     }
   };
-  const handleSpanClick = (event) => {
+const handleSpanClick = (event) => {
     const spanValue = event.target.textContent;
     setInputValue(spanValue);
   };
 
-  const handleSubmit = (event) =>{
-    setInputValue
+const handleSubmit = (event) => {
     event.preventDefault();
-    navigate('/card')
-}
+    setShowCard('ture');
+  }
   return (
     <>
-      <div className="fixed-bottom border-top py-2">
+      {showCard ? <Card item={inputValue} /> : <MainPage />}
+      <div className="fixed-bottom bg-light shadow border-top py-2">
         <div className="container-fluid">
           <div className="">
             <div className="row">
@@ -38,7 +41,7 @@ const SendMessage = () => {
                       rows={1}
                       onFocus={handlePropt}
                       value={inputValue}
-                      onChange={(e) => setInputValue(e.target.value)}
+                      onClick={(e) => setInputValue(e.target.value)}
                       placeholder="type query....."
                     ></textarea>
                     <button
@@ -64,13 +67,13 @@ const SendMessage = () => {
                 <div className="col-md-12 mb-2">
                   <div className="prompt-cont">
                     <ul>
-                        <li> <span className="slide" onClick={handleSpanClick}>What is your favorite Google product? Why? How would you improve it?</span></li>
-                        <li> <span className="slide" onClick={handleSpanClick}>How does Google stand out from its competitors?</span></li>
-                        <li> <span className="slide" onClick={handleSpanClick}>What are some other sites you visit frequently? Why do you like them?</span></li>
-                        <li> <span className="slide" onClick={handleSpanClick}>Is there a Google product that you don’t like to use? Why?  </span></li>
-                        <li> <span className="slide" onClick={handleSpanClick}>If you don’t get hired at Google, what other companies would you be happy working for?  </span></li>
-                        <li> <span className="slide" onClick={handleSpanClick}>In your opinion, why is the Google homepage mostly blank space? </span></li>
-                       
+                      <li> <span className="slide" onClick={handleSpanClick}>What is your favorite Google product? Why? How would you improve it?</span></li>
+                      <li> <span className="slide" onClick={handleSpanClick}>How does Google stand out from its competitors?</span></li>
+                      <li> <span className="slide" onClick={handleSpanClick}>What are some other sites you visit frequently? Why do you like them?</span></li>
+                      <li> <span className="slide" onClick={handleSpanClick}>Is there a Google product that you don’t like to use? Why?  </span></li>
+                      <li> <span className="slide" onClick={handleSpanClick}>If you don’t get hired at Google, what other companies would you be happy working for?  </span></li>
+                      <li> <span className="slide" onClick={handleSpanClick}>In your opinion, why is the Google homepage mostly blank space? </span></li>
+
                     </ul>
                   </div>
                 </div>

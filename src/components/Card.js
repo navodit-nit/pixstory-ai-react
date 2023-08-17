@@ -1,10 +1,17 @@
 import React from "react";
 
-const Card = ()=>{
-    return(
+
+const Card = ({ item }) => {
+    return (
         <>
-        <h1>Card</h1>
-       </>
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-md-12">
+                      <p>{item}</p>
+                    </div>
+                </div>
+            </div>
+        </>
     )
 }
 export default Card

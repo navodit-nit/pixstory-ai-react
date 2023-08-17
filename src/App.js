@@ -2,10 +2,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import PrivateComponents from "./components/PrivateComponent";
-import LandingPage from "./components/LandingPage";
+
 import Card from "./components/Card";
 import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn"
+import SendMessage from "./components/SendMessage";
 
 // import Switch from 'react-ios-switch'
 // import Advanced from './examples/Advanced'
@@ -22,14 +23,15 @@ function App() {
       </div> */}
       <BrowserRouter>
         <NavBar />
-        <LandingPage />
+        
         <Routes>
-          <Route element={<PrivateComponents />}>
+          <Route element={<PrivateComponents/>}>
             <Route path="/card" element={<Card />} />
           </Route>
           <Route path="/sign" element={<SignUp />} />
           <Route path="/login" element={<LogIn />} />
         </Routes>
+        <SendMessage/>
       </BrowserRouter>
     </div>
   )
