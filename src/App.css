@@ -17,41 +17,36 @@
 #root>div {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
 .app {
   overflow: hidden;
 }
-
-.app>div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .swipe {
   position: absolute;
+  width: 87%;
+  height: 100%;
 }
-
 .cardContainer {
-  width: 90vw;
-  max-width: 260px;
-  height: 300px;
+  width: 87vw;
+  /* min-height: 300px; */
+  margin: 100px auto 30px;
+  height: calc(100vh - 10px);
 }
 
 .card {
   position: relative;
   background-color: #fff;
-  width: 80vw;
-  max-width: 260px;
-  height: 300px;
+  width: 100%;
+  min-height: 300px;
   box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.15);
   border-radius: 5px;
   background-size: cover;
   background-position: center;
+  overflow-y: hidden;
+  height: 87%;
 }
 
 .cardContent {
@@ -60,12 +55,13 @@
 }
 
 .card h3 {
-  position: absolute;
   bottom: 0;
   margin: 10px;
   color: #000;
+  font-size: 16px;
+  line-height: 1.8;
+  overflow-y: auto;
 }
-
 .infoText {
   width: 100%;
   justify-content: center;
@@ -120,9 +116,12 @@ body{
   background-size:cover ;
   }
   .message-btn {
-  right: 7px;
-  top:6px;
-  height: 47px;
+    right: 7px;
+    top: 9px;
+    margin: 0;
+    background: #000;
+    padding: 2px 9px;
+    opacity: 1;
   }
   .landing-page-heading {
   height: 100vh;
@@ -136,6 +135,8 @@ body{
     margin-top: 10px;
     width: 100%;
     overflow: scroll;
+    margin-bottom: 0;
+    padding-bottom: 0;
   
   }
   .prompt-cont ul {padding-left: 0px;
@@ -153,7 +154,8 @@ body{
     word-break: keep-all;
     width: 100%;
     align-self: flex-start;
-    flex: 0 0 31%;
+    flex: 0 0 48%;
+    height: 60px;
   }
   .prompt-cont span{
   margin-bottom:5px;
@@ -194,9 +196,12 @@ body{
     color: #000;  
     }
 
-    .message-section{
-      background-color: #000000;
+      .message-section {
+        background-color: #fff;
+        border-radius: 8px 8px 0 0;
+        padding: 25px 10px 12px;
     }
+    
 
     .App {
   display: flex;
@@ -237,4 +242,26 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+.message-textarea{display: flex;
+  position: relative;
+}
+.message-box.largeTextArea {
+  height: 104px !important;
+}
+.querytype-medium .message-btn {
+  height: auto;
+    right: 9px;
+    top: auto;
+    background: #000;
+    bottom: 8px;
+    opacity: 1;
+    padding: 2px 9px;
+    opacity: 1;
+}
+.overlayDialogBox {
+  background: #000;
+  position: relative;
+  z-index: 9999;
+  opacity: 0.7;
 }
