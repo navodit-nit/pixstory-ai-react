@@ -128,7 +128,7 @@ body{
   top:6px;
   }
   .landing-page-heading {
-  height: 100vh;
+  /* height: 100vh; */
   }
   .message-btn:focus {
   outline: 0 !important;

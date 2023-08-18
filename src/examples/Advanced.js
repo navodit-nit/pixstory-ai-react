@@ -1,13 +1,14 @@
 import React, { useState, useMemo, useRef } from 'react'
 import TinderCard from 'react-tinder-card'
 import SendMessage from '../components/SendMessage'
+import MainPage from "../components/MainPage";
 
 
 const db = [
-  {
-    name: 'PixStory.ai, Next Gen AI search box. What are you curious about type in and see magic happening.',
-    url: './img/richard.jpg'
-  },
+  // {
+  //   name: 'PixStory.ai, Next Gen AI search box. What are you curious about type in and see magic happening.',
+  //   url: './img/richard.jpg'
+  // },
   // {
   //   name: 'Erlich Bachman',
   //   url: './img/erlich.jpg'
@@ -85,16 +86,16 @@ function Advanced () {
     }
   }
 
-  const handleInput = (event) => {
-    const { value } = event.target;
-    setAmountValue(value);
-    console.log(`${amountValue} left the screen!`, "")
-  };
+  // const handleInput = (event) => {
+  //   const { value } = event.target;
+  //   setAmountValue(value);
+  //   console.log(`${amountValue} left the screen!`, "")
+  // };
 
-  const addCard = async() => {
+  const addCard = async(data) => {
     let entry = {
     // name: `${amountValue}`,
-    name: new Date().getTime(),
+    name: data,
     url: './img/richard.jpg'
     };
     db.push(entry)   
@@ -131,7 +132,7 @@ function Advanced () {
   const childToParent = (data) => {
     setAmountValue(data);
     console.log(`${data} left the screen!`, "")
-    addCard();
+    addCard(data);
  } 
   return (
     <div>
@@ -143,8 +144,7 @@ function Advanced () {
         href='https://fonts.googleapis.com/css?family=Alatsi&display=swap'
         rel='stylesheet'
       />
-      <h1>Cards to Swipe</h1>
-      <div className='cardContainer'>
+      <div className='cardContainer'>              
         {db.map((character, index) => (
           <TinderCard
             ref={childRefs[index]}
@@ -161,6 +161,7 @@ function Advanced () {
             </div>
           </TinderCard>
         ))}
+          {db.length == 0 &&  <MainPage /> }
       </div>
       {/* <div className='buttons'>
          <input

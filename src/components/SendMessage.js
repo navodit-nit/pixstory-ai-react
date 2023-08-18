@@ -18,7 +18,7 @@ const handlePropt = () => {
 const handleSpanClick = (event) => {
     const spanValue = event.target.textContent;
     setInputValue(spanValue);
-    childToParent(data);
+    childToParent(spanValue);
     // <Button primary onClick={() => }>Click Child</Button>
   };
 
