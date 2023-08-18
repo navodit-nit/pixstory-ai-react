@@ -9,27 +9,31 @@ const db = [
 ];
 
 const queries = [
-    {
-        id:1,
-        value: "What is your favorite Google product? Why? How would you improve it?"
-    },
-    {
-        id:2,
-        value: "How does Google stand out from its competitors?"
-    },
-    {
-        id:3,
-        value: "What are some other sites you visit frequently? Why do you like them?"
-    },
-    {
-        id:4,
-        value: "If you don't get hired at Google, what other companies would you be happy working for?"
-    },
-    {
-        id:5,
-        value: "In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?"
-    }
-]
+  {
+    id: 1,
+    value:
+      "What is your favorite Google product? Why? How would you improve it?",
+  },
+  {
+    id: 2,
+    value: "How does Google stand out from its competitors?",
+  },
+  {
+    id: 3,
+    value:
+      "What are some other sites you visit frequently? Why do you like them?",
+  },
+  {
+    id: 4,
+    value:
+      "If you don't get hired at Google, what other companies would you be happy working for?",
+  },
+  {
+    id: 5,
+    value:
+      "In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?",
+  },
+];
 
 function Advanced2() {
   const [show, setShow] = useState(false);
@@ -40,17 +44,15 @@ function Advanced2() {
   const [amountValue, setAmountValue] = useState("");
   const [showCard, setShowCard] = useState(false);
 
-  const [containerClass, setContainerClass] = useState('');
+  const [containerClass, setContainerClass] = useState("");
 
-  const handleTextareaClick = () => {
-    
-  };
- 
+  const handleTextareaClick = () => {};
 
   function handleAddNote() {
     if (textInput.trim() !== "") {
       setStickyNotes([...stickyNotes, textInput]);
       setTextInput("");
+      setShow(false);
     }
   }
 
@@ -68,8 +70,8 @@ function Advanced2() {
         .map((i) => React.createRef()),
     []
   );
-  const canSwipe = currentIndex >= 0
- 
+  const canSwipe = currentIndex >= 0;
+
   const swipe = async (dir) => {
     if (canSwipe && currentIndex < stickyNotes.length) {
       await childRefs[currentIndex].current.swipe(dir); // Swipe the card!
@@ -93,10 +95,10 @@ function Advanced2() {
   const handlePropt = () => {
     if (show == false) {
       setShow(true);
-      setContainerClass('querytype-medium');
+      setContainerClass("querytype-medium");
     } else {
       setShow(false);
-      setContainerClass('querytype-small');
+      setContainerClass("querytype-small");
     }
   };
 
@@ -105,11 +107,10 @@ function Advanced2() {
     setTextInput(spanValue);
   };
 
-
   return (
-    
-    <div className={(show == 1 && stickyNotes.length == 0 ? 'overlayDialogBox' : '')}>
-      
+    <div
+      className={show == 1 && stickyNotes.length == 0 ? "overlayDialogBox" : ""}
+    >
       {stickyNotes.length != 0 ? (
         <div className="cardContainer">
           {stickyNotes.map((character, index) => (
@@ -133,11 +134,29 @@ function Advanced2() {
         <div className="container-fluid">
           <div className="">
             <div className="row">
+              {stickyNotes.length > 1 && !show && (
+                <div className="col-md-12 mb-2">
+                  <div className="prompt-cont">
+                    <ul>
+                      {queries.map((data, index) => (
+                        <li>
+                          <span className="slide" onClick={handleSpanClick}>
+                            {data.value}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              )}
               <div className="col-md-12">
-                <div className={`message-textarea ${containerClass}`}>     
-                <span></span>           
+                <div className={`message-textarea ${containerClass}`}>
+                  <span></span>
                   <textarea
-                    className={"form-control message-box" + (show == 1 ? ' largeTextArea' : '')}
+                    className={
+                      "form-control message-box" +
+                      (show == 1 ? " largeTextArea" : "")
+                    }
                     rows={1}
                     onFocus={handlePropt}
                     value={textInput}
@@ -169,14 +188,13 @@ function Advanced2() {
                 <div className="col-md-12 mb-2">
                   <div className="prompt-cont">
                     <ul>
-                    {queries.map((data, index) => (
-                      <li>
-                        <span className="slide" onClick={handleSpanClick}>
-                          {data.value}
-                        </span>
-                      </li>
+                      {queries.map((data, index) => (
+                        <li>
+                          <span className="slide" onClick={handleSpanClick}>
+                            {data.value}
+                          </span>
+                        </li>
                       ))}
-                     
                     </ul>
                   </div>
                 </div>
@@ -186,7 +204,6 @@ function Advanced2() {
         </div>
       </div>
     </div>
-    
   );
 }
 
