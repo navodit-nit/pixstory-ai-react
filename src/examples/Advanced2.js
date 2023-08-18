@@ -68,7 +68,8 @@ function Advanced2() {
         .map((i) => React.createRef()),
     []
   );
-
+  const canSwipe = currentIndex >= 0
+ 
   const swipe = async (dir) => {
     if (canSwipe && currentIndex < stickyNotes.length) {
       await childRefs[currentIndex].current.swipe(dir); // Swipe the card!
@@ -133,7 +134,8 @@ function Advanced2() {
           <div className="">
             <div className="row">
               <div className="col-md-12">
-                <div className={`message-textarea ${containerClass}`}>                
+                <div className={`message-textarea ${containerClass}`}>     
+                <span></span>           
                   <textarea
                     className={"form-control message-box" + (show == 1 ? ' largeTextArea' : '')}
                     rows={1}
