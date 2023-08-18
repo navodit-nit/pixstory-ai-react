@@ -122,6 +122,7 @@ body{
   .message-btn {
   right: 7px;
   top:6px;
+  height: 47px;
   }
   .landing-page-heading {
   height: 100vh;
@@ -130,17 +131,29 @@ body{
   outline: 0 !important;
   }
   .prompt-cont{
-  padding: 5px;
-  display:inline-block;
-  margin-top:10px;
+    padding: 5px;
+    display: inline-block;
+    margin-top: 10px;
+    width: 100%;
+    overflow: scroll;
   
   }
-  .prompt-cont ul {padding-left: 0px;margin-bottom: 0px;}
+  .prompt-cont ul {padding-left: 0px;
+    margin-bottom: 0px;
+    width: 100%;
+    overflow: scroll;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;}
   .prompt-cont ul li{
-  list-style: none;
-  cursor: pointer;
-  display: inline-block;
-  margin-right: 10px;
+    list-style: none;
+    cursor: pointer;
+    display: inline-flex;
+    margin-right: 10px;
+    word-break: keep-all;
+    width: 100%;
+    align-self: flex-start;
+    flex: 0 0 31%;
   }
   .prompt-cont span{
   margin-bottom:5px;
@@ -149,4 +162,79 @@ body{
   border-radius: 5px;
   font-size: 11px;
   }
-  
+  .message-box{
+    padding: 9px 39px 0 11px;
+    height: 47px !important;
+    border-radius: 8px;
+    background: #e9ff07;
+    color: #000;
+    line-height: 22px;
+    border: 1px solid #fff;
+  }
+  .message-box:focus{
+    color: #000000;
+    background-color: #e9ff07;
+    border-color: #fff;
+    outline: 0;
+    box-shadow: none; 
+  }
+  textarea.message-box::-webkit-input-placeholder {
+    color: #000;
+    }
+    
+    textarea.message-box:-moz-placeholder { /* Firefox 18- */
+    color: #000;  
+    }
+    
+    textarea.message-box::-moz-placeholder {  /* Firefox 19+ */
+    color: #000;  
+    }
+    
+    textarea.message-box:-ms-input-placeholder {
+    color: #000;  
+    }
+
+    .message-section{
+      background-color: #000000;
+    }
+
+    .App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.sticky-notes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sticky-note {
+  background-color: yellow;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.input-area {
+  margin-top: 20px;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

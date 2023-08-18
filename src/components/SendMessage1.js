@@ -3,31 +3,29 @@ import Card from "./Card";
 import MainPage from "./MainPage";
 import Button from "react";
 
-const SendMessage = ({childToParent}) => {
+const SendMessage1 = ({ childToParent }) => {
   const [inputValue, setInputValue] = useState();
   const [show, setShow] = useState(false);
-  const [showCard, setShowCard] = useState(false)
-  const data = "This is data from Child Component to the Parent Component."
-const handlePropt = () => {
+  const [showCard, setShowCard] = useState(false);
+  const data = "This is data from Child Component to the Parent Component.";
+  const handlePropt = () => {
     if (show == false) {
       setShow(true);
     } else {
       setShow(false);
     }
   };
-const handleSpanClick = (event) => {
+  const handleSpanClick = (event) => {
     const spanValue = event.target.textContent;
     setInputValue(spanValue);
     childToParent(data);
     // <Button primary onClick={() => }>Click Child</Button>
   };
 
-
-
-const handleSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    setShowCard('ture');
-  }
+    setShowCard("ture");
+  };
   return (
     <>
       {showCard ? <Card item={inputValue} /> : <MainPage />}
@@ -36,7 +34,6 @@ const handleSubmit = (event) => {
           <div className="">
             <div className="row">
               <div className="col-md-12">
-              
                 <form className="" onSubmit={handleSubmit}>
                   <label htmlFor="messageInput" hidden>
                     Enter Message
@@ -45,7 +42,6 @@ const handleSubmit = (event) => {
                     <textarea
                       className="form-control message-box"
                       rows={1}
-                      
                       onFocus={handlePropt}
                       value={inputValue}
                       onClick={(e) => setInputValue(e.target.value)}
@@ -69,18 +65,52 @@ const handleSubmit = (event) => {
                     </button>
                   </div>
                 </form>
-              </div>                            
+              </div>
               {show && (
-                <div className="col-md-12 mb-2">                  
+                <div className="col-md-12 mb-2">
                   <div className="prompt-cont">
                     <ul>
-                      <li> <span className="slide" onClick={handleSpanClick}>What is your favorite Google product? Why? How would you improve it?</span></li>
-                      <li> <span className="slide" onClick={handleSpanClick}>How does Google stand out from its competitors?</span></li>
-                      <li> <span className="slide" onClick={handleSpanClick}>What are some other sites you visit frequently? Why do you like them?</span></li>
-                      <li> <span className="slide" onClick={handleSpanClick}>Is there a Google product that you don’t like to use? Why?  </span></li>
-                      <li> <span className="slide" onClick={handleSpanClick}>If you don’t get hired at Google, what other companies would you be happy working for?  </span></li>
-                      <li> <span className="slide" onClick={handleSpanClick}>In your opinion, why is the Google homepage mostly blank space? </span></li>
-
+                      <li>
+                        {" "}
+                        <span className="slide" onClick={handleSpanClick}>
+                          What is your favorite Google product? Why? How would
+                          you improve it?
+                        </span>
+                      </li>
+                      <li>
+                        {" "}
+                        <span className="slide" onClick={handleSpanClick}>
+                          How does Google stand out from its competitors?
+                        </span>
+                      </li>
+                      <li>
+                        {" "}
+                        <span className="slide" onClick={handleSpanClick}>
+                          What are some other sites you visit frequently? Why do
+                          you like them?
+                        </span>
+                      </li>
+                      <li>
+                        {" "}
+                        <span className="slide" onClick={handleSpanClick}>
+                          Is there a Google product that you don’t like to use?
+                          Why?{" "}
+                        </span>
+                      </li>
+                      <li>
+                        {" "}
+                        <span className="slide" onClick={handleSpanClick}>
+                          If you don’t get hired at Google, what other companies
+                          would you be happy working for?{" "}
+                        </span>
+                      </li>
+                      <li>
+                        {" "}
+                        <span className="slide" onClick={handleSpanClick}>
+                          In your opinion, why is the Google homepage mostly
+                          blank space?{" "}
+                        </span>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -93,5 +123,4 @@ const handleSubmit = (event) => {
   );
 };
 
-
-export default SendMessage;
+export default SendMessage1;
