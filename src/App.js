@@ -13,9 +13,9 @@ function App() {
     <div className="app">
       <NavBar />
       {showAdvanced ? <Advanced2 /> : <Simple />}
-      <div className="row">
-        {/* <p style={{ color: '#fff' }}>Show advanced example</p> <Switch checked={showAdvanced} onChange={setShowAdvanced} /> */}
-      </div>
+      {/* <div className="row">
+        <p style={{ color: '#fff' }}>Show advanced example</p> <Switch checked={showAdvanced} onChange={setShowAdvanced} />
+      </div> */}
     </div>
   );
 }

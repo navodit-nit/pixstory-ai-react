@@ -45,6 +45,7 @@ function Advanced2() {
   const [showCard, setShowCard] = useState(false);
 
   const [containerClass, setContainerClass] = useState("");
+  const [messageBox, setmessageBox] = useState("");
 
   const handleTextareaClick = () => {};
 
@@ -96,9 +97,11 @@ function Advanced2() {
     if (show == false) {
       setShow(true);
       setContainerClass("querytype-medium");
+      setmessageBox("abc");
     } else {
       setShow(false);
       setContainerClass("querytype-small");
+      setmessageBox("xyz");
     }
   };
 
@@ -108,47 +111,75 @@ function Advanced2() {
   };
 
   return (
-    <div
-      className={show == 1 && stickyNotes.length == 0 ? "overlayDialogBox" : ""}
-    >
-      {stickyNotes.length != 0 ? (
-        <div className="cardContainer">
-          {stickyNotes.map((character, index) => (
-            <TinderCard
-              ref={childRefs[index]}
-              className="swipe"
-              key={character}
-              onSwipe={(dir) => swiped(dir, character, index)}
-              onCardLeftScreen={() => outOfFrame(character, index)}
-            >
-              <div className="card">
-                <h3>{character}</h3>
-              </div>
-            </TinderCard>
-          ))}
-        </div>
-      ) : (
-        <MainPage />
-      )}
-      <div className="fixed-bottom shadow border-top  message-section">
-        <div className="container-fluid">
-          <div className="">
-            <div className="row">
-              {stickyNotes.length > 1 && !show && (
-                <div className="col-md-12 mb-2">
-                  <div className="prompt-cont">
-                    <ul>
-                      {queries.map((data, index) => (
-                        <li>
-                          <span className="slide" onClick={handleSpanClick}>
-                            {data.value}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
+    <>
+      <div className="slider-section">
+        {stickyNotes.length != 0 ? (
+          <div className="cardContainer">
+            {stickyNotes.map((character, index) => (
+              <TinderCard
+                ref={childRefs[index]}
+                className="swipe"
+                key={character}
+                onSwipe={(dir) => swiped(dir, character, index)}
+                onCardLeftScreen={() => outOfFrame(character, index)}
+              >
+                <div className="card">
+                  <h3>{character}</h3>
+                  <div className="share-icon">
+                    <h5>
+                      <span>
+                        <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M21 11H6.414l5.293-5.293-1.414-1.414L2.586 12l7.707 7.707 1.414-1.414L6.414 13H21z"/></svg>
+                      </span>
+                      <span>
+                      <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M21 11H6.414l5.293-5.293-1.414-1.414L2.586 12l7.707 7.707 1.414-1.414L6.414 13H21z"/></svg>
+                      </span>
+                    </h5>
+                    <h5>
+                      <span>
+                      <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M21 11H6.414l5.293-5.293-1.414-1.414L2.586 12l7.707 7.707 1.414-1.414L6.414 13H21z"/></svg>
+                      </span>
+                    </h5>
                   </div>
                 </div>
-              )}
+              </TinderCard>
+            ))}
+          </div>
+        ) : (
+          <MainPage />
+        )}
+        {stickyNotes.length > 0 && (
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-md-12">
+                <div className="prompt-cont top-query">
+                  <h3>Topics queries</h3>
+                  <ul>
+                    {queries.map((data, index) => (
+                      <li>
+                        <span className="slide" onClick={handleSpanClick}>
+                          {data.value}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+      <div
+        className={
+          show == 1 || show > 0 && stickyNotes.length == 0
+            ? "overlayDialogBox"
+            : "query-section"
+        }
+      >
+        <div
+          className={`fixed-bottom shadow border-top  message-section ${messageBox}`}
+        >
+          <div className="container-fluid">
+            <div className="row">
               <div className="col-md-12">
                 <div className={`message-textarea ${containerClass}`}>
                   <span></span>
@@ -203,7 +234,7 @@ function Advanced2() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
