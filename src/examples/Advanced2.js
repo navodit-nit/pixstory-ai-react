@@ -57,6 +57,8 @@ function Advanced2() {
     }
   }
 
+
+
   const updateCurrentIndex = (val) => {
     setCurrentIndex(val);
     currentIndexRef.current = val;
@@ -110,6 +112,10 @@ function Advanced2() {
     setTextInput(spanValue);
   };
 
+  const handleQueryClick = (content) => {
+    console.log(content);
+    setStickyNotes(prevCards => [...prevCards, content]);
+  }
   return (
     <>
       <div className="slider-section">
@@ -118,12 +124,12 @@ function Advanced2() {
             {stickyNotes.map((character, index) => (
               <TinderCard
                 ref={childRefs[index]}
-                className="swipe"
+                className={`swipe card-index-${index}`}
                 key={character}
                 onSwipe={(dir) => swiped(dir, character, index)}
                 onCardLeftScreen={() => outOfFrame(character, index)}
               >
-                <div className="card">
+                <div className={`card`}>
                   <h3>{character}</h3>
                   <div className="share-icon">
                     <h5>
@@ -152,8 +158,8 @@ function Advanced2() {
                   <h3>Topics queries</h3>
                   <ul>
                     {queries.map((data, index) => (
-                      <li>
-                        <span className="slide" onClick={handleSpanClick}>
+                      <li onClick={() => handleQueryClick(data.value)}>
+                        <span className="slide" >
                           {data.value}
                         </span>
                       </li>
