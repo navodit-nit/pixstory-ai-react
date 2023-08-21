@@ -46,7 +46,12 @@ function Advanced2() {
 
   const [containerClass, setContainerClass] = useState("");
   const [messageBox, setmessageBox] = useState("");
+  const [activeCard, setActiveCard] = useState(null);
 
+  const handleCardClick = (index) => {
+    setActiveCard(index);
+  };
+  
   const handleTextareaClick = () => {};
 
   function handleAddNote() {
@@ -124,7 +129,8 @@ function Advanced2() {
             {stickyNotes.map((character, index) => (
               <TinderCard
                 ref={childRefs[index]}
-                className={`swipe card-index-${index}`}
+                // className={`swipe card-index-${index}`}
+                className={`swipe ${index === stickyNotes.length - 1 ? 'active' : ''}`}        
                 key={character}
                 onSwipe={(dir) => swiped(dir, character, index)}
                 onCardLeftScreen={() => outOfFrame(character, index)}
@@ -220,8 +226,8 @@ function Advanced2() {
                   <div className="prompt-cont">
                     <ul>
                       {queries.map((data, index) => (
-                        <li>
-                          <span className="slide" onClick={handleSpanClick}>
+                         <li onClick={() => handleQueryClick(data.value)}>
+                          <span className="slide">
                             {data.value}
                           </span>
                         </li>
