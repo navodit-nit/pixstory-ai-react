@@ -127,17 +127,17 @@ function Advanced2() {
                   <h3>{character}</h3>
                   <div className="share-icon">
                     <h5>
-                      <span>
-                        <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M21 11H6.414l5.293-5.293-1.414-1.414L2.586 12l7.707 7.707 1.414-1.414L6.414 13H21z"/></svg>
-                      </span>
-                      <span>
-                      <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M21 11H6.414l5.293-5.293-1.414-1.414L2.586 12l7.707 7.707 1.414-1.414L6.414 13H21z"/></svg>
-                      </span>
+                      <a href="#">
+                         <img src={process.env.PUBLIC_URL + '/img/back.svg'} alt="Load" />                        
+                      </a>
+                      <a href="#">
+                      <img src={process.env.PUBLIC_URL + '/img/load.svg'} alt="Load" />
+                      </a>
                     </h5>
                     <h5>
-                      <span>
-                      <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M21 11H6.414l5.293-5.293-1.414-1.414L2.586 12l7.707 7.707 1.414-1.414L6.414 13H21z"/></svg>
-                      </span>
+                    <a href="#">
+                      <img src={process.env.PUBLIC_URL + '/img/share.svg'} alt="Load" />
+                      </a>
                     </h5>
                   </div>
                 </div>
@@ -148,9 +148,6 @@ function Advanced2() {
           <MainPage />
         )}
         {stickyNotes.length > 0 && (
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-md-12">
                 <div className="prompt-cont top-query">
                   <h3>Topics queries</h3>
                   <ul>
@@ -163,9 +160,6 @@ function Advanced2() {
                     ))}
                   </ul>
                 </div>
-              </div>
-            </div>
-          </div>
         )}
       </div>
       <div
@@ -176,7 +170,7 @@ function Advanced2() {
         }
       >
         <div
-          className={`fixed-bottom shadow border-top  message-section ${messageBox}`}
+          className={`fixed-bottom message-section ${messageBox}`}
         >
           <div className="container-fluid">
             <div className="row">
