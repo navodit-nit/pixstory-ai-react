@@ -41,7 +41,7 @@
   z-index: 100;
   transition: all .4s;
 } */
-.swipe-card.active {
+.swipe.active {
   touch-action: pan-y; /* Allow vertical scrolling */
   pointer-events: auto; /* Enable pointer events on the card */
 }
