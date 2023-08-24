@@ -223,7 +223,7 @@ function Advanced2() {
               </div>
               {show && (
                 <div className="col-md-12 mb-2">
-                  <div className="prompt-cont">
+                  <div className="prompt-cont bottom-prompt-box">
                     <ul>
                       {queries.map((data, index) => (
                          <li onClick={() => handleQueryClick(data.value)}>
