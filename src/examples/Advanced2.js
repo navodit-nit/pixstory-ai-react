@@ -142,7 +142,7 @@ function Advanced2() {
                 key={character}
                 onSwipe={(dir) => swiped(dir, character, index)}
                 onCardLeftScreen={() => outOfFrame(character, index)}
-                preventSwipe={['right', 'left']}
+                preventSwipe={['up', 'down']}
               >
                 <div className={`card`}>
                   <h3>{character}</h3>
