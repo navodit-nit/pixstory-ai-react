@@ -129,10 +129,6 @@ function Advanced2() {
     console.log(content);
     setStickyNotes(prevCards => [...prevCards, content]);
   }
-  const allowSwipe = (direction) => {
-    // Allow only left and right swipes
-    return direction === "left" || direction === "right";
-  };
   return (
     <>
       <div className="slider-section">
@@ -146,7 +142,7 @@ function Advanced2() {
                 key={character}
                 onSwipe={(dir) => swiped(dir, character, index)}
                 onCardLeftScreen={() => outOfFrame(character, index)}
-                preventSwipe={allowSwipe}
+                preventSwipe={['right', 'left']}
               >
                 <div className={`card`}>
                   <h3>{character}</h3>
