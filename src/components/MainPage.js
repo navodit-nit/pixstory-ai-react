@@ -9,7 +9,7 @@ const MainPage = () => {
             <div className="col-md-12">
               <h1 className="text-center">
                 Access To free and open <br />
-                information
+                information new
               </h1>
               <p className="text-center">
                 Hello! I am your virtual AI assistant created by Pixstory. How
