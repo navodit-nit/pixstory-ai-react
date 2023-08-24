@@ -131,7 +131,7 @@ function Advanced2() {
   }
   return (
     <>
-      <div className="slider-section newclass">
+      <div className="slider-section ad">
         {stickyNotes.length != 0 ? (
           <div className="cardContainer">
             {stickyNotes.map((character, index) => (
