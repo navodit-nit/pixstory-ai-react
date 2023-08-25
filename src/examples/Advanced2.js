@@ -1,7 +1,6 @@
 import React, { useState, useMemo, useRef } from "react";
 import TinderCard from "react-tinder-card";
 import MainPage from "./../components/MainPage";
-import { faAddressCard, faAirFreshener } from '@fortawesome/free-solid-svg-icons'
 
 const db = [
   {
