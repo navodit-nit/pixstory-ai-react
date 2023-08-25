@@ -7,14 +7,16 @@ const MainPage = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <h1 className="text-center">
-                Access To free and open <br />
-                information new
-              </h1>
-              <p className="text-center">
-                Hello! I am your virtual AI assistant created by Pixstory. How
-                Can I help you ?
-              </p>
+              <div className="main-page-content">
+                <h1>
+                  Access To free and open<span>information</span>                
+                </h1>
+                <img src={process.env.PUBLIC_URL + '/img/main-page-icon.svg'} alt="Icon" />
+                <p>
+                  <b>Hello!</b> I am your virtual AI assistant <br /> created by <b>Pixstory</b>.
+                  How can I help you?
+                </p>
+              </div>
             </div>
           </div>
         </div>

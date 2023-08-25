@@ -4,7 +4,7 @@ const NavBar = () => {
   return (
     <>
       <div className="fixed-top">
-        <div className="container-fluid py-3 ">
+        <div className="container-fluid ">
           <div className="row">
             <div className="col-md-12">
              <div className="topbar">

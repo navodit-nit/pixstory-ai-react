@@ -1,3 +1,8 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&display=swap'); */
+
+body{
+  font-family: 'Poppins', sans-serif;
+}
 #root {
   text-align: center;
   display: flex;
@@ -14,21 +19,29 @@
   user-select: none;
 }
 
-#root>div {
+/* #root>div {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-}
+} */
 
 .app {
   overflow: hidden;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  height: 100vh;
+  background: url(../public/img/bg-img2.svg) 0 0 no-repeat;
+  background-size: cover;
+  background-position: 100%;
 }
+
 .swipe {
   position: absolute;
   width: 87%;
   background-color: #333333;
-  height: 350px;
+  min-height: 300px;
   border-radius: 16px;
   z-index: 10;
   padding-bottom: 20px;
@@ -40,14 +53,30 @@
   box-shadow: 0px 0px 30px 5px rgba(0,0,0,0.1);
   z-index: 100;
   transition: all .4s;
+  
 } 
+.swipe.active:after{
+  content: "";
+  background: url(../public/img/bg-img.svg) 0 0  no-repeat;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 155px;
+  height: 155px;
+}
 .fixed-top{
-  height: 82px;
+      padding: 33px 0px 22px;
+}
+.fixed-top button{
+  padding: 0;
+    margin: 0;
 }
 .cardContainer {
   width: 87vw;
-  margin: 0px auto 30px;
-  height: 357px;
+  margin: 0px auto;
+  height: 100%;
+  min-height: 300px;
+  padding-bottom: 30px;
 }
 
 .cardContainer .swipe:nth-child(even) {
@@ -72,16 +101,16 @@
 }
 .card {
   position: absolute;
-  background-color: transparent;
-  width: 100%;
-  box-shadow: none;
-  border-radius: 5px;
-  background-size: cover;
-  justify-content: space-between;
-  padding-bottom: 7px;
-  height: 100%;
-  box-sizing: border-box;
-  border: none;
+    background-color: transparent;
+    width: 100%;
+    box-shadow: none;
+    border-radius: 5px;
+    background-size: cover;
+    justify-content: space-between;
+    height: 100%;
+    box-sizing: border-box;
+    border: none;
+    padding: 20px;
 }
 
 .cardContent {
@@ -91,11 +120,10 @@
 
 .card h3 {
   bottom: 0;
-  margin: 10px;
-  color: #fff;
+  margin: 0;
+  color: #AAAAAA;
   font-size: 16px;
   line-height: 1.8;
-  overflow-y: auto;
   text-align: left;
 }
 .infoText {
@@ -155,7 +183,6 @@ body{
     right: 7px;
     top: 9px;
     margin: 0;
-    background: #000;
     padding: 2px 9px;
     opacity: 1;
   }
@@ -166,18 +193,16 @@ body{
   outline: 0 !important;
   }
   .top-query{
-    padding: 5px;
-    display: inline-block;
-    margin-top: 10px;
-    width: 100%;
-    margin-bottom: 0;
-    padding-bottom: 0;
+    margin-top: 0;
+    padding: 0 20px 0;
+    height: 127px;
   
   }
   .top-query ul {
     padding-left: 0px;
     margin-bottom: 0px;
     width: 100%;
+    margin-top: 10px;
     overflow-y: hidden;
     display: flex;
     flex-wrap: nowrap;
@@ -191,27 +216,36 @@ body{
     width: 100%;
     align-self: flex-start;
     flex: 0 0 48%;
-    min-height: 60px;
+    min-height: 100px;
     padding: 4px 0px 0;
     background-color: #F2F2F2;
-    border-radius: 5px;
-    max-height: 60px;
+    border-radius: 8px;
+    max-height: 100px;
+    width: 152px
 
   }
   .top-query span{
-    margin-bottom: 5px; 
-    padding: 3px 0;    
-    font-size: 11px;
+    margin-bottom: 5px;
+    padding: 7px 14px;
+    font-weight: 500;
     display: inline-block;
+    text-align: left;
+    color: #333333;
+    font-size: 12px;
+    line-height: 16.8px;
   }
   .message-box{
     padding: 9px 39px 0 11px;
     height: 47px !important;
     border-radius: 8px;
     background: #e9ff07;
-    color: #000;
-    line-height: 22px;
+    color: #000000;
     border: 1px solid #fff;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
   }
   .message-box:focus{
     color: #000000;
@@ -239,18 +273,12 @@ body{
       .message-section {
         background-color: #fff;
         border-radius: 8px 8px 0 0;
-        padding: 25px 10px 12px;
+        padding: 15px 15px 12px;
         z-index: 99999;
         
     }
     
 
-    .App {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
 
 .sticky-notes {
   display: flex;
@@ -287,19 +315,28 @@ button {
 }
 .message-textarea{display: flex;
   position: relative;
+  
 }
+.message-textarea.querytype-medium{
+  padding-top: 25px;
+}
+
 .message-box.largeTextArea {
   height: 104px !important;
 }
+.querytype-small  {
+  padding-top: 0;
+}
 .querytype-medium .message-btn {
-  height: auto;
-    right: 9px;
-    top: auto;
-    background: #000;
-    bottom: 8px;
-    opacity: 1;
-    padding: 2px 9px;
-    opacity: 1;
+  right: 9px;
+  top: auto;
+  background: #000;
+  bottom: 8px;
+  padding: 2px 9px;
+  opacity: 1;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
 }
 .overlayDialogBox:after {
     position: absolute;
@@ -314,22 +351,17 @@ button {
 }
 .querytype-medium span{
   position: absolute;
-    background: #dcdcdc;
-    width: 75px;
-    height: 2px;
-    top: -12px;
-    border-radius: 2px;
-    margin: 0px auto;
-    left: 0;
-    right: 0;
-    display: inline-block;
+  width: 49px;
+  height: 3px;
+  top: 0;
+  border-radius: 2px;
+  margin: 0px auto;
+  left: 0;
+  right: 0;
+  display: inline-block;
+  background: #AAAAAA;
 }
 
-.top-query {
-  margin-top: 0;
-  padding: 0 20px 0;
-  height: 127px;
-}
 .top-query h3 {
   text-align: left;
   font-size: 15px;
@@ -340,7 +372,7 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 15px;
+    padding: 0px;
 }
 .share-icon a {
   background: #4d4d4d;
@@ -359,8 +391,9 @@ button {
   display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 14px;
+    padding: 0px 15px;
 }
+
 
 
 .bottom-prompt-box{
@@ -373,7 +406,7 @@ button {
 
 }
 .bottom-prompt-box ul {
-  margin: 4px 4px;
+  margin: 4px 0;
   padding: 4px;
   overflow-x: auto;
   overflow-y: hidden;
@@ -395,3 +428,65 @@ button {
   padding: 3px 0;    
   font-size: 11px;
 }
+.main-page-content{}
+.main-page-content h1{
+  font-size: 40px;
+    font-weight: 600;
+    line-height: 45px;
+    letter-spacing: -0.02em;
+    text-align: center;
+}
+.main-page-content h1 span{
+  letter-spacing: -0.02em;
+  display: block;
+  background: -webkit-linear-gradient(-89deg, #E9FF07 44%, #E9FF07 35%, #ffffff 67%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px black;
+}
+.main-page-content p{
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  color: rgba(131, 131, 131, 1);
+
+  }
+  .main-page-content p b{
+    font-weight: 600;
+  }
+.main-page-content img{
+  margin-top: 35px;
+  margin-bottom: 10px;
+
+}
+.card-details{    overflow-y: auto;}
+.card-logo{ display: flex;
+  justify-content: space-between;   margin-top: 10px;}
+.card-logo h4{}
+.card-logo h4 img{    width: 28px;
+  height: 28px;}
+.card-logo h4 span{    color: #E9FF07;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-left: 2px;}
+.card-details p{font-size: 15px;
+  font-weight: 500;
+  line-height: 27px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #FDFDFD;}
+
+  .cardContainer .swipe:nth-child(odd) .card h3{
+    color: #545454;
+
+  }
+  .cardContainer .swipe:nth-child(odd) .card p{
+    color: #000;
+
+  }
+  .cardContainer .swipe:nth-child(odd) .share-icon a{
+    background: rgba(253, 253, 253, 0.2);
+  }

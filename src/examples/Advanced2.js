@@ -1,6 +1,8 @@
 import React, { useState, useMemo, useRef } from "react";
 import TinderCard from "react-tinder-card";
 import MainPage from "./../components/MainPage";
+import { faAddressCard, faAirFreshener } from '@fortawesome/free-solid-svg-icons'
+
 const db = [
   {
     name: "PixStory.ai, Next Gen AI search box. What are you curious about type in and see magic happening.",
@@ -31,7 +33,7 @@ const queries = [
   {
     id: 5,
     value:
-      "In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?",
+      "In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion",
   },
 ];
 
@@ -112,11 +114,11 @@ function Advanced2() {
     if (show == false) {
       setShow(true);
       setContainerClass("querytype-medium");
-      setmessageBox("abc");
+      setmessageBox("send-msg-up");
     } else {
       setShow(false);
       setContainerClass("querytype-small");
-      setmessageBox("xyz");
+      setmessageBox("send-msg-down");
     }
   };
 
@@ -126,18 +128,17 @@ function Advanced2() {
   };
 
   const handleQueryClick = (content) => {
-    console.log(content);
-    setStickyNotes(prevCards => [...prevCards, content]);
+    console.log(content); 
+    setStickyNotes(prevCards => [...prevCards, content]); 
   }
   return (
-    <>
-      <div className="slider-section ad">
+    <> 
+      <div className="slider-section">
         {stickyNotes.length != 0 ? (
           <div className="cardContainer">
             {stickyNotes.map((character, index) => (
               <TinderCard
                 ref={childRefs[index]}
-                // className={`swipe card-index-${index}`}
                 className={`swipe ${index === stickyNotes.length - 1 ? 'active' : ''}`}        
                 key={character}
                 onSwipe={(dir) => swiped(dir, character, index)}
@@ -145,7 +146,18 @@ function Advanced2() {
                 preventSwipe={['up', 'down']}
               >
                 <div className={`card`}>
-                  <h3>{character}</h3>
+                  <div className="card-details">
+                    <h3>{character}</h3> 
+                    <div className="card-logo">
+                      <h4>
+                        <img src={process.env.PUBLIC_URL + '/img/main-page-icon.svg'} alt="Icon" /> 
+                        <span>Pixstory.ai</span>
+                      </h4>
+                      <img src={process.env.PUBLIC_URL + '/img/copy.svg'} alt="copy" /> 
+                      
+                    </div>
+                    <p>{character}</p> 
+                  </div>
                   <div className="share-icon">
                     <h5>
                       <a href="#">
@@ -207,7 +219,7 @@ function Advanced2() {
                     onFocus={handlePropt}
                     value={textInput}
                     onChange={(e) => setTextInput(e.target.value)}
-                    placeholder="type query....."
+                    placeholder="Ask anything..."
                     onClick={handleTextareaClick}
                   ></textarea>
 
@@ -216,17 +228,8 @@ function Advanced2() {
                     onClick={handleAddNote}
                     className="btn position-absolute message-btn"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      width="20"
-                      height="20"
-                    >
-                      <path
-                        d="M3 13.0001H9V11.0001H3V1.8457C3 1.56956 3.22386 1.3457 3.5 1.3457C3.58425 1.3457 3.66714 1.36699 3.74096 1.4076L22.2034 11.562C22.4454 11.695 22.5337 11.9991 22.4006 12.241C22.3549 12.3241 22.2865 12.3925 22.2034 12.4382L3.74096 22.5925C3.499 22.7256 3.19497 22.6374 3.06189 22.3954C3.02129 22.3216 3 22.2387 3 22.1544V13.0001Z"
-                        fill="#e9ff07"
-                      ></path>
-                    </svg>
+                    
+                    <img src={process.env.PUBLIC_URL + "/img/send-msg.svg"} alt="Image"/>
                   </button>
                 </div>
               </div>
