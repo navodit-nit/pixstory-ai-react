@@ -147,8 +147,7 @@ function Advanced2() {
   const handleQueryClick = (content) => {
     console.log(content); 
     setStickyNotes(prevCards => [...prevCards, content]); 
-    setStickyNotesCounts(stickyNotes.length)
-
+    setShow(false);
   }
   return (
     <> 
