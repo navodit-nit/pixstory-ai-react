@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef } from "react";
+import React, { useState, useMemo, useRef,useEffect } from "react";
 import "./App.css";
 import Advanced from "./examples/Advanced";
 import Simple from "./examples/Simple";
@@ -8,6 +8,96 @@ import NavBar from "./components/NavBar";
 import Cards from "./components/Cards";
 import DialogueBox from "./components/DialogueBox";
 
+
+const responses = [
+  {"success": true,
+"message": "done",
+"response": "1-A market economy is an economic system in which the allocation of resources is determined by the operation of market forces, such as supply and demand. The key features of a market economy include private ownership of resources, the existence of competitive markets, and the role of prices and profit incentives in allocating resources. This differs from a planned economy, which is an economic system in which the government controls the allocation of resources through central planning. In a planned economy, resources are typically owned and controlled by the government and production is directed towards fulfilling centrally planned targets and objectives.",
+"followup_ques": [
+  "1.1-Can you provide an example of a market where competition has led to improved product quality or reduced costs for consumers?",
+  "1.2-What are some examples of industries that have been traditionally dominated by government intervention in a planned economy, and how has this impacted the overall economy?",
+  "1.3-How do market economies address issues such as income inequality and environmental degradation?"
+]
+},
+{"success": true,
+"message": "done",
+"response": "2A market economy is an economic system in which the allocation of resources is determined by the operation of market forces, such as supply and demand. The key features of a market economy include private ownership of resources, the existence of competitive markets, and the role of prices and profit incentives in allocating resources. This differs from a planned economy, which is an economic system in which the government controls the allocation of resources through central planning. In a planned economy, resources are typically owned and controlled by the government and production is directed towards fulfilling centrally planned targets and objectives.",
+"followup_ques": [
+  "2.1-Can you provide an example of a market where competition has led to improved product quality or reduced costs for consumers?",
+  "2.2-What are some examples of industries that have been traditionally dominated by government intervention in a planned economy, and how has this impacted the overall economy?",
+  "2.3-How do market economies address issues such as income inequality and environmental degradation?"
+]
+},
+{"success": true,
+"message": "done",
+"response": "3A market economy is an economic system in which the allocation of resources is determined by the operation of market forces, such as supply and demand. The key features of a market economy include private ownership of resources, the existence of competitive markets, and the role of prices and profit incentives in allocating resources. This differs from a planned economy, which is an economic system in which the government controls the allocation of resources through central planning. In a planned economy, resources are typically owned and controlled by the government and production is directed towards fulfilling centrally planned targets and objectives.",
+"followup_ques": [
+  "3.1-Can you provide an example of a market where competition has led to improved product quality or reduced costs for consumers?",
+  "3.2-What are some examples of industries that have been traditionally dominated by government intervention in a planned economy, and how has this impacted the overall economy?",
+  "3.3-How do market economies address issues such as income inequality and environmental degradation?"
+]
+},
+{"success": true,
+"message": "done",
+"response": "4A market economy is an economic system in which the allocation of resources is determined by the operation of market forces, such as supply and demand. The key features of a market economy include private ownership of resources, the existence of competitive markets, and the role of prices and profit incentives in allocating resources. This differs from a planned economy, which is an economic system in which the government controls the allocation of resources through central planning. In a planned economy, resources are typically owned and controlled by the government and production is directed towards fulfilling centrally planned targets and objectives.",
+"followup_ques": [
+  "4.1-Can you provide an example of a market where competition has led to improved product quality or reduced costs for consumers?",
+  "4.2-What are some examples of industries that have been traditionally dominated by government intervention in a planned economy, and how has this impacted the overall economy?",
+  "4.3-How do market economies address issues such as income inequality and environmental degradation?"
+]
+},
+{"success": true,
+"message": "done",
+"response": "5-A market economy is an economic system in which the allocation of resources is determined by the operation of market forces, such as supply and demand. The key features of a market economy include private ownership of resources, the existence of competitive markets, and the role of prices and profit incentives in allocating resources. This differs from a planned economy, which is an economic system in which the government controls the allocation of resources through central planning. In a planned economy, resources are typically owned and controlled by the government and production is directed towards fulfilling centrally planned targets and objectives.",
+"followup_ques": [
+  "5.1-Can you provide an example of a market where competition has led to improved product quality or reduced costs for consumers?",
+  "5.2-What are some examples of industries that have been traditionally dominated by government intervention in a planned economy, and how has this impacted the overall economy?",
+  "5.3-How do market economies address issues such as income inequality and environmental degradation?"
+]
+},{"success": true,
+"message": "done",
+"response": "6-A market economy is an economic system in which the allocation of resources is determined by the operation of market forces, such as supply and demand. The key features of a market economy include private ownership of resources, the existence of competitive markets, and the role of prices and profit incentives in allocating resources. This differs from a planned economy, which is an economic system in which the government controls the allocation of resources through central planning. In a planned economy, resources are typically owned and controlled by the government and production is directed towards fulfilling centrally planned targets and objectives.",
+"followup_ques": [
+"6.1-Can you provide an example of a market where competition has led to improved product quality or reduced costs for consumers?",
+"6.2-What are some examples of industries that have been traditionally dominated by government intervention in a planned economy, and how has this impacted the overall economy?",
+"6.3-How do market economies address issues such as income inequality and environmental degradation?"
+]
+},
+{"success": true,
+"message": "done",
+"response": "7-A market economy is an economic system in which the allocation of resources is determined by the operation of market forces, such as supply and demand. The key features of a market economy include private ownership of resources, the existence of competitive markets, and the role of prices and profit incentives in allocating resources. This differs from a planned economy, which is an economic system in which the government controls the allocation of resources through central planning. In a planned economy, resources are typically owned and controlled by the government and production is directed towards fulfilling centrally planned targets and objectives.",
+"followup_ques": [
+  "7.1-Can you provide an example of a market where competition has led to improved product quality or reduced costs for consumers?",
+  "7.2-What are some examples of industries that have been traditionally dominated by government intervention in a planned economy, and how has this impacted the overall economy?",
+  "7.3-How do market economies address issues such as income inequality and environmental degradation?"
+]
+},{"success": true,
+"message": "done",
+"response": "8-A market economy is an economic system in which the allocation of resources is determined by the operation of market forces, such as supply and demand. The key features of a market economy include private ownership of resources, the existence of competitive markets, and the role of prices and profit incentives in allocating resources. This differs from a planned economy, which is an economic system in which the government controls the allocation of resources through central planning. In a planned economy, resources are typically owned and controlled by the government and production is directed towards fulfilling centrally planned targets and objectives.",
+"followup_ques": [
+"8.1-Can you provide an example of a market where competition has led to improved product quality or reduced costs for consumers?",
+"8.2-What are some examples of industries that have been traditionally dominated by government intervention in a planned economy, and how has this impacted the overall economy?",
+"8.3-How do market economies address issues such as income inequality and environmental degradation?"
+]
+},
+{"success": true,
+"message": "done",
+"response": "9-A market economy is an economic system in which the allocation of resources is determined by the operation of market forces, such as supply and demand. The key features of a market economy include private ownership of resources, the existence of competitive markets, and the role of prices and profit incentives in allocating resources. This differs from a planned economy, which is an economic system in which the government controls the allocation of resources through central planning. In a planned economy, resources are typically owned and controlled by the government and production is directed towards fulfilling centrally planned targets and objectives.",
+"followup_ques": [
+  "9.1-Can you provide an example of a market where competition has led to improved product quality or reduced costs for consumers?",
+  "9.2-What are some examples of industries that have been traditionally dominated by government intervention in a planned economy, and how has this impacted the overall economy?",
+  "9.3-How do market economies address issues such as income inequality and environmental degradation?"
+]
+},{"success": true,
+"message": "done",
+"response": "10-A market economy is an economic system in which the allocation of resources is determined by the operation of market forces, such as supply and demand. The key features of a market economy include private ownership of resources, the existence of competitive markets, and the role of prices and profit incentives in allocating resources. This differs from a planned economy, which is an economic system in which the government controls the allocation of resources through central planning. In a planned economy, resources are typically owned and controlled by the government and production is directed towards fulfilling centrally planned targets and objectives.",
+"followup_ques": [
+"10.1-Can you provide an example of a market where competition has led to improved product quality or reduced costs for consumers?",
+"10.2-What are some examples of industries that have been traditionally dominated by government intervention in a planned economy, and how has this impacted the overall economy?",
+"10.3-How do market economies address issues such as income inequality and environmental degradation?"
+]
+}
+];
 const db = [
   {
     name: "PixStory.ai, Next Gen AI search box. What are you curious about type in and see magic happening.",
@@ -15,32 +105,13 @@ const db = [
   },
 ];
 
-const queries = [
-  {
-    id: 1,
-    value:
+var queries = [  
       "What is your favorite Google product? Why? How would you improve it?",
-  },
-  {
-    id: 2,
-    value: "How does Google stand out from its competitors?",
-  },
-  {
-    id: 3,
-    value:
-      "What are some other sites you visit frequently? Why do you like them?",
-  },
-  {
-    id: 4,
-    value:
-      "If you don't get hired at Google, what other companies would you be happy working for?",
-  },
-  {
-    id: 5,
-    value:
-      "In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion, why is the Google homepage mostly blank space?In your opinion",
-  },
+      "How does Google stand out from its competitors?",
+      "What are some other sites you visit frequently? Why do you like them?"
 ];
+
+
 function App() {
   const [showAdvanced, setShowAdvanced] = useState(true);
   const [stickyNotes, setStickyNotes] = useState([]);
@@ -54,7 +125,15 @@ function App() {
   const [activeCard, setActiveCard] = useState(null);
   const [messageBox, setmessageBox] = useState("");
   
-
+  // const [data, setData] = useState([]);
+  // useEffect(() => {
+  //   fetch("./data/response.json")
+  //     .then((response) => response.json())
+  //     .then((json) => {
+  //       console.log(json);
+  //       setData(json);
+  //     });
+  // });
   const swiped = (direction, nameToDelete, index) => {
     setLastDirection(direction);
     updateCurrentIndex(index - 1);
@@ -72,11 +151,10 @@ function App() {
         // console.log(newList);
         // setStickyNotes(newList);  
         // setStickyNotesCounts(newList.length);
-        console.log(`Name : ${name}`);
-        console.log(`idx : ${idx}`);
         var index = stickyNotes.indexOf(name);
         console.log(`index : ${index}`);
         if(index > -1){
+          console.log(`index : ${index}`);
           stickyNotes.splice(index, 1);
           setStickyNotesCounts(stickyNotes.length);
           console.log(`New List : ${stickyNotes.length}, ChildRefs : ${childRefs.length} when ${idx} was outOfFrame`);   
@@ -103,7 +181,7 @@ function App() {
       Array(stickyNotes.length)
         .fill(0)
         .map((i) => React.createRef()),
-    []
+    [stickyNotesCounts]
   );
   const canSwipe = currentIndex >= 0;
 
@@ -136,12 +214,22 @@ function App() {
     setTextInput(spanValue);
   };
 
+  const getResponseAtIndex = (cIdx) => {
+    while(cIdx >= responses.length){
+      cIdx = cIdx%10;
+    }
+    return responses[cIdx];
+  }
   const handleQueryClick = (content) => {
     console.log(content);
     setStickyNotes((prevCards) => [...prevCards, content]);
+    console.log(responses);
+    console.log(stickyNotes.length);
+    queries = getResponseAtIndex(stickyNotes.length).followup_ques;
     setShow(false);
   };
 
+  
 
   return (
     <div className={`app ${stickyNotes.length == 0 ? "bgImage":""}`}>
@@ -153,6 +241,7 @@ function App() {
         outOfFrame={outOfFrame}
         handleQueryClick={handleQueryClick}
         queries={queries}
+        getResponseAtIndex={getResponseAtIndex}
       />
       <DialogueBox
         show={show}
@@ -176,6 +265,10 @@ function App() {
       </div> */}
     </div>
   );
+
+
+
+  
 }
 
 export default App;

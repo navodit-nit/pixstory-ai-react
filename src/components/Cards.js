@@ -12,7 +12,7 @@ const Cards = (props) => {
               className={`swipe ${
                 index === props.stickyNotes.length - 1 ? "active" : ""
               }`}
-              key={character}
+              key={index}
               onSwipe={(dir) => props.swiped(dir, character, index)}
               onCardLeftScreen={() => props.outOfFrame(character, index)}
               preventSwipe={["up", "down"]}
@@ -33,7 +33,7 @@ const Cards = (props) => {
                       alt="copy"
                     />
                   </div>
-                  <p>{character}</p>
+                  <p>{props.getResponseAtIndex(index).response}</p>
                 </div>
                 <div className="share-icon">
                   <h5>
@@ -72,8 +72,8 @@ const Cards = (props) => {
           <h3>Topics queries</h3>
           <ul>
             {props.queries.map((data, index) => (
-              <li onClick={() => props.handleQueryClick(data.value)}>
-                <span className="slide">{data.value}</span>
+              <li onClick={() => props.handleQueryClick(data)}>
+                <span className="slide">{data}</span>
               </li>
             ))}
           </ul>

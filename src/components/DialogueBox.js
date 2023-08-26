@@ -51,8 +51,8 @@ const DialogueBox = (props) => {
                 <div className="prompt-cont bottom-prompt-box">
                   <ul>
                     {props.queries.map((data, index) => (
-                      <li onClick={() => props.handleQueryClick(data.value)}>
-                        <span className="slide">{data.value}</span>
+                      <li onClick={() => props.handleQueryClick(data)}>
+                        <span className="slide">{data}</span>
                       </li>
                     ))}
                   </ul>
