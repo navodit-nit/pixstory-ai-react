@@ -32,10 +32,11 @@ body{
   justify-content: center;
   align-items: center; */
   height: 100vh;
-  background: url(../public/img/bg-img2.svg) 0 0 no-repeat;
-  background-size: cover;
-  background-position: 100%;
+ 
 }
+.bgImage{ background: url(../public/img/bg-img2.svg) 0 0 no-repeat;
+  background-size: cover;
+  background-position: 100%;}
 
 .swipe {
   position: absolute;
@@ -98,7 +99,7 @@ body{
   height: calc(100vh - 169px);
   overflow-y: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-direction: column;
 }
 .card {
@@ -376,18 +377,20 @@ button {
     justify-content: space-between;
     align-items: center;
     padding: 0px;
+    position: relative;
+    z-index: 9;
 }
-.share-icon a {
+.share-icon h5>a, .share-icon span {
   background: #4d4d4d;
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  display: inline-block;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   margin-right: 13px;
 }
-.share-icon a  svg{
+.share-icon a  svg, .share-icon span svg{
   fill: #e9ff07;
 }
 .topbar{
@@ -490,6 +493,20 @@ button {
     color: #000;
 
   }
-  .cardContainer .swipe:nth-child(odd) .share-icon a{
+  .cardContainer .swipe:nth-child(odd) .share-icon>a, .cardContainer .swipe:nth-child(odd) .share-icon>span{
     background: rgba(253, 253, 253, 0.2);
   }
+  .social-icon{display: none;list-style-type: none;
+    position: absolute;
+    top: -37px;
+    transition: all 0.5s ease;
+    right: 0;}
+  .social-icon li{
+    padding: 10px 0;
+}
+  .social-icon li img{}
+  .share-button:hover .social-icon{      right: 55px;  display: block;
+    transition: all 0.5s ease;
+    }
+  .share-button{position: relative;}
+  
