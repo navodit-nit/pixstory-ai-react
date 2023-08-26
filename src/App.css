@@ -39,7 +39,7 @@ body{
 
 .swipe {
   position: absolute;
-  width: 87%;
+  width: 100%;
   background-color: #333333;
   min-height: 300px;
   border-radius: 16px;
@@ -47,6 +47,7 @@ body{
   padding-bottom: 20px;
   transition: all .4s;
   margin-top: 14px;
+  height: 95%;
 }
  .swipe.active {
   margin-top: 0;
@@ -74,9 +75,9 @@ body{
 .cardContainer {
   width: 87vw;
   margin: 0px auto;
-  height: 100%;
+  height: calc(100vh - 315px);
   min-height: 300px;
-  padding-bottom: 30px;
+  position: relative;
 }
 
 .cardContainer .swipe:nth-child(even) {
@@ -111,6 +112,7 @@ body{
     box-sizing: border-box;
     border: none;
     padding: 20px;
+    overflow-y: auto;
 }
 
 .cardContent {
@@ -460,7 +462,7 @@ button {
   margin-bottom: 10px;
 
 }
-.card-details{    overflow-y: auto;}
+.card-details{ }
 .card-logo{ display: flex;
   justify-content: space-between;   margin-top: 10px;}
 .card-logo h4{}
