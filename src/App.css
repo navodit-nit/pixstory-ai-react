@@ -67,6 +67,7 @@ body{
 }
 .fixed-top{
       padding: 33px 0px 22px;
+      background: #fff;
 }
 .fixed-top button{
   padding: 0;
@@ -127,6 +128,7 @@ body{
   font-size: 16px;
   line-height: 1.8;
   text-align: left;
+  height: 100%;
 }
 .infoText {
   width: 100%;
