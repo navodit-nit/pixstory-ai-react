@@ -93,9 +93,12 @@ function Advanced2() {
     console.log(`List item at index ${index} was swiped ${direction}`);
    
       // Remove the swiped item from the list
-      const newList = stickyNotes.filter((_, index1) => index1 !== index);
-      console.log(newList);
-      setStickyNotes(newList);
+      setTimeout(() => {
+        const newList = stickyNotes.filter((_, index1) => index1 !== index);
+        console.log(newList);
+        setStickyNotes(newList);  
+      }, 500);
+      
     
   };
 
