@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-card-demo/static/css/main.8384219c.css",
-    "main.js": "/react-card-demo/static/js/main.e84f5587.js",
-    "static/media/bg-img2.svg": "/react-card-demo/static/media/bg-img2.4740ef15c571e0aa129e.svg",
-    "static/media/bg-img.svg": "/react-card-demo/static/media/bg-img.7704cce2bf4838e1feb1.svg",
-    "index.html": "/react-card-demo/index.html",
-    "main.8384219c.css.map": "/react-card-demo/static/css/main.8384219c.css.map",
-    "main.e84f5587.js.map": "/react-card-demo/static/js/main.e84f5587.js.map"
+    "main.css": "/pixstory-ai-react/static/css/main.f7462ff7.css",
+    "main.js": "/pixstory-ai-react/static/js/main.343e263a.js",
+    "static/media/bg-img2.svg": "/pixstory-ai-react/static/media/bg-img2.4740ef15c571e0aa129e.svg",
+    "static/media/bg-img.svg": "/pixstory-ai-react/static/media/bg-img.7704cce2bf4838e1feb1.svg",
+    "index.html": "/pixstory-ai-react/index.html",
+    "main.f7462ff7.css.map": "/pixstory-ai-react/static/css/main.f7462ff7.css.map",
+    "main.343e263a.js.map": "/pixstory-ai-react/static/js/main.343e263a.js.map"
   },
   "entrypoints": [
-    "static/css/main.8384219c.css",
-    "static/js/main.e84f5587.js"
+    "static/css/main.f7462ff7.css",
+    "static/js/main.343e263a.js"
   ]
 }
