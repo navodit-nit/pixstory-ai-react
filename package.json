@@ -1,6 +1,6 @@
 {
-  "name": "pixstory-card-demo",
-  "homepage": "https://navodit-nit.github.io/react-card-demo",
+  "name": "pixstory-ai-react",
+  "homepage": "https://navodit-nit.github.io/pixstory-ai-react",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
