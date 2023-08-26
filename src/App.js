@@ -1,9 +1,5 @@
 import React, { useState, useMemo, useRef } from "react";
 import "./App.css";
-import Advanced from "./examples/Advanced";
-import Simple from "./examples/Simple";
-import Advanced2 from "./examples/Advanced2";
-
 import NavBar from "./components/NavBar";
 import Cards from "./components/Cards";
 import DialogueBox from "./components/DialogueBox";
@@ -143,7 +139,7 @@ function App() {
 
 
   return (
-    <div className={`app ${stickyNotes.length == 0 ? "bgImage":""}`}>
+    <div className={`app ${stickyNotes.length == 0 ? "bgImage":"cardpage"}`}>
       <NavBar />
       <Cards
         stickyNotes={stickyNotes}
