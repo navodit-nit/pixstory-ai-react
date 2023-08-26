@@ -2,11 +2,11 @@ import React, { useState, useMemo, useRef } from "react";
 import TinderCard from "react-tinder-card";
 import MainPage from "./../components/MainPage";
 
-const db = [
-  {
-    name: "PixStory.ai, Next Gen AI search box. What are you curious about type in and see magic happening.",
-    url: "./img/richard.jpg",
-  },
+const stickyNotes = [
+  // {
+  //   name: "PixStory.ai, Next Gen AI search box. What are you curious about type in and see magic happening.",
+  //   url: "./img/richard.jpg",
+  // },
 ];
 
 const queries = [
@@ -38,10 +38,11 @@ const queries = [
 
 function Advanced2() {
   const [show, setShow] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(db.length - 1);
-  const [lastDirection, setLastDirection] = useState();
-  const [textInput, setTextInput] = useState("");
   const [stickyNotes, setStickyNotes] = useState([]);
+  const [stickyNotesCounts, setStickyNotesCounts] = useState(stickyNotes.length);
+  const [currentIndex, setCurrentIndex] = useState(stickyNotes.length - 1);
+  const [lastDirection, setLastDirection] = useState();
+  const [textInput, setTextInput] = useState("");  
   const [amountValue, setAmountValue] = useState("");
   const [showCard, setShowCard] = useState(false);
 
@@ -58,6 +59,7 @@ function Advanced2() {
   function handleAddNote() {
     if (textInput.trim() !== "") {
       setStickyNotes([...stickyNotes, textInput]);
+      setStickyNotesCounts(stickyNotes.length)
       setTextInput("");
       setShow(false);
     }
@@ -77,8 +79,11 @@ function Advanced2() {
       Array(stickyNotes.length)
         .fill(0)
         .map((i) => React.createRef()),
-    []
+    [stickyNotesCounts]
   );
+  const initialiseChildRefs = () =>{
+   
+  }
   const canSwipe = currentIndex >= 0;
 
   const swipe = async (dir) => {
@@ -90,20 +95,30 @@ function Advanced2() {
     setLastDirection(direction);
     updateCurrentIndex(index - 1);
 
-    console.log(`List item at index ${index} was swiped ${direction}`);
-   
-      // Remove the swiped item from the list
-      setTimeout(() => {
-        const newList = stickyNotes.filter((_, index1) => index1 !== index);
-        console.log(newList);
-        setStickyNotes(newList);  
-      }, 500);
-      
+    console.log(`List item at index ${index} was swiped ${direction}`);   
+      // Remove the swiped item from the list      
     
   };
 
   const outOfFrame = (name, idx) => {
-    currentIndexRef.current >= idx && childRefs[idx].current.restoreCard();
+    // console.log(`List item at index ${idx} was outOfFrame`);   
+    //currentIndexRef.current >= idx && childRefs[idx].current.restoreCard();
+    //  const newList = stickyNotes.filter((_, index1) => index1 !== idx);
+   
+        // console.log(newList);
+        // setStickyNotes(newList);  
+        // setStickyNotesCounts(newList.length);
+        console.log(`Name : ${name}`);
+        console.log(`idx : ${idx}`);
+        var index = stickyNotes.indexOf(name);
+        console.log(`index : ${index}`);
+        if(index > -1){
+          stickyNotes.splice(index, 1);
+          setStickyNotesCounts(stickyNotes.length);
+          console.log(`New List : ${stickyNotes.length}, ChildRefs : ${childRefs.length} when ${idx} was outOfFrame`);   
+        }
+        // initialiseChildRefs();
+
   };
 
   const childToParent = (data) => {
@@ -132,6 +147,8 @@ function Advanced2() {
   const handleQueryClick = (content) => {
     console.log(content); 
     setStickyNotes(prevCards => [...prevCards, content]); 
+    setStickyNotesCounts(stickyNotes.length)
+
   }
   return (
     <> 
