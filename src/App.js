@@ -44,6 +44,7 @@ const queries = [
 function App() {
   const [showAdvanced, setShowAdvanced] = useState(true);
   const [stickyNotes, setStickyNotes] = useState([]);
+  const [stickyNotesCounts, setStickyNotesCounts] = useState(stickyNotes.length);
   const [show, setShow] = useState(false);
   const [showBackground, setShowBackground] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(db.length - 1);
