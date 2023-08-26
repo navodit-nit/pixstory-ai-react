@@ -66,9 +66,11 @@ body{
   width: 155px;
   height: 155px;
 }
+.cardpage .fixed-top{background: #fff;}
 .fixed-top{
       padding: 33px 0px 22px;
-      background: #fff;
+      
+      height: 81px;
 }
 .fixed-top button{
   padding: 0;
