@@ -4,12 +4,12 @@ body{
   font-family: 'Poppins', sans-serif;
 }
 #root {
-  text-align: center;
+  /* text-align: center;
   display: flex;
   justify-content: center;
   width: 100vw;
   min-height: 100vh;
-  overflow: hidden;
+  overflow: hidden; */
  
   /* background: linear-gradient(#fff, #999); */
   /* background: linear-gradient(#e66465, #9198e5); */
@@ -27,19 +27,22 @@ body{
 } */
 
 .app {
-  overflow: hidden;
+  /* overflow: hidden; */
   /* display: flex;
   justify-content: center;
   align-items: center; */
-  height: 100vh;
+  /* height: 100vh; */
  
 }
 .bgImage{ background: url(../public/img/bg-img2.svg) 0 0 no-repeat;
   background-size: cover;
   background-position: 100%;}
-
+  .swipe.inactive {
+    height: 300px;
+}
 .swipe {
-  position: absolute;
+  grid-row-start: 1;
+  grid-column-start: 1;
   width: 100%;
   background-color: #333333;
   min-height: 300px;
@@ -48,7 +51,9 @@ body{
   padding-bottom: 20px;
   transition: all .4s;
   margin-top: 14px;
-  height: 95%;
+  /* height: 100%; */
+  padding: 11px 13px 71px;
+  overflow: hidden;
 }
  .swipe.active {
   margin-top: 0;
@@ -69,7 +74,8 @@ body{
 .cardpage .fixed-top{background: #fff;}
 .fixed-top{
       padding: 33px 0px 22px;
-      
+      position: sticky;
+      position: -webkit-sticky;
       height: 81px;
 }
 .fixed-top button{
@@ -79,9 +85,10 @@ body{
 .cardContainer {
   width: 87vw;
   margin: 0px auto;
-  height: calc(100vh - 315px);
-  min-height: 300px;
-  position: relative;
+  /* height: 100vh;
+  min-height: 300px; */
+  display: grid;
+    grid-template-columns: 1fr;
 }
 
 .cardContainer .swipe:nth-child(even) {
@@ -97,12 +104,14 @@ body{
 
 
 .slider-section {
-  margin-top: 81px;
-  height: calc(100vh - 169px);
+  padding-bottom: 100px;
+  /* height: calc(100vh - 169px);
   overflow-y: auto;
   display: flex;
   justify-content: flex-start;
-  flex-direction: column;
+  flex-direction: column; */
+  /* height: 100vh;
+  margin-bottom: 240px; */
 }
 .card {
   position: absolute;
@@ -116,7 +125,7 @@ body{
     box-sizing: border-box;
     border: none;
     padding: 20px;
-    overflow-y: auto;
+    /* overflow-y: auto; */
 }
 
 .cardContent {
@@ -124,7 +133,7 @@ body{
   height: 100%;
 }
 
-.card h3 {
+.card-box h3 {
   bottom: 0;
   margin: 0;
   color: #AAAAAA;
@@ -199,7 +208,7 @@ body{
   outline: 0 !important;
   }
   .top-query{
-    margin-top: 16px;
+    margin-top: 23px;
     padding: 0 20px 0;
     height: 127px;
   
@@ -436,7 +445,7 @@ button {
   padding: 3px 0;    
   font-size: 11px;
 }
-.main-page-content{}
+.main-page-content{ text-align: center;}
 .main-page-content h1{
   font-size: 40px;
     font-weight: 600;
@@ -512,3 +521,14 @@ button {
     }
   .share-button{position: relative;}
   
+  .cardpage .message-section {background-color: transparent;}
+  .cardpage .querytype-medium span{display: none;}
+  .bgImage{     overflow: hidden; 
+    height: 100vh;}
+    .bgImage .slider-section{margin-top: 0;}
+    .overlayDialogBox .message-section{background-color: #fff;    bottom: -3px;}
+    .overlayDialogBox .querytype-medium span{display: block;}
+
+    html, body, #root, .cardpage, .slider-section {
+      height: auto;
+  }

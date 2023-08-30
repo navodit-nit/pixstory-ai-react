@@ -47,7 +47,7 @@ const DialogueBox = (props) => {
               </div>
             </div>
             {props.show && (
-              <div className="col-md-12 mb-2">
+              <div className="col-md-12">
                 <div className="prompt-cont bottom-prompt-box">
                   <ul>
                     {props.queries.map((data, index) => (
