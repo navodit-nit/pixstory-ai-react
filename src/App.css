@@ -202,7 +202,6 @@ body{
     opacity: 1;
   }
   .landing-page-heading {
-  height: 100vh;
   }
   .message-btn:focus {
   outline: 0 !important;
@@ -524,11 +523,16 @@ button {
   .cardpage .message-section {background-color: transparent;}
   .cardpage .querytype-medium span{display: none;}
   .bgImage{     overflow: hidden; 
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
     height: 100vh;}
-    .bgImage .slider-section{margin-top: 0;}
+    .bgImage .slider-section{margin-top: 0;    display: flex;
+      justify-content: space-between;
+      flex-direction: column;}
     .overlayDialogBox .message-section{background-color: #fff;    bottom: -3px;}
     .overlayDialogBox .querytype-medium span{display: block;}
 
-    html, body, #root, .cardpage, .slider-section {
+    html, body, #root, .cardpage, .cardpage .slider-section {
       height: auto;
   }

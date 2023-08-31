@@ -10,14 +10,14 @@ const Cards = (props) => {
             <TinderCard
               ref={props.childRefs[index]}
               className={`swipe ${
-                index === props.stickyNotes.length - 1 ? "active" : ""
+                index === props.stickyNotes.length - 1 ? "active" : "inactive"
               }`}
               key={index}
               onSwipe={(dir) => props.swiped(dir, character, index)}
               onCardLeftScreen={() => props.outOfFrame(character, index)}
               preventSwipe={["up", "down"]}
             >
-              <div className={`card`}>
+              <div className={`card-box`}>
                 <div className="card-details">
                   <h3>{character}</h3>
                   <div className="card-logo">
