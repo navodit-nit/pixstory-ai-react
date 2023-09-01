@@ -8,16 +8,16 @@ import DialogueBox from "./components/DialogueBox";
 const responses = [
   {"success": true,
 "message": "done",
-"response": "1-A market economy is an economic system in which the allocation of resources is determined by the operation of market forces, such as supply and demand. The key features of a market economy include private ownership of resources, the existence of competitive markets, and the role of prices and profit incentives in allocating resources. This differs from a planned economy, which is an economic system in which the government controls the allocation of resources through central planning. In a planned economy, resources are typically owned and controlled by the government and production is directed towards fulfilling centrally planned targets and objectives.",
+"response": "1-A market economy is an economic system in which the allocation of resources is determined by the ords fulfilling centrally planned targets and objectives.",
 "followup_ques": [
   "1.1-Can you provide an example of a market where competition has led to improved product quality or reduced costs for consumers?",
-  "1.2-What are some examples of industries that have been traditionally dominated by government intervention in a planned economy, and how has this impacted the overall economy?",
+  "1.2-What are some examples of industries that have been traditionally dominated by government intervention in a planned economy",
   "1.3-How do market economies address issues such as income inequality and environmental degradation?"
 ]
 },
 {"success": true,
 "message": "done",
-"response": "2A market economy is an economic system in which the allocation of resources is determined by the operation of market forces, such as supply and demand. The key features of a market economy include private ownership of resources, the existence of competitive markets, and the role of prices and profit incentives in allocating resources. This differs from a planned economy, which is an economic system in which the government controls the allocation of resources through central planning. In a planned economy, resources are typically owned and controlled by the government and production is directed towards fulfilling centrally planned targets and objectives.",
+"response": "2A market economy is an rolled by the government and production is directed towards fulfilling centrally planned targets and objectives.",
 "followup_ques": [
   "2.1-Can you provide an example of a market where competition has led to improved product quality or reduced costs for consumers?",
   "2.2-What are some examples of industries that have been traditionally dominated by government intervention in a planned economy, and how has this impacted the overall economy?",
@@ -216,21 +216,29 @@ function App() {
     }
     return responses[cIdx];
   }
+
   const handleQueryClick = (content) => {
-    console.log(content);
+
     setStickyNotes((prevCards) => [...prevCards, content]);
-    console.log(responses);
-    console.log(stickyNotes.length);
+
     queries = getResponseAtIndex(stickyNotes.length).followup_ques;
     setShow(false);
+    setContainerClass("querytype-small");
+    document.body.classList.remove("scroll-hide");
   };
 
-  
+  useEffect(() => {
+    console.log(stickyNotes);
+    if (stickyNotes.length > 0 && containerClass === 'querytype-medium') {
+      document.body.classList.add("scroll-hide");
+    }
+  });
 
   return (
     <div className={`app ${stickyNotes.length == 0 ? "bgImage":"cardpage"}`}>
       <NavBar />
-      <Cards
+    
+     <Cards
         stickyNotes={stickyNotes}
         childRefs={childRefs}
         swiped={swiped}
@@ -251,6 +259,7 @@ function App() {
         setStickyNotes={setStickyNotes}
         setShow={setShow}
       />
+    
       {/* {showAdvanced ? (
         <Advanced2 stickyNotes={stickyNotes} handleAddNote={handleAddNote} />
       ) : (
