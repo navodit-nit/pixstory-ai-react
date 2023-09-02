@@ -153,6 +153,37 @@ function App() {
   //       setData(json);
   //     });
   // });
+  
+  const [data, setData] = useState({data: []});
+  const [isLoading, setIsLoading] = useState(false);
+  const [err, setErr] = useState('');
+
+  const fetchQueryResponse = async () => {
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('https://www.incraftiv.com/pixstory-card-demo/response.json', {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+
+      console.log('result is: ', JSON.stringify(result, null, 4));
+
+      setData(result);
+    } catch (err) {
+      setErr(err.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
   const swiped = (direction, nameToDelete, index) => {
     setLastDirection(direction);
     updateCurrentIndex(index - 1);
@@ -247,6 +278,7 @@ function App() {
     setShow(false);
     setContainerClass("querytype-small");
     document.body.classList.remove("scroll-hide");
+    fetchQueryResponse();
   };
 
   const handleCopyClick = () => {

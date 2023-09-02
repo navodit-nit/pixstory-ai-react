@@ -220,24 +220,23 @@ body{
     overflow-y: hidden;
     display: flex;
     flex-wrap: nowrap;
-    flex-direction: row;}
-  .top-query ul li{
-    list-style: none;
-    cursor: pointer;
+    flex-direction: row;
+  }
+    .top-query ul li{
+      list-style: none;
+      cursor: pointer;
     display: inline-flex;
     margin-right: 10px;
     word-break: keep-all;
     width: 100%;
     align-self: flex-start;
-    flex: 0 0 48%;
-    min-height: 100px;
+    Flex: 0 0 85%;
     padding: 4px 0px 0;
     background-color: #F2F2F2;
     border-radius: 8px;
-    max-height: 100px;
-    width: 152px
-
-  }
+    max-height: 65px;
+    overflow-y: auto;
+    }
   .top-query span{
     margin-bottom: 5px;
     padding: 7px 14px;
@@ -426,17 +425,22 @@ button {
   padding: 4px;
   overflow-x: auto;
   overflow-y: hidden;
-  white-space: nowrap;}
+  Display:flex; 
+
+}
   .bottom-prompt-box ul li{
   list-style: none;
   cursor: pointer;
   display: inline-flex;
   margin-right: 10px;
-  word-break: keep-all;
   width: auto;
   padding: 4px 12px 0;
   background-color: #F2F2F2;
   border-radius: 5px;
+  word-break: keep-all;
+  flex: 0 0 90%;
+    max-height: 60px;
+    overflow-y: auto;
 
 }
 .bottom-prompt-box span{
