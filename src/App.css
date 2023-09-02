@@ -1,4 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&display=swap');
 
 body{
   font-family: 'Poppins', sans-serif;
@@ -15,9 +15,9 @@ body{
   /* background: linear-gradient(#e66465, #9198e5); */
 }
 
-* {
+/* * {
   user-select: none;
-}
+} */
 
 /* #root>div {
   display: flex;
@@ -52,7 +52,7 @@ body{
   transition: all .4s;
   margin-top: 14px;
   /* height: 100%; */
-  padding: 11px 13px 71px;
+  padding: 11px 13px 16px;
   overflow: hidden;
 }
  .swipe.active {
@@ -104,7 +104,7 @@ body{
 
 
 .slider-section {
-  padding-bottom: 100px;
+  padding-bottom: 85px;
   /* height: calc(100vh - 169px);
   overflow-y: auto;
   display: flex;
@@ -540,3 +540,4 @@ button {
     html, body, #root, .cardpage, .cardpage .slider-section {
       height: auto;
   }
+  .scroll-hide{overflow: hidden;}
