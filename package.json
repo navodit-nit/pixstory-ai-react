@@ -3,7 +3,7 @@
   "homepage": "https://navodit-nit.github.io/pixstory-ai-react",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://www.incraftiv.com/",
+  "proxy": "https://navodit-nit.github.io/",
   "dependencies": {
     "@react-spring/web": "^9.5.5",
     "@testing-library/jest-dom": "^5.16.5",
