@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 const DialogueBox = (props) => {
   const [textInput, setTextInput] = useState("");
   const handleAddNote = () => {
@@ -7,6 +7,10 @@ const DialogueBox = (props) => {
       setTextInput("");
       props.setShow(false);
     }
+  };
+
+  const handleCloseDialougeBox = () => {
+    props.setShow(false);
   };
   return (
     <div
@@ -21,7 +25,7 @@ const DialogueBox = (props) => {
           <div className="row">
             <div className="col-md-12">
               <div className={`message-textarea ${props.containerClass}`}>
-                <span></span>
+                <a onClick={handleCloseDialougeBox}><span></span></a>
                 <textarea
                   className={
                     "form-control message-box" +
