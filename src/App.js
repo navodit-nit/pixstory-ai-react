@@ -164,6 +164,7 @@ function App() {
     try {
       const response = await fetch('https://www.incraftiv.com/pixstory-card-demo/response.json', {
         method: 'GET',
+        mode: 'no-cors',
         headers: {
           Accept: 'application/json',
         },
