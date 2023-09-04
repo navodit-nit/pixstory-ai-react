@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState} from "react";
 import MainPage from "./../components/MainPage";
 import TinderCard from "react-tinder-card";
 const Cards = (props) => {
+ 
   return (
     <div className="slider-section">
       {props.stickyNotes.length != 0 ? (
         <div className="cardContainer">
           {props.stickyNotes.map((character, index) => (
+            <>
+            <button onClick={() => props.handleCopyClick()}>Outside</button>
             <TinderCard
               ref={props.childRefs[index]}
               className={`swipe ${
@@ -17,23 +20,28 @@ const Cards = (props) => {
               onCardLeftScreen={() => props.outOfFrame(character, index)}
               preventSwipe={["up", "down"]}
             >
+              <button onClick={() => props.handleCopyClick()}>Inside</button>
               <div className={`card-box`}>
                 <div className="card-details">
                   <h3>{character}</h3>
                   <div className="card-logo">
                     <h4>
+                      
                       <img
                         src={process.env.PUBLIC_URL + "/img/main-page-icon.svg"}
-                        alt="Icon"
+                        alt="Icon" 
                       />
                       <span>Pixstory.ai</span>
+                      
                     </h4>
                     <img
                       src={process.env.PUBLIC_URL + "/img/copy.svg"}
-                      alt="copy"
+                      alt="copy1"
+                      
                     />
+                    
                   </div>
-                  <p>{props.getResponseAtIndex(index).response}</p>
+                  <p id="content-to-copy">{props.getResponseAtIndex(index).response}</p>
                 </div>
                 <div className="share-icon">
                   <h5>
@@ -61,6 +69,7 @@ const Cards = (props) => {
                 </div>
               </div>
             </TinderCard>
+            </>
           ))}
         </div> 
       ) : (
