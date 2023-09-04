@@ -281,9 +281,8 @@ function App() {
     fetchQueryResponse();
   };
 
-  const handleCopyClick = () => {
-    const contentToCopy = document.getElementById("content-to-copy");
-    console.log(contentToCopy);
+  const handleCopyClick = (value) => {
+    const contentToCopy = document.getElementById("content-to-copy"+value);
     const range = document.createRange();
     range.selectNode(contentToCopy);
     window.getSelection().removeAllRanges();
@@ -298,7 +297,6 @@ function App() {
   };
 
   useEffect(() => {
-    console.log(stickyNotes);
     if (stickyNotes.length > 0 && containerClass === "querytype-medium") {
       document.body.classList.add("scroll-hide");
     }

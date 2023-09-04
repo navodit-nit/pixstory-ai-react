@@ -9,7 +9,7 @@ const Cards = (props) => {
         <div className="cardContainer">
           {props.stickyNotes.map((character, index) => (
             <>
-            <button onClick={() => props.handleCopyClick()}>Outside</button>
+            <button onClick={() => props.handleCopyClick(index)}>Outside</button>
             <TinderCard
               ref={props.childRefs[index]}
               className={`swipe ${
@@ -20,10 +20,10 @@ const Cards = (props) => {
               onCardLeftScreen={() => props.outOfFrame(character, index)}
               preventSwipe={["up", "down"]}
             >
-              <button onClick={() => props.handleCopyClick()}>Inside</button>
+              <button onClick={() => props.handleCopyClick(index)}>Inside</button>
               <div className={`card-box`}>
                 <div className="card-details">
-                  <h3>{character}</h3>
+                  <h3 id={"content-to-copy"+index}>{character}</h3>
                   <div className="card-logo">
                     <h4>
                       
@@ -34,14 +34,15 @@ const Cards = (props) => {
                       <span>Pixstory.ai</span>
                       
                     </h4>
+                    <a onClick={() => props.handleCopyClick(index)}>
                     <img
                       src={process.env.PUBLIC_URL + "/img/copy.svg"}
                       alt="copy1"
-                      
                     />
+                    </a>
                     
                   </div>
-                  <p id="content-to-copy">{props.getResponseAtIndex(index).response}</p>
+                  <p>{props.getResponseAtIndex(index).response}</p>
                 </div>
                 <div className="share-icon">
                   <h5>
