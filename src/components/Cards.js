@@ -9,7 +9,6 @@ const Cards = (props) => {
         <div className="cardContainer">
           {props.stickyNotes.map((character, index) => (
             <>
-            <button onClick={() => props.handleCopyClick(index)}>Outside</button>
             <TinderCard
               ref={props.childRefs[index]}
               className={`swipe ${
@@ -20,7 +19,7 @@ const Cards = (props) => {
               onCardLeftScreen={() => props.outOfFrame(character, index)}
               preventSwipe={["up", "down"]}
             >
-              <button onClick={() => props.handleCopyClick(index)}>Inside</button>
+              
               <div className={`card-box`}>
                 <div className="card-details">
                   <h3 id={"content-to-copy"+index}>{character}</h3>
