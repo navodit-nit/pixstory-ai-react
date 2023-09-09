@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/pixstory-ai-react/static/css/main.c86f5382.css",
-    "main.js": "/pixstory-ai-react/static/js/main.d363ef9c.js",
+    "main.css": "/pixstory-ai-react/static/css/main.b072cb36.css",
+    "main.js": "/pixstory-ai-react/static/js/main.740f8f41.js",
     "static/media/bg-img2.svg": "/pixstory-ai-react/static/media/bg-img2.4740ef15c571e0aa129e.svg",
+    "static/media/dark-bg-img.svg": "/pixstory-ai-react/static/media/dark-bg-img.5be32b973d035da7dda0.svg",
     "static/media/bg-img.svg": "/pixstory-ai-react/static/media/bg-img.7704cce2bf4838e1feb1.svg",
     "index.html": "/pixstory-ai-react/index.html",
-    "main.c86f5382.css.map": "/pixstory-ai-react/static/css/main.c86f5382.css.map",
-    "main.d363ef9c.js.map": "/pixstory-ai-react/static/js/main.d363ef9c.js.map"
+    "main.b072cb36.css.map": "/pixstory-ai-react/static/css/main.b072cb36.css.map",
+    "main.740f8f41.js.map": "/pixstory-ai-react/static/js/main.740f8f41.js.map"
   },
   "entrypoints": [
-    "static/css/main.c86f5382.css",
-    "static/js/main.d363ef9c.js"
+    "static/css/main.b072cb36.css",
+    "static/js/main.740f8f41.js"
   ]
 }
