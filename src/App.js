@@ -304,8 +304,9 @@ function App() {
   });
 
   return (
-    <div className={`app ${stickyNotes.length == 0 ? "bgImage" : "cardpage"}`}>
-      <NavBar />
+    <div className={`app ${stickyNotes.length == 0 ? "bgImage dark-theme" : "cardpage dark-theme"}`}>
+     <div className="image-bg">
+     <NavBar />
       <Cards
         stickyNotes={stickyNotes}
         childRefs={childRefs}
@@ -337,6 +338,7 @@ function App() {
       {/* <div className="row">
         <p style={{ color: '#fff' }}>Show advanced example</p> <Switch checked={showAdvanced} onChange={setShowAdvanced} />
       </div> */}
+     </div>
     </div>
   );
 }

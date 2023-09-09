@@ -118,7 +118,7 @@ body {
 
 
 .slider-section {
-  padding-bottom: 85px;
+  padding-bottom: 60px; 
   /* height: calc(100vh - 169px);
   overflow-y: auto;
   display: flex;
@@ -668,3 +668,103 @@ html, body, #root, .cardpage, .cardpage .slider-section {
 .scroll-hide {
   overflow: hidden;
 }
+
+.card-box {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.bgImage  .image-bg {
+  height: 100%;
+  display: flex;
+  justify-content: space-between; 
+  flex-direction: column;
+  height: 100vh;
+}
+.copy-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 31px;
+}
+
+.copy-icon:focus, .copy-icon:hover {
+  background: #4d4d4d;
+}
+.cardpage .topbar .btn path{
+  stroke: var(--black);
+}
+.dark-theme .topbar .btn path{
+  stroke: rgba(165, 181, 5, 1);  
+ }
+.dark-logo{display: none;}
+:root {
+  --dark-gray: #2B2B2B;
+  --white: #ffffff;
+  --yellow: #e9ff07;
+  --black: #000000;
+  --light-white: #E6E6E6;
+  --light-gray: #D9D9D9;
+
+}
+
+.dark-theme {
+  background: var(--dark-gray);
+}
+
+.dark-theme.bgImage  .image-bg {
+  background: url(../public/img/dark-bg-img.svg) 0 0 no-repeat;
+  background-size: cover;
+  background-position: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between; 
+  flex-direction: column;
+  height: 100vh;
+}
+.dark-theme .main-page-content{
+color: var(--light-white);
+}
+.dark-theme .main-page-content p{
+  color:var(--light-gray);
+}
+.dark-theme .message-btn path{
+  fill: rgba(233, 255, 7, 1);
+  }
+.dark-theme .message-box{    background: linear-gradient(0deg, #B3C409, #B3C409), linear-gradient(90deg, #E9FF07 0%, rgba(233, 255, 7, 0) 100%), linear-gradient(0deg, #FFFFFF, #FFFFFF);
+  border: 1px solid rgba(255, 255, 255, 1)
+}
+.dark-theme .topbar .btn path{
+ stroke:  rgba(233, 255, 7, 1);
+  
+}
+.dark-theme .overlayDialogBox .message-section{
+  background: rgba(0, 0, 0, 1);
+
+}
+.dark-theme .bottom-prompt-box ul li{
+  background: linear-gradient(0deg, #333333, #333333), linear-gradient(180deg, #FFFFFF -121.05%, rgba(255, 255, 255, 0) 159.05%);
+}
+.dark-theme .bottom-prompt-box span{
+  color: rgba(170, 170, 170, 1);
+}
+.cardpage.dark-theme .image-bg{
+  background: none;
+}
+.cardpage.dark-theme .fixed-top{
+  background: var(--dark-gray);
+  border: 1px solid rgba(51, 51, 51, 1);
+  margin-bottom: 25px;
+}
+
+.cardpage.dark-theme .cardContainer .swipe:nth-child(even){
+  border: 1px solid var(--yellow);
+}
+.dark-theme .light-logo{
+display: none;
+}
+.dark-theme .dark-logo{
+  display: block;
+  }
