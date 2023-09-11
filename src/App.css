@@ -662,7 +662,7 @@ button {
 }
 
 html, body, #root, .cardpage {
-  height: 100vh;
+  height: 100vh; 
 }
 
 .scroll-hide {
