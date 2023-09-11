@@ -661,12 +661,13 @@ button {
   display: none;
 }
 
-html, body, #root, .cardpage, .cardpage .slider-section {
-  height: auto;
+html, body, #root, .cardpage {
+  height: 100vh;
 }
 
 .scroll-hide {
-  overflow: hidden;
+  /* overflow: hidden; */
+  height: 100vh;
 }
 
 .card-box {
