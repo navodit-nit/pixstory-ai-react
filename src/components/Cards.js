@@ -32,13 +32,6 @@ const Cards = (props) => {
                       }
                       preventSwipe={["up", "down"]}
                     >
-                        <a
-                              onClick={() => props.handleCopyClick(index)}
-                              className="copy-icon"
-                            >
-                              outside1
-                              
-                            </a>
                       <div className={`card-box`}>
                         <div className="card-details">
                           <h3 id={"content-to-copy" + index}>{character}</h3>
