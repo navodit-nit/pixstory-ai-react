@@ -661,10 +661,12 @@ button {
   display: none;
 }
 
-html, body, #root, .cardpage {
-  height: 100vh; 
+html, body, #root {
+  height: 100%; 
 }
-
+.cardpage{
+  height: auto;
+}
 .scroll-hide {
   /* overflow: hidden; */
   height: 100vh;
@@ -713,6 +715,7 @@ html, body, #root, .cardpage {
 
 .dark-theme {
   background: var(--dark-gray);
+  height: auto;
 }
 
 .dark-theme.bgImage  .image-bg {
