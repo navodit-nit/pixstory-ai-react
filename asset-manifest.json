@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/pixstory-ai-react/static/css/main.434b095c.css",
-    "main.js": "/pixstory-ai-react/static/js/main.872b2814.js",
+    "main.js": "/pixstory-ai-react/static/js/main.14ce4b83.js",
     "static/media/bg-img2.svg": "/pixstory-ai-react/static/media/bg-img2.92da132507c94b5b6420.svg",
     "static/media/dark-bg-img.svg": "/pixstory-ai-react/static/media/dark-bg-img.5be32b973d035da7dda0.svg",
     "static/media/bg-img.svg": "/pixstory-ai-react/static/media/bg-img.289223117bac0d12fb62.svg",
     "index.html": "/pixstory-ai-react/index.html",
     "main.434b095c.css.map": "/pixstory-ai-react/static/css/main.434b095c.css.map",
-    "main.872b2814.js.map": "/pixstory-ai-react/static/js/main.872b2814.js.map"
+    "main.14ce4b83.js.map": "/pixstory-ai-react/static/js/main.14ce4b83.js.map"
   },
   "entrypoints": [
     "static/css/main.434b095c.css",
-    "static/js/main.872b2814.js"
+    "static/js/main.14ce4b83.js"
   ]
 }
