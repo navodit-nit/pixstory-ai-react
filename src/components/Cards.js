@@ -11,6 +11,13 @@ const Cards = (props) => {
               <div className="cardContainer">
                 {props.stickyNotes.map((character, index) => (
                   <>
+                  <a
+                              onClick={() => props.handleCopyClick(index)}
+                              className="copy-icon"
+                            >
+                              outside
+                              
+                            </a>
                     <TinderCard
                       ref={props.childRefs[index]}
                       className={`swipe ${
