@@ -11,13 +11,12 @@ const Cards = (props) => {
               <div className="cardContainer">
                 {props.stickyNotes.map((character, index) => (
                   <>
-                  <a
-                              onClick={() => props.handleCopyClick(index)}
-                              className="copy-icon"
-                            >
-                              outside
-                              
-                            </a>
+                    <a
+                      onClick={() => props.handleCopyClick(index)}
+                      className="copy-icon"
+                    >
+                      outside
+                    </a>
                     <TinderCard
                       ref={props.childRefs[index]}
                       className={`swipe ${
@@ -54,7 +53,6 @@ const Cards = (props) => {
                                 src={process.env.PUBLIC_URL + "/img/copy.svg"}
                                 alt="copy1"
                               />
-                              
                             </a>
                           </div>
                           <p>{props.getResponseAtIndex(index).response}</p>
@@ -84,7 +82,9 @@ const Cards = (props) => {
                           </h5>
                         </div>
                       </div>
-                      <div className="bottom-shadow"></div>
+                      {props.stickyNotes.length > 1 && (
+                        <div className="bottom-shadow"></div>
+                      )}
                     </TinderCard>
                   </>
                 ))}
