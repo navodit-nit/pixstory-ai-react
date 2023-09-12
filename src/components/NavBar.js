@@ -1,6 +1,6 @@
 import React from "react";
-
-const NavBar = () => {
+import ReactSwitch from "react-switch";
+const NavBar = (props) => {
   return (
     <>
       <div className="fixed-top">
@@ -22,12 +22,13 @@ const NavBar = () => {
               </a>
               <button className="btn float-end">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M1 12H23" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M1 4H23" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M1 20H23" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
+                  <path d="M1 12H23" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M1 4H23" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M1 20H23" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>             
+                
               </button>
+              <ReactSwitch onChange={props.toggleTheme} checked={props.theme === "dark"} />
              </div>
             </div>
           </div>

@@ -42,7 +42,7 @@ body {
   background-position: 100%;
 }
 
-.swipe.inactive {
+.swipe.inactive .card-box {
   height: 300px;
 }
 
@@ -50,16 +50,16 @@ body {
   grid-row-start: 1;
   grid-column-start: 1;
   width: 100%;
-  background-color: #333333;
-  min-height: 300px;
-  border-radius: 16px;
+  /* background-color: #333333; */
+  /* min-height: 300px;
+  border-radius: 16px; */
   z-index: 10;
-  padding-bottom: 20px;
+  /* padding-bottom: 20px; */
   transition: all .4s;
-  margin-top: 14px;
+  /* margin-top: 14px; */
   /* height: 100%; */
-  padding: 15px;
-  overflow: hidden;
+  /* padding: 15px;
+  overflow: hidden; */
 }
 
 .swipe.active {
@@ -103,17 +103,23 @@ body {
   min-height: 300px; */
   display: grid;
   grid-template-columns: 1fr;
+  margin-bottom: 35px;
 }
 
-.cardContainer .swipe:nth-child(even) {
+.cardContainer .swipe:nth-child(even) .card-box {
   background-color: #333333;
-  transform: translate3d(0px, 0px, 0px) rotate(0deg) scale(1.1);
+
+}
+.cardContainer .swipe:nth-child(even) .bottom-shadow {
+  background-color: #5FAF9F;
 
 }
 
-.cardContainer .swipe:nth-child(odd) {
+.cardContainer .swipe:nth-child(odd) .card-box{
   background-color: #5FAF9F;
-  transform: translate3d(0px, 0px, 0px) rotate(0deg) scale(0.9);
+}
+.cardContainer .swipe:nth-child(odd) .bottom-shadow{
+  background-color: #333333;
 }
 
 
@@ -668,7 +674,7 @@ html, body, #root {
   height: auto;
 }
 .scroll-hide {
-  /* overflow: hidden; */
+   overflow: hidden; 
   height: 100vh;
 }
 
@@ -677,6 +683,22 @@ html, body, #root {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border-radius: 8px;
+  padding: 15px;
+}
+.bottom-shadow {
+  position: absolute;
+  background: red;
+  bottom: -13px;
+  left: 0;
+  right: 0;
+  margin: 0px auto;
+  width: 95%;
+  height: 100%;
+  border-radius: 8px;
+  z-index: -1;
+ 
+  
 }
 .bgImage  .image-bg {
   height: 100%;
@@ -699,6 +721,35 @@ html, body, #root {
 .cardpage .topbar .btn path{
   stroke: var(--black);
 }
+
+.tooltip1 {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip1 .tooltiptext {
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 0 0;
+  position: absolute;
+  z-index: 1;
+  bottom: auto;
+  left: 0;
+  margin-left: -48px;
+  line-height: 23px;
+  font-size: 12px;
+  top: 3px;
+  visibility: hidden;
+}
+
+.tooltip1:hover .tooltiptext {
+  visibility: visible;
+}
+.topbar .btn path{
+  stroke: var(--black)
+}
+/* dark theme css */
 .dark-theme .topbar .btn path{
   stroke: rgba(165, 181, 5, 1);  
  }
@@ -762,13 +813,26 @@ color: var(--light-white);
   border: 1px solid rgba(51, 51, 51, 1);
   margin-bottom: 25px;
 }
-
-.cardpage.dark-theme .cardContainer .swipe:nth-child(even){
+.cardpage.dark-theme .cardContainer .swipe .card-box{
   border: 1px solid var(--yellow);
 }
+/* .cardpage.dark-theme .cardContainer .swipe:nth-child(even){
+  border: 1px solid var(--yellow);
+} */
 .dark-theme .light-logo{
 display: none;
 }
 .dark-theme .dark-logo{
   display: block;
   }
+  .cardpage.dark-theme .top-query ul li {
+    background-color: #545454;
+    color: #D9D9D9;
+    border: 1px solid #FAFAFA;
+}
+.cardpage.dark-theme .top-query ul li span{
+  color: #D9D9D9;
+}
+.cardpage.dark-theme .top-query h3{
+  color: var(--white);
+}

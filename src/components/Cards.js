@@ -22,7 +22,7 @@ return (
             onCardLeftScreen={() => props.outOfFrame(character, index)}
             preventSwipe={["up", "down"]}
           >
-            
+           
             <div className={`card-box`}>
               <div className="card-details">
                 <h3 id={"content-to-copy"+index}>{character}</h3>
@@ -36,11 +36,12 @@ return (
                     <span>Pixstory.ai</span>
                     
                   </h4>
-                  <a onClick={() => props.handleCopyClick(index)} className="copy-icon">
+                  <a onClick={() => props.handleCopyClick(index)} className="copy-icon tooltip1">
                   <img
                     src={process.env.PUBLIC_URL + "/img/copy.svg"}
                     alt="copy1"
                   />
+                   <span class="tooltiptext">Copied</span>
                   </a>
                   
                 </div>
@@ -71,6 +72,7 @@ return (
                 </h5>
               </div>
             </div>
+            <div className="bottom-shadow"></div>
           </TinderCard>
           </>
         ))}

@@ -15,6 +15,7 @@
     "react-ios-switch": "^0.1.19",
     "react-router-dom": "^6.15.0",
     "react-scripts": "5.0.1",
+    "react-switch": "^7.0.0",
     "react-tinder-card": "^1.6.2",
     "swiper": "^10.1.0",
     "web-vitals": "^2.1.4"
@@ -26,7 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-   "postinstall": "patch-package"
+    "postinstall": "patch-package"
   },
   "eslintConfig": {
     "extends": [

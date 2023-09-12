@@ -157,7 +157,7 @@ function App() {
   const [data, setData] = useState({data: []});
   const [isLoading, setIsLoading] = useState(false);
   const [err, setErr] = useState('');
-
+  const [theme, setTheme] = useState("light");
   const fetchQueryResponse = async () => {
     setIsLoading(true);
 
@@ -297,6 +297,10 @@ function App() {
     window.getSelection().removeAllRanges();
   };
 
+  const toggleTheme = () => {
+    setTheme((curr) => (curr === "light" ? "dark" : "light"));
+  };
+
   useEffect(() => {
     if (stickyNotes.length > 0 && containerClass === "querytype-medium") {
       document.body.classList.add("scroll-hide");
@@ -304,9 +308,9 @@ function App() {
   });
 
   return (
-    <div className={`app ${stickyNotes.length == 0 ? "bgImage dark-theme" : "cardpage dark-theme"}`}>
+    <div className={`app ${stickyNotes.length == 0 ? "bgImage " : "cardpage"} ${theme === "light" ? "light-theme" : "dark-theme"}`}>
      <div className="image-bg">
-     <NavBar />
+     <NavBar toggleTheme={toggleTheme} theme={theme} />
       <Cards
         stickyNotes={stickyNotes}
         childRefs={childRefs}
