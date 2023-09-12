@@ -36,12 +36,11 @@ return (
                     <span>Pixstory.ai</span>
                     
                   </h4>
-                  <a onClick={() => props.handleCopyClick(index)} className="copy-icon tooltip1">
+                  <a onClick={() => props.handleCopyClick(index)} className="copy-icon">
                   <img
                     src={process.env.PUBLIC_URL + "/img/copy.svg"}
                     alt="copy1"
                   />
-                   <span class="tooltiptext">Copied</span>
                   </a>
                   
                 </div>
