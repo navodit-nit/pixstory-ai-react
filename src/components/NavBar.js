@@ -28,6 +28,7 @@ const NavBar = (props) => {
                 </svg>             
                 
               </button>
+              <ReactSwitch onChange={props.toggleTheme} checked={props.theme === "dark"} />
              </div>
             </div>
           </div>
