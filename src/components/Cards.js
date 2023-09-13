@@ -11,12 +11,6 @@ const Cards = (props) => {
               <div className="cardContainer">
                 {props.stickyNotes.map((character, index) => (
                   <>
-                    <a
-                      onClick={() => props.handleCopyClick(index)}
-                      className="copy-icon"
-                    >
-                      outside
-                    </a>
                     <TinderCard
                       ref={props.childRefs[index]}
                       className={`swipe ${
@@ -33,7 +27,7 @@ const Cards = (props) => {
                     >
                       <div className={`card-box`}>
                         <div className="card-details">
-                          <h3 id={"content-to-copy" + index}>{character}</h3>
+                          <h3>{character}</h3>
                           <div className="card-logo">
                             <h4>
                               <img
@@ -47,15 +41,16 @@ const Cards = (props) => {
                             </h4>
                             <a
                               onClick={() => props.handleCopyClick(index)}
-                              className="copy-icon"
+                              className="copy-icon tooltip-show"
                             >
                               <img
                                 src={process.env.PUBLIC_URL + "/img/copy.svg"}
                                 alt="copy1"
                               />
+                              <span className="tooltiptext">Copied</span>
                             </a>
                           </div>
-                          <p>{props.getResponseAtIndex(index).response}</p>
+                          <p id={"content-to-copy" + index}>{props.getResponseAtIndex(index).response}</p>
                         </div>
                         <div className="share-icon">
                           <h5>

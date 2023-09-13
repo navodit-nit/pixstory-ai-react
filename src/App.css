@@ -722,12 +722,12 @@ html, body, #root {
   stroke: var(--black);
 }
 
-.tooltip1 {
+.tooltip-show {
   position: relative;
   display: inline-block;
 }
 
-.tooltip1 .tooltiptext {
+.tooltip-show .tooltiptext {
   color: #fff;
   text-align: center;
   border-radius: 2px;
@@ -743,7 +743,7 @@ html, body, #root {
   visibility: hidden;
 }
 
-.tooltip1:hover .tooltiptext {
+.tooltip-show:hover .tooltiptext {
   visibility: visible;
 }
 .topbar .btn path{
