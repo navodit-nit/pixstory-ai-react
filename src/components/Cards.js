@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import MainPage from "./../components/MainPage";
 import TinderCard from "react-tinder-card";
+import SidebarPost from "./SidebarPost";
+
 const Cards = (props) => {
   return (
     <div className="slider-section">
       <div className="container-fluid ">
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-12 desktop-design">
             {props.stickyNotes.length != 0 ? (
               <div className="cardContainer">
                 {props.stickyNotes.map((character, index) => (
@@ -99,6 +101,9 @@ const Cards = (props) => {
                   ))}
                 </ul>
               </div>
+            )}
+            {props.stickyNotes.length > 0 && (
+            <SidebarPost />
             )}
           </div>
         </div>
