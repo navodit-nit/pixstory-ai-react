@@ -21,7 +21,7 @@ const DialogueBox = (props) => {
       }
     >
       <div className={`fixed-bottom message-section ${props.messageBox}`}>
-        <div className="container-fluid">
+        <div className="container">
           <div className="row">
             <div className="col-md-12">
               <div className={`message-textarea ${props.containerClass}`}>

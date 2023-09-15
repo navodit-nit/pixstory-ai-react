@@ -4,7 +4,7 @@ import React from "react";
 const Card = ({ item }) => {
     return (
         <>
-            <div className="container-fluid">
+            <div className="container">
                 <div className="row">
                     <div className="col-md-12">
                       <p>{item}</p>
