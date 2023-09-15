@@ -333,6 +333,7 @@ function App() {
         setStickyNotes={setStickyNotes}
         setShow={setShow}
       />
+      
 
       {/* {showAdvanced ? (
         <Advanced2 stickyNotes={stickyNotes} handleAddNote={handleAddNote} />

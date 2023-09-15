@@ -102,9 +102,7 @@ const Cards = (props) => {
                 </ul>
               </div>
             )}
-            {props.stickyNotes.length > 0 && (
-            <SidebarPost />
-            )}
+            
           </div>
         </div>
       </div>

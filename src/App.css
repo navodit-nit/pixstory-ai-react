@@ -45,32 +45,26 @@ body {
 }
 
 /* desktop css */
-.desktop-design {
-  display: flex;
-  align-items: flex-start;
+.slider-section {
+  /* padding-bottom: 60px; */
+  width: 58%;
+  margin: 0px auto;
+  height: calc(100% - 178px);
+    margin: 0px auto;
 }
   .cardContainer{
-    width: 70%;
-    margin: 0 15px;
-    display: inline-grid;
-    order: 2;
+    margin: 0;
+    display: grid;
   }
-  .top-query{
-  width: 15%;
-    display: inline-grid;
-    order: 1;
-    align-self: flex-start;
-        align-items: flex-start;
-  }
-  .sidebar{
-    order: 3;
-    color: #D9D9D9;
-  }
+  .prompt-cont.top-query {
+    margin-top: 70px;
+    padding-bottom: 29px;
+}
   .cardpage .fixed-top{
     margin-bottom: 20px;
   }
   .dark-theme{
-    height: 100% !important;
+   
     background: var(--dark-gray) !important;
   }
 
@@ -78,6 +72,95 @@ body {
     display: initial;
 
   }
+  .fixed-bottom{
+    width: 58%;
+    margin: 0px auto;
+    padding: 20px 0 0;
+    bottom: 25px
+  }
+  .message-textarea.querytype-medium {
+    padding-top: 20px;
+}
+  .bgImage .slider-section{
+    width: 58%;
+    margin: 0px auto;
+    justify-content: space-around;
+    
+  }
+  .swipe{
+    min-height: 350px;
+  }
+  .cardpage{
+    height: auto;
+    min-height: calc(100% - 100px);
+  }
+ .cardpage .image-bg, .cardpage .container-fluid, .cardpage .row {
+    height: 100%;
+    min-height: calc(100% - 100px);
+  }
+  .cardpage .desktop-design{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-bottom: 62px;
+  }
+  .overlayDialogBox .message-section{
+    bottom: 23px;
+    box-shadow: 0px -1px 2px 0px rgba(0, 0, 0, 0.06);
+    border-radius: 10px;
+  }
+  .message-section{
+    background-color: #FDFDFD;
+    z-index: 99999;
+  }
+  .tableDiv {
+    width:100%;
+    overflow:auto;
+    white-space:nowrap;
+}
+.table {
+   
+    display:inline-block;
+    margin: 0;
+    border-spacing: 30px;
+}
+
+.top-query ul li span{
+  color: #333;
+  line-height: 16.8px;
+  margin-bottom: 5px;
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: left;
+}
+.prompt-cont.top-query ul, .prompt-cont.bottom-prompt-box ul{
+  overflow-x: auto;
+  background-repeat: no-repeat;
+  background-position: left center, right center, left center, right center;
+  background-size: 10px 100%, 10px 100%, 10px 100%, 10px 100%;
+  background-attachment: local, local, scroll, scroll;
+  -webkit-overflow-scrolling: touch;
+
+}
+.prompt-cont.top-query ul::-webkit-scrollbar, 
+.prompt-cont.bottom-prompt-box ul::-webkit-scrollbar {
+  height: 6px;
+  background-color: #D9D9D9;
+}
+
+.prompt-cont.top-query ul::-webkit-scrollbar-thumb,
+.prompt-cont.bottom-prompt-box ul::-webkit-scrollbar-thumb {
+  background-color: #545454;
+  border-radius: 3px;
+}
+
+.prompt-cont.top-query table::-webkit-scrollbar-button,
+.prompt-cont.bottom-prompt-box ul::-webkit-scrollbar-button {
+  display: none;
+}
+
 /* end desktop css */
 
 
@@ -87,8 +170,11 @@ body {
   background-position: 100%;
 }
 
+.swipe.inactive,
 .swipe.inactive .card-box {
   height: 300px;
+  min-height: 300px;
+  overflow-y: scroll;
 }
 
 .swipe {
@@ -161,7 +247,7 @@ body {
 
 
 .slider-section {
-  padding-bottom: 60px; 
+  /* padding-bottom: 60px;  */
   /* height: calc(100vh - 169px);
   overflow-y: auto;
   display: flex;
@@ -369,13 +455,7 @@ textarea.message-box:-ms-input-placeholder {
   color: #000;
 }
 
-.message-section {
-  background-color: #FDFDFD;
-  border-radius: 8px 8px 0 0;
-  padding: 15px 15px 12px;
-  z-index: 99999;
 
-}
 
 
 
@@ -667,9 +747,6 @@ button {
   position: relative;
 }
 
-.cardpage .message-section {
-  background-color: transparent;
-}
 
 .bgImage {
   overflow: hidden;
@@ -682,14 +759,11 @@ button {
 .bgImage .slider-section {
   margin-top: 0;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   flex-direction: column;
 }
 
-.overlayDialogBox .message-section {
-  background-color: #FDFDFD;
-  bottom: -3px;
-}
+
 
 .query-section .message-section {
   background-color: transparent;
@@ -702,9 +776,9 @@ button {
 html, body, #root {
   height: 100%; 
 }
-.cardpage{
+/* .cardpage{
   height: auto;
-}
+} */
 .scroll-hide {
    overflow: hidden; 
   height: 100vh;
@@ -907,7 +981,7 @@ display: none;
   }
   .dark-theme {
     background: var(--dark-gray);
-    height: auto !important;
+    /* height: auto !important; */
   }
   .bottom-prompt-box ul li {
     flex: 0 0 90%;
@@ -916,5 +990,31 @@ display: none;
   .prompt-cont.top-query ul::-webkit-scrollbar {
     height: 3px;
     background-color: #D9D9D9;
+  }
+  .fixed-bottom{
+    width: auto;
+    margin: 0px;
+  }
+  .bgImage .slider-section{
+    width: auto;
+    margin: 0px auto;
+  }
+  .overlayDialogBox .message-section {
+    background-color: #FDFDFD;
+    bottom: -3px;
+  }
+  .message-section {
+    background-color: #FDFDFD;
+    border-radius: 8px 8px 0 0;
+    padding: 15px 15px 0 12px;
+    z-index: 99999;
+  
+  }
+  .slider-section{
+    width: 100%;
+  }
+  .prompt-cont.top-query{
+    display: block;
+    margin-top: 22px;
   }
 }
