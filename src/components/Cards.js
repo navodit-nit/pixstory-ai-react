@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+
 import MainPage from "./../components/MainPage";
 import TinderCard from "react-tinder-card";
-import SidebarPost from "./SidebarPost";
+
 
 const Cards = (props) => {
   return (
@@ -29,7 +29,10 @@ const Cards = (props) => {
                     >
                       <div className={`card-box`}>
                         <div className="card-details">
-                          <h3>{character}</h3>
+                        {props.data.map((item) =>
+                           <h3>{item.followup_ques[0]}</h3>
+                    )}
+                          <h3>{}</h3>
                           <div className="card-logo">
                             <h4>
                               <img
@@ -41,8 +44,7 @@ const Cards = (props) => {
                               />
                               <span>Pixstory.ai</span>
                             </h4>
-                            <a
-                              onClick={() => props.handleCopyClick(index)}
+                            <a onClick={() => props.handleCopyClick(index)}
                               className="copy-icon tooltip-show"
                             >
                               <img
@@ -52,7 +54,9 @@ const Cards = (props) => {
                               <span className="tooltiptext">Copied</span>
                             </a>
                           </div>
-                          <p id={"content-to-copy" + index}>{props.getResponseAtIndex(index).response}</p>
+                          {/* <p id={"content-to-copy" + index}>{props.getResponseAtIndex(index).response}</p> */}
+                          
+                          <p id={"content-to-copy" + index}>{props.data.map(item=>item.response)}</p>
                         </div>
                         <div className="share-icon">
                           <h5>
@@ -92,15 +96,16 @@ const Cards = (props) => {
 
             {props.stickyNotes.length > 0 && (
               <div className="prompt-cont top-query">
-                <h3>Topics queries</h3>
-                <ul>
-                  {props.queries.map((data, index) => (
-                    <li onClick={() => props.handleQueryClick(data)}>
-                      <span className="slide">{data}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                  <ul>
+                  {props.data.map((item) =>
+                       item.followup_ques.map((val) => (
+                        <li onClick={() => props.handleQueryClick(val)}>
+                          <span>{val}</span>
+                        </li>
+                      )) 
+                    )}
+                  </ul>
+                </div>
             )}
             
           </div>

@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import Cards from "./components/Cards";
 import DialogueBox from "./components/DialogueBox";
 
+
 const responses = [
   {
     success: true,
@@ -123,11 +124,11 @@ const db = [
   },
 ];
 
- var queries = [
-    "What is your favorite Google product? Why? How would you improve it?",
-   "How does Google stand out from its competitors?",
-    "What are some other sites you visit frequently? Why do you like them?",
-  ];
+//  var queries = [
+//     "What is your favorite Google product? Why? How would you improve it?",
+//    "How does Google stand out from its competitors?",
+//     "What are some other sites you visit frequently? Why do you like them?",
+//   ];
 
 function App() {
   const [showAdvanced, setShowAdvanced] = useState(true);
@@ -145,21 +146,26 @@ function App() {
   const [messageBox, setmessageBox] = useState("");
   const [copied, setCopied] = useState(false);
    const [getData, setGetData] = useState([]);
-
+   useEffect(() => {
+    // 👇️ scroll to top on page load
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+  }, []);
    const fetchUserData = () => {
-    fetch("http://localhost:4000/data")
+    fetch("https://www.incraftiv.com/downloads/pixstory-api.json")
       .then(response => {
         return response.json()
       })
       .then(data => {
-        console.log(data)
-         setGetData(data)
-      })}
+         setGetData(data.data)
+      })
+    
+    }
     
 
    useEffect(() => {
      fetchUserData()
-   }, []);
+     
+   },[]);
 
   // const [data, setData] = useState([]);
   // useEffect(() => {
@@ -170,41 +176,8 @@ function App() {
   //       setData(json);
   //     });
   // });
-
-  const [data, setData] = useState({ data: [] });
-  const [isLoading, setIsLoading] = useState(false);
-  const [err, setErr] = useState("");
   const [theme, setTheme] = useState("light");
-  const fetchQueryResponse = async () => {
-    setIsLoading(true);
-
-    try {
-      const response = await fetch(
-        "https://www.incraftiv.com/pixstory-card-demo/response.json",
-        {
-          method: "GET",
-          mode: "no-cors",
-          headers: {
-            Accept: "application/json",
-          },
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error(`Error! status: ${response.status}`);
-      }
-
-      const result = await response.json();
-
-      console.log("result is: ", JSON.stringify(result, null, 4));
-
-      setData(result);
-    } catch (err) {
-      setErr(err.message);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  
   const swiped = (direction, nameToDelete, index) => {
     setLastDirection(direction);
     updateCurrentIndex(index - 1);
@@ -273,10 +246,12 @@ function App() {
       setShow(true);
       setContainerClass("querytype-medium");
       setmessageBox("send-msg-up");
+      fetchUserData()
     } else {
       setShow(false);
       setContainerClass("querytype-small");
       setmessageBox("send-msg-down");
+
     }
   };
 
@@ -290,16 +265,18 @@ function App() {
       cIdx = cIdx % 10;
     }
     return responses[cIdx];
+    
   };
 
   const handleQueryClick = (content) => {
     setStickyNotes((prevCards) => [...prevCards, content]);
 
-    let queries = getResponseAtIndex(stickyNotes.length).followup_ques;
+   // let queries = getResponseAtIndex(stickyNotes.length).followup_ques;
     setShow(false);
     setContainerClass("querytype-small");
     document.body.classList.remove("scroll-hide");
-    fetchQueryResponse();
+    fetchUserData()
+    
   };
 
   const handleCopyClick = (value) => {
@@ -328,7 +305,9 @@ function App() {
   });
 
   return (
-    <div
+    <div onClick={() => {
+      window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    }}
       className={`app ${stickyNotes.length == 0 ? "bgImage " : "cardpage"} ${
         theme === "light" ? "light-theme" : "dark-theme"
       }`}
@@ -341,9 +320,10 @@ function App() {
           swiped={swiped}
           outOfFrame={outOfFrame}
           handleQueryClick={handleQueryClick}
-          queries={queries}
+          // queries={queries}
           getResponseAtIndex={getResponseAtIndex}
           handleCopyClick={handleCopyClick}
+          data={getData}
         />
         <DialogueBox
           show={show}
