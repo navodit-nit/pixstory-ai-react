@@ -123,11 +123,11 @@ const db = [
   },
 ];
 
-var queries = [
-  "What is your favorite Google product? Why? How would you improve it?",
-  "How does Google stand out from its competitors?",
-  "What are some other sites you visit frequently? Why do you like them?",
-];
+ var queries = [
+    "What is your favorite Google product? Why? How would you improve it?",
+   "How does Google stand out from its competitors?",
+    "What are some other sites you visit frequently? Why do you like them?",
+  ];
 
 function App() {
   const [showAdvanced, setShowAdvanced] = useState(true);
@@ -144,6 +144,23 @@ function App() {
   const [activeCard, setActiveCard] = useState(null);
   const [messageBox, setmessageBox] = useState("");
   const [copied, setCopied] = useState(false);
+   const [getData, setGetData] = useState([]);
+
+   const fetchUserData = () => {
+    fetch("http://localhost:4000/data")
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        console.log(data)
+         setGetData(data)
+      })}
+    
+
+   useEffect(() => {
+     fetchUserData()
+   }, []);
+
   // const [data, setData] = useState([]);
   // useEffect(() => {
   //   fetch("./data/response.json")
@@ -153,22 +170,25 @@ function App() {
   //       setData(json);
   //     });
   // });
-  
-  const [data, setData] = useState({data: []});
+
+  const [data, setData] = useState({ data: [] });
   const [isLoading, setIsLoading] = useState(false);
-  const [err, setErr] = useState('');
+  const [err, setErr] = useState("");
   const [theme, setTheme] = useState("light");
   const fetchQueryResponse = async () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('https://www.incraftiv.com/pixstory-card-demo/response.json', {
-        method: 'GET',
-        mode: 'no-cors',
-        headers: {
-          Accept: 'application/json',
-        },
-      });
+      const response = await fetch(
+        "https://www.incraftiv.com/pixstory-card-demo/response.json",
+        {
+          method: "GET",
+          mode: "no-cors",
+          headers: {
+            Accept: "application/json",
+          },
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`Error! status: ${response.status}`);
@@ -176,7 +196,7 @@ function App() {
 
       const result = await response.json();
 
-      console.log('result is: ', JSON.stringify(result, null, 4));
+      console.log("result is: ", JSON.stringify(result, null, 4));
 
       setData(result);
     } catch (err) {
@@ -275,7 +295,7 @@ function App() {
   const handleQueryClick = (content) => {
     setStickyNotes((prevCards) => [...prevCards, content]);
 
-    queries = getResponseAtIndex(stickyNotes.length).followup_ques;
+    let queries = getResponseAtIndex(stickyNotes.length).followup_ques;
     setShow(false);
     setContainerClass("querytype-small");
     document.body.classList.remove("scroll-hide");
@@ -283,7 +303,7 @@ function App() {
   };
 
   const handleCopyClick = (value) => {
-    const contentToCopy = document.getElementById("content-to-copy"+value);
+    const contentToCopy = document.getElementById("content-to-copy" + value);
     const range = document.createRange();
     range.selectNode(contentToCopy);
     window.getSelection().removeAllRanges();
@@ -308,42 +328,46 @@ function App() {
   });
 
   return (
-    <div className={`app ${stickyNotes.length == 0 ? "bgImage " : "cardpage"} ${theme === "light" ? "light-theme" : "dark-theme"}`}>
-     <div className="image-bg">
-     <NavBar toggleTheme={toggleTheme} theme={theme} />
-      <Cards
-        stickyNotes={stickyNotes}
-        childRefs={childRefs}
-        swiped={swiped}
-        outOfFrame={outOfFrame}
-        handleQueryClick={handleQueryClick}
-        queries={queries}
-        getResponseAtIndex={getResponseAtIndex}
-        handleCopyClick={handleCopyClick}
-      />
-      <DialogueBox
-        show={show}
-        stickyNotes={stickyNotes}
-        messageBox={messageBox}
-        containerClass={containerClass}
-        handlePropt={handlePropt}
-        textInput={textInput}
-        queries={queries}
-        handleQueryClick={handleQueryClick}
-        setStickyNotes={setStickyNotes}
-        setShow={setShow}
-      />
-      
+    <div
+      className={`app ${stickyNotes.length == 0 ? "bgImage " : "cardpage"} ${
+        theme === "light" ? "light-theme" : "dark-theme"
+      }`}
+    >
+      <div className="image-bg">
+        <NavBar toggleTheme={toggleTheme} theme={theme} />
+        <Cards
+          stickyNotes={stickyNotes}
+          childRefs={childRefs}
+          swiped={swiped}
+          outOfFrame={outOfFrame}
+          handleQueryClick={handleQueryClick}
+          queries={queries}
+          getResponseAtIndex={getResponseAtIndex}
+          handleCopyClick={handleCopyClick}
+        />
+        <DialogueBox
+          show={show}
+          stickyNotes={stickyNotes}
+          messageBox={messageBox}
+          containerClass={containerClass}
+          handlePropt={handlePropt}
+          textInput={textInput}
+          // queries={queries}
+          handleQueryClick={handleQueryClick}
+          setStickyNotes={setStickyNotes}
+          setShow={setShow}
+          data={getData}
+        />
 
-      {/* {showAdvanced ? (
+        {/* {showAdvanced ? (
         <Advanced2 stickyNotes={stickyNotes} handleAddNote={handleAddNote} />
       ) : (
         <Simple />
       )} */}
-      {/* <div className="row">
+        {/* <div className="row">
         <p style={{ color: '#fff' }}>Show advanced example</p> <Switch checked={showAdvanced} onChange={setShowAdvanced} />
       </div> */}
-     </div>
+      </div>
     </div>
   );
 }

@@ -62,12 +62,22 @@ const DialogueBox = (props) => {
             {props.show && (
               <div className="col-md-12">
                 <div className="prompt-cont bottom-prompt-box">
-                  <ul>
-                    {props.queries.map((data, index) => (
-                      <li onClick={() => props.handleQueryClick(data)}>
-                        <span className="slide">{data}</span>
-                      </li>
-                    ))}
+               
+                <ul> 
+                { props.data.map((item)=>(
+                 
+                  item.followup_ques.map((val)=>(
+                    <li  onClick={() => props.handleQueryClick(val)}>
+                    <span>
+                      {val}
+                  </span>
+                  </li>
+                  ))
+
+                  
+                  
+                ))}
+
                   </ul>
                 </div>
               </div>
