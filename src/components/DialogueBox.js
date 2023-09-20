@@ -65,10 +65,9 @@ const DialogueBox = (props) => {
                 <div className="prompt-cont bottom-prompt-box">
                   <ul>
                     {props.data.map((item) =>
-                       item.followup_ques.map((val) => (
-                        <li onClick={() => props.handleQueryClick(val)}>
+                       item.followup_ques.map((val,index) => (
+                        <li onClick={() => props.handleQueryClick(val,index)}>
                           <span>{val}</span>
-                          
                         </li>
                       )) 
                     )}

@@ -133,9 +133,7 @@ const db = [
 function App() {
   const [showAdvanced, setShowAdvanced] = useState(true);
   const [stickyNotes, setStickyNotes] = useState([]);
-  const [stickyNotesCounts, setStickyNotesCounts] = useState(
-    stickyNotes.length
-  );
+  const [stickyNotesCounts, setStickyNotesCounts] = useState();
   const [show, setShow] = useState(false);
   const [showBackground, setShowBackground] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(db.length - 1);
@@ -145,27 +143,25 @@ function App() {
   const [activeCard, setActiveCard] = useState(null);
   const [messageBox, setmessageBox] = useState("");
   const [copied, setCopied] = useState(false);
-   const [getData, setGetData] = useState([]);
-   useEffect(() => {
+  const [getData, setGetData] = useState([]);
+  useEffect(() => {
     // 👇️ scroll to top on page load
-    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+   
   }, []);
-   const fetchUserData = () => {
+  const fetchUserData = () => {
     fetch("https://www.incraftiv.com/downloads/pixstory-api.json")
-      .then(response => {
-        return response.json()
+      .then((response) => {
+        return response.json();
       })
-      .then(data => {
-         setGetData(data.data)
-      })
-    
-    }
-    
+      .then((data) => {
+        setGetData(data.data);
+      });
 
-   useEffect(() => {
-     fetchUserData()
-     
-   },[]);
+  };
+  useEffect(() => {
+    fetchUserData();
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
 
   // const [data, setData] = useState([]);
   // useEffect(() => {
@@ -177,7 +173,7 @@ function App() {
   //     });
   // });
   const [theme, setTheme] = useState("light");
-  
+
   const swiped = (direction, nameToDelete, index) => {
     setLastDirection(direction);
     updateCurrentIndex(index - 1);
@@ -188,7 +184,7 @@ function App() {
 
   const outOfFrame = (name, idx) => {
     // console.log(`List item at index ${idx} was outOfFrame`);
-    //currentIndexRef.current >= idx && childRefs[idx].current.restoreCard();
+    currentIndexRef.current >= idx && childRefs[idx].current.restoreCard();
     //  const newList = stickyNotes.filter((_, index1) => index1 !== idx);
 
     // console.log(newList);
@@ -214,6 +210,7 @@ function App() {
   const handleTextareaClick = () => {};
 
   const updateCurrentIndex = (val) => {
+    debugger;
     setCurrentIndex(val);
     currentIndexRef.current = val;
   };
@@ -230,6 +227,7 @@ function App() {
   const canSwipe = currentIndex >= 0;
 
   const swipe = async (dir) => {
+    debugger;
     if (canSwipe && currentIndex < stickyNotes.length) {
       await childRefs[currentIndex].current.swipe(dir); // Swipe the card!
     }
@@ -246,12 +244,11 @@ function App() {
       setShow(true);
       setContainerClass("querytype-medium");
       setmessageBox("send-msg-up");
-      fetchUserData()
+      fetchUserData();
     } else {
       setShow(false);
       setContainerClass("querytype-small");
       setmessageBox("send-msg-down");
-
     }
   };
 
@@ -265,18 +262,16 @@ function App() {
       cIdx = cIdx % 10;
     }
     return responses[cIdx];
-    
   };
 
   const handleQueryClick = (content) => {
     setStickyNotes((prevCards) => [...prevCards, content]);
-
-   // let queries = getResponseAtIndex(stickyNotes.length).followup_ques;
+    setStickyNotesCounts(stickyNotes.length);
+    // let queries = getResponseAtIndex(stickyNotes.length).followup_ques;
     setShow(false);
     setContainerClass("querytype-small");
     document.body.classList.remove("scroll-hide");
-    fetchUserData()
-    
+    fetchUserData();
   };
 
   const handleCopyClick = (value) => {
@@ -305,9 +300,10 @@ function App() {
   });
 
   return (
-    <div onClick={() => {
-      window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-    }}
+    <div
+      onClick={() => {
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      }}
       className={`app ${stickyNotes.length == 0 ? "bgImage " : "cardpage"} ${
         theme === "light" ? "light-theme" : "dark-theme"
       }`}
@@ -324,7 +320,9 @@ function App() {
           getResponseAtIndex={getResponseAtIndex}
           handleCopyClick={handleCopyClick}
           data={getData}
+          swipe={swipe}
         />
+
         <DialogueBox
           show={show}
           stickyNotes={stickyNotes}

@@ -1,9 +1,21 @@
-
 import MainPage from "./../components/MainPage";
 import TinderCard from "react-tinder-card";
-
+import React,{useState} from "react";
+import Share from "./Share";
 
 const Cards = (props) => {
+  const [isShown, setIsShown] = useState(false);
+  const handleBackCard = () => {
+    debugger;
+    return props.swipe("left");
+  };
+  const handleClick = event => {
+    // 👇️ toggle shown state
+    setIsShown(current => !current);
+    // 👇️ or simply set it to true
+    // setIsShown(true);
+  };
+
   return (
     <div className="slider-section">
       <div className="container-fluid ">
@@ -25,13 +37,13 @@ const Cards = (props) => {
                       onCardLeftScreen={() =>
                         props.outOfFrame(character, index)
                       }
-                      preventSwipe={["up", "down"]}
+                      preventSwipe={["left", "right"]}
                     >
                       <div className={`card-box`}>
                         <div className="card-details">
-                        {props.data.map((item) =>
-                           <h3>{item.followup_ques[0]}</h3>
-                    )}
+                          {props.data.map((item, index) => (
+                            <h3>{item.followup_ques[0]}</h3>
+                          ))}
                           <h3>{}</h3>
                           <div className="card-logo">
                             <h4>
@@ -44,7 +56,8 @@ const Cards = (props) => {
                               />
                               <span>Pixstory.ai</span>
                             </h4>
-                            <a onClick={() => props.handleCopyClick(index)}
+                            <button
+                              onClick={() => props.handleCopyClick(index)}
                               className="copy-icon tooltip-show"
                             >
                               <img
@@ -52,34 +65,38 @@ const Cards = (props) => {
                                 alt="copy1"
                               />
                               <span className="tooltiptext">Copied</span>
-                            </a>
+                            </button>
                           </div>
-                          {/* <p id={"content-to-copy" + index}>{props.getResponseAtIndex(index).response}</p> */}
-                          
-                          <p id={"content-to-copy" + index}>{props.data.map(item=>item.response)}</p>
+                          {/* <p id={"content-to-copy" + index}>{props.getResponseAtIndex(index).response}</p>  */}
+                          <p id={"content-to-copy" + index}>
+                            {props.data.map((item) => item.response)}
+                          </p>
                         </div>
                         <div className="share-icon">
                           <h5>
-                            <a href="#">
+                            <button className="" onClick={handleBackCard}>
                               <img
                                 src={process.env.PUBLIC_URL + "/img/back.svg"}
                                 alt="Load"
                               />
-                            </a>
-                            <a href="#">
+                            </button>
+                            <button>
                               <img
                                 src={process.env.PUBLIC_URL + "/img/load.svg"}
                                 alt="Load"
                               />
-                            </a>
+                            </button>
                           </h5>
                           <h5>
-                            <a href="#">
+                            <button className="social-btn" onClick={handleClick}>
                               <img
                                 src={process.env.PUBLIC_URL + "/img/share.svg"}
                                 alt="Load"
                               />
-                            </a>
+                            </button>
+                            
+                            {isShown && <Share description={"this is a basic share page"}/>}
+                           
                           </h5>
                         </div>
                       </div>
@@ -96,18 +113,17 @@ const Cards = (props) => {
 
             {props.stickyNotes.length > 0 && (
               <div className="prompt-cont top-query">
-                  <ul>
+                <ul>
                   {props.data.map((item) =>
-                       item.followup_ques.map((val) => (
-                        <li onClick={() => props.handleQueryClick(val)}>
-                          <span>{val}</span>
-                        </li>
-                      )) 
-                    )}
-                  </ul>
-                </div>
+                    item.followup_ques.map((val, index) => (
+                      <li onClick={() => props.handleQueryClick(val, index)}>
+                        <span>{val}</span>
+                      </li>
+                    ))
+                  )}
+                </ul>
+              </div>
             )}
-            
           </div>
         </div>
       </div>

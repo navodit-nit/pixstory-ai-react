@@ -484,13 +484,13 @@ textarea {
 }
 
 button {
-  margin-top: 10px;
+  margin: 0px 5px;
   padding: 5px 10px;
-  background-color: #007bff;
+  background-color:#000;
   color: white;
   border: none;
   border-radius: 5px;
-  cursor: pointer;
+  cursor: pointer!important;
 }
 
 .message-textarea {
@@ -818,7 +818,7 @@ html, body, #root {
   height: 32px;
   border-radius: 4px;
   text-align: center;
-  line-height: 31px;
+ 
 }
 
 .copy-icon:focus, .copy-icon:hover {
@@ -1017,4 +1017,12 @@ display: none;
     display: block;
     margin-top: 22px;
   }
+}
+.social-btn:hover .soical-media ul{display: block;}
+.soical-media{position: relative;}
+.soical-media ul{position:absolute;    top: 3px;
+  left: 5px;background-color:#000;list-style: none;margin: 0;padding:0px;border-radius: 5px;}
+.soical-media ul li{margin: 0px ;padding: 5px;}
+.soical-media ul li a{
+  font-size: 14px;
 }
