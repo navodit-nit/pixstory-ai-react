@@ -19,6 +19,10 @@ const DialogueBox = (props) => {
           : "query-section"
       }
     >
+      {console.log("=====PROPS.DATA=====")}
+      {console.log(props.data.response)}
+      {console.log("=====PROPS.DATA=====")}
+      
       <div className={`fixed-bottom message-section ${props.messageBox}`}>
         <div className="container-fluid">
           <div className="row">
@@ -60,21 +64,15 @@ const DialogueBox = (props) => {
             </div>
             {props.show && (
               <div className="col-md-12">
-
                 <div className="prompt-cont bottom-prompt-box">
-
-                {
-                  props.data.map((item)=>
-                  <span>{console.log(item.message)} {item.message}</span>
-                  )}
                   <ul>
-                  {/* {props.data.map((item) =>
-                    item.followup_ques.map((val, index) => (
+                  {                    
+                    props.data.followup_ques.map((val, index) => (
                       <li onClick={() => props.handleQueryClick(val, index)}>
                         <span>{val}</span>
                       </li>
                     ))
-                  )} */}
+                  }
                   </ul>
                 </div>
               </div>

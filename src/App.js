@@ -144,13 +144,23 @@ function App() {
   const [activeCard, setActiveCard] = useState(null);
   const [messageBox, setmessageBox] = useState("");
   const [copied, setCopied] = useState(false);
-  const [post, setPost] = useState();
+  const [post, setPost] = useState({
+    success: true,
+    message: "done",
+    response:
+      "1-A market economy is an economic system in which the allocation of resources is determined by the ords fulfilling centrally planned targets and objectives.",
+    followup_ques: [
+      "1.1-Can you provide an example of a market where competition has led to improved product quality or reduced costs for consumers?",
+      "1.2-What are some examples of industries that have been traditionally dominated by government intervention in a planned economy",
+      "1.3-How do market economies address issues such as income inequality and environmental degradation?",
+    ],
+  });
 
   const fetchUserData = () => {
     fetch("http://localhost:5001/test")
     .then((resp)=>{
       return resp.json()
-    }).then((data)=>setPost(data))
+    }).then((data)=>setPost(data.response))
   };
   useEffect(() => {
     fetchUserData();
@@ -317,8 +327,11 @@ function App() {
           handleCopyClick={handleCopyClick}
           swipe={swipe}
           fetchApi={fetchUserData}
+          data={post}
         />
-
+        {console.log("=====START=====")}
+        {console.log(post)}
+        {console.log("=====END=====")}
         <DialogueBox
           show={show}
           stickyNotes={stickyNotes}
@@ -341,7 +354,7 @@ function App() {
         {/* <div className="row">
         <p style={{ color: '#fff' }}>Show advanced example</p> <Switch checked={showAdvanced} onChange={setShowAdvanced} />
       </div> */}
-       {console.log(post)}
+      
       </div>
     </div>
   );

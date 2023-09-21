@@ -66,8 +66,8 @@ const Cards = (props) => {
                     >
                       <div className={`card-box`}>
                         <div className="card-details">
-                          {props.data.map((item, index) => (
-                            <h3>{item.followup_ques[0]}</h3>
+                          {props.data.followup_ques.map((item, index) => (
+                            <h3>{item[0]}</h3>
                           ))}
                           <h3>{}</h3>
                           <div className="card-logo">
@@ -94,7 +94,7 @@ const Cards = (props) => {
                           </div>
                           {/* <p id={"content-to-copy" + index}>{props.getResponseAtIndex(index).response}</p>  */}
                           <p id={"content-to-copy" + index}>
-                            {props.data.map((item) => item.response)}
+                            {props.data.followup_ques.map((item) => item)}
                           </p>
                         </div>
                         <div className="share-icon">
@@ -135,17 +135,17 @@ const Cards = (props) => {
             ) : (
               <MainPage />
             )}
-
+            {console.log(props.data)}
             {props.stickyNotes.length > 0 && (
               <div className="prompt-cont top-query">
                 <ul>
-                  {props.data.map((item) =>
-                    item.followup_ques.map((val, index) => (
+                {                    
+                    props.data.followup_ques.map((val, index) => (
                       <li onClick={() => props.handleQueryClick(val, index)}>
                         <span>{val}</span>
                       </li>
                     ))
-                  )}
+                  }
                 </ul>
               </div>
             )}
