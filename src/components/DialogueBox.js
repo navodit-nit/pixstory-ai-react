@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 const DialogueBox = (props) => {
   const [textInput, setTextInput] = useState("");
+ 
   const handleAddNote = () => {
     if (textInput.trim() !== "") {
       props.setStickyNotes([...props.stickyNotes, textInput]);
@@ -8,9 +9,13 @@ const DialogueBox = (props) => {
       props.setShow(false);
     }
   };
+  
   const handleCloseDialougeBox = () => {
     props.setShow(false);
   };
+
+ 
+  
   return (
     <div
       className={
@@ -19,10 +24,7 @@ const DialogueBox = (props) => {
           : "query-section"
       }
     >
-      {console.log("=====PROPS.DATA=====")}
-      {console.log(props.data.response)}
-      {console.log("=====PROPS.DATA=====")}
-      
+   
       <div className={`fixed-bottom message-section ${props.messageBox}`}>
         <div className="container-fluid">
           <div className="row">
@@ -31,11 +33,13 @@ const DialogueBox = (props) => {
                 <a onClick={handleCloseDialougeBox}>
                   <span></span>
                 </a>
+               
                 <textarea
                   className={
                     "form-control message-box" +
                     (props.show == 1 ? " largeTextArea" : "")
                   }
+                  
                   rows={1}
                   onFocus={props.handlePropt}
                   value={textInput}
@@ -60,8 +64,10 @@ const DialogueBox = (props) => {
                     />
                   </svg>
                 </button>
+                
               </div>
             </div>
+            
             {props.show && (
               <div className="col-md-12">
                 <div className="prompt-cont bottom-prompt-box">
