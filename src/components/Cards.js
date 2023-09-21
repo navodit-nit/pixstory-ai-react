@@ -2,7 +2,7 @@ import MainPage from "./../components/MainPage";
 import TinderCard from "react-tinder-card";
 import React,{useState} from "react";
 import Share from "./Share";
-
+import Swal from "sweetalert2";
 const Cards = (props) => {
   const [isShown, setIsShown] = useState(false);
   const handleBackCard = () => {
@@ -15,7 +15,32 @@ const Cards = (props) => {
     // 👇️ or simply set it to true
     // setIsShown(true);
   };
-
+ 
+ const handlePageReload =()=>{
+    props.fetchApi()
+    let timerInterval
+    Swal.fire({
+      title: 'Reload',
+      html: 'Update',
+      timer: 100,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading()
+        const b = Swal.getHtmlContainer().querySelector('b')
+        timerInterval = setInterval(() => {
+          b.textContent = Swal.getTimerLeft()
+        }, 100)
+      },
+      willClose: () => {
+        clearInterval(timerInterval)
+      }
+    }).then((result) => {
+      /* Read more about handling dismissals below */
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log('I was closed by the timer')
+      }
+    })
+ }
   return (
     <div className="slider-section">
       <div className="container-fluid ">
@@ -80,7 +105,7 @@ const Cards = (props) => {
                                 alt="Load"
                               />
                             </button>
-                            <button>
+                            <button onClick={handlePageReload}>
                               <img
                                 src={process.env.PUBLIC_URL + "/img/load.svg"}
                                 alt="Load"

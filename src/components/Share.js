@@ -1,10 +1,7 @@
 import React from "react";
 
-interface ShareProps {
-  description: string;
-}
 
-const Share = ({ description }: ShareProps) => {
+const Share = ({ description }) => {
   const url = window.location.href;
 
   function ShareWebAPI() {
@@ -29,7 +26,7 @@ const Share = ({ description }: ShareProps) => {
               <svg
                 className="share-icon"
                 xmlns="http://www.w3.org/2000/svg"
-                style={{ width: 22 }}
+                style={{ width: 20 }}
                 viewBox="0 0 512 512"
                 aria-label="fb"
                 role="img"
@@ -48,7 +45,7 @@ const Share = ({ description }: ShareProps) => {
               <svg
                 className="share-icon"
                 xmlns="http://www.w3.org/2000/svg"
-                style={{ width: 22 }}
+                style={{ width: 20 }}
                 viewBox="0 0 512 512"
                 aria-label="tw"
                 role="img"
@@ -67,7 +64,7 @@ const Share = ({ description }: ShareProps) => {
               <svg
                 className="share-icon"
                 xmlns="http://www.w3.org/2000/svg"
-                style={{ width: 22 }}
+                style={{ width: 20 }}
                 viewBox="0 0 512 512"
                 aria-label="pn"
                 role="img"
@@ -84,7 +81,7 @@ const Share = ({ description }: ShareProps) => {
               <svg
                 className="share-icon"
                 xmlns="http://www.w3.org/2000/svg"
-                style={{ width: 22 }}
+                style={{ width: 20 }}
                 viewBox="0 0 512 512"
                 aria-label="ln"
                 role="img"

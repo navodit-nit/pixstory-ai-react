@@ -7,9 +7,7 @@ const DialogueBox = (props) => {
       setTextInput("");
       props.setShow(false);
     }
-  };  
-
-
+  };
   const handleCloseDialougeBox = () => {
     props.setShow(false);
   };
@@ -62,15 +60,21 @@ const DialogueBox = (props) => {
             </div>
             {props.show && (
               <div className="col-md-12">
+
                 <div className="prompt-cont bottom-prompt-box">
+
+                {
+                  props.data.map((item)=>
+                  <span>{console.log(item.message)} {item.message}</span>
+                  )}
                   <ul>
-                    {props.data.map((item) =>
-                       item.followup_ques.map((val,index) => (
-                        <li onClick={() => props.handleQueryClick(val,index)}>
-                          <span>{val}</span>
-                        </li>
-                      )) 
-                    )}
+                  {/* {props.data.map((item) =>
+                    item.followup_ques.map((val, index) => (
+                      <li onClick={() => props.handleQueryClick(val, index)}>
+                        <span>{val}</span>
+                      </li>
+                    ))
+                  )} */}
                   </ul>
                 </div>
               </div>

@@ -3,6 +3,7 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import Cards from "./components/Cards";
 import DialogueBox from "./components/DialogueBox";
+import axios from "axios";
 
 
 const responses = [
@@ -143,26 +144,21 @@ function App() {
   const [activeCard, setActiveCard] = useState(null);
   const [messageBox, setmessageBox] = useState("");
   const [copied, setCopied] = useState(false);
-  const [getData, setGetData] = useState([]);
-  useEffect(() => {
-    // 👇️ scroll to top on page load
-   
-  }, []);
-  const fetchUserData = () => {
-    fetch("https://www.incraftiv.com/downloads/pixstory-api.json")
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setGetData(data.data);
-      });
+  const [post, setPost] = useState();
 
+  const fetchUserData = () => {
+    fetch("http://localhost:5001/test")
+    .then((resp)=>{
+      return resp.json()
+    }).then((data)=>setPost(data))
   };
   useEffect(() => {
     fetchUserData();
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }, []);
-
+  },[]);
+  // useEffect(() => {
+  //   // 👇️ scroll to top on page load
+  //   window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
+  // }, []);
   // const [data, setData] = useState([]);
   // useEffect(() => {
   //   fetch("./data/response.json")
@@ -319,8 +315,8 @@ function App() {
           // queries={queries}
           getResponseAtIndex={getResponseAtIndex}
           handleCopyClick={handleCopyClick}
-          data={getData}
           swipe={swipe}
+          fetchApi={fetchUserData}
         />
 
         <DialogueBox
@@ -334,7 +330,7 @@ function App() {
           handleQueryClick={handleQueryClick}
           setStickyNotes={setStickyNotes}
           setShow={setShow}
-          data={getData}
+          data={post}
         />
 
         {/* {showAdvanced ? (
@@ -345,6 +341,7 @@ function App() {
         {/* <div className="row">
         <p style={{ color: '#fff' }}>Show advanced example</p> <Switch checked={showAdvanced} onChange={setShowAdvanced} />
       </div> */}
+       {console.log(post)}
       </div>
     </div>
   );
