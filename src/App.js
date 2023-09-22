@@ -5,7 +5,6 @@ import Cards from "./components/Cards";
 import DialogueBox from "./components/DialogueBox";
 import axios from "axios";
 
-
 const responses = [
   {
     success: true,
@@ -144,31 +143,23 @@ function App() {
   const [activeCard, setActiveCard] = useState(null);
   const [messageBox, setmessageBox] = useState("");
   const [copied, setCopied] = useState(false);
-  const [post, setPost] = useState({
-    success: true,
-    message: "done",
-    response:
-      "1-A market economy is an economic system in which the allocation of resources is determined by the ords fulfilling centrally planned targets and objectives.",
-    followup_ques: [
-      "1.1-Can you provide an example of a market where competition has led to improved product quality or reduced costs for consumers?",
-      "1.2-What are some examples of industries that have been traditionally dominated by government intervention in a planned economy",
-      "1.3-How do market economies address issues such as income inequality and environmental degradation?",
-    ],
-  });
+  const [post, setPost] = useState({});
+  const [InputValue, setInputValue] = useState();
 
   const fetchUserData = () => {
     fetch("http://localhost:5001/test")
-    .then((resp)=>{
-      return resp.json()
-    }).then((data)=>setPost(data.response))
+      .then((resp) => {
+        return resp.json();
+      })
+      .then((data) => setPost(data.response));
   };
   useEffect(() => {
     fetchUserData();
-  },[]);
-  // useEffect(() => {
-  //   // 👇️ scroll to top on page load
-  //   window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
-  // }, []);
+  }, []);
+   useEffect(() => {
+    // 👇️ scroll to top on page load
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
+   }, []);
   // const [data, setData] = useState([]);
   // useEffect(() => {
   //   fetch("./data/response.json")
@@ -212,8 +203,6 @@ function App() {
   const handleCardClick = (index) => {
     setActiveCard(index);
   };
-
-  const handleTextareaClick = () => {};
 
   const updateCurrentIndex = (val) => {
     debugger;
@@ -261,6 +250,7 @@ function App() {
   const handleSpanClick = (event) => {
     const spanValue = event.target.textContent;
     setTextInput(spanValue);
+    console.log(spanValue);
   };
 
   const getResponseAtIndex = (cIdx) => {
@@ -316,6 +306,7 @@ function App() {
     >
       <div className="image-bg">
         <NavBar toggleTheme={toggleTheme} theme={theme} />
+
         <Cards
           stickyNotes={stickyNotes}
           childRefs={childRefs}
@@ -329,9 +320,7 @@ function App() {
           fetchApi={fetchUserData}
           data={post}
         />
-        {console.log("=====START=====")}
-        {console.log(post)}
-        {console.log("=====END=====")}
+
         <DialogueBox
           show={show}
           stickyNotes={stickyNotes}
@@ -346,15 +335,6 @@ function App() {
           data={post}
         />
 
-        {/* {showAdvanced ? (
-        <Advanced2 stickyNotes={stickyNotes} handleAddNote={handleAddNote} />
-      ) : (
-        <Simple />
-      )} */}
-        {/* <div className="row">
-        <p style={{ color: '#fff' }}>Show advanced example</p> <Switch checked={showAdvanced} onChange={setShowAdvanced} />
-      </div> */}
-      
       </div>
     </div>
   );

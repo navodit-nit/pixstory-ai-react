@@ -5,15 +5,17 @@ import Share from "./Share";
 import Swal from "sweetalert2";
 const Cards = (props) => {
   const [isShown, setIsShown] = useState(false);
+ 
   const handleBackCard = () => {
-    debugger;
     return props.swipe("left");
   };
+ 
   const handleClick = event => {
     // 👇️ toggle shown state
     setIsShown(current => !current);
     // 👇️ or simply set it to true
     // setIsShown(true);
+
   };
  
  const handlePageReload =()=>{
@@ -66,10 +68,10 @@ const Cards = (props) => {
                     >
                       <div className={`card-box`}>
                         <div className="card-details">
-                          {props.data.followup_ques.map((item, index) => (
-                            <h3>{item[0]}</h3>
-                          ))}
-                          <h3>{}</h3>
+                      
+                     <h3>{props.data.followup_ques[0]}</h3> 
+                      
+                        
                           <div className="card-logo">
                             <h4>
                               <img
@@ -92,10 +94,8 @@ const Cards = (props) => {
                               <span className="tooltiptext">Copied</span>
                             </button>
                           </div>
-                          {/* <p id={"content-to-copy" + index}>{props.getResponseAtIndex(index).response}</p>  */}
-                          <p id={"content-to-copy" + index}>
-                            {props.data.followup_ques.map((item) => item)}
-                          </p>
+                           {/* <p id={"content-to-copy" + index}>{props.getResponseAtIndex(index).response}</p>  */}
+                           <p  id={"content-to-copy" + index}>{props.data.response}</p>
                         </div>
                         <div className="share-icon">
                           <h5>
