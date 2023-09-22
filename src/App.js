@@ -3,7 +3,7 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import Cards from "./components/Cards";
 import DialogueBox from "./components/DialogueBox";
-import axios from "axios";
+
 
 const responses = [
   {
@@ -146,15 +146,21 @@ function App() {
   const [post, setPost] = useState({});
   const [InputValue, setInputValue] = useState();
 
+  
+  
   const fetchUserData = () => {
+   // fetch("")
     fetch("http://localhost:5001/test")
       .then((resp) => {
         return resp.json();
       })
-      .then((data) => setPost(data.response));
+      .then((data) =>{
+        setPost(data.response)
+      });
   };
+  
   useEffect(() => {
-    fetchUserData();
+      fetchUserData(); 
   }, []);
    useEffect(() => {
     // 👇️ scroll to top on page load
@@ -239,7 +245,7 @@ function App() {
       setShow(true);
       setContainerClass("querytype-medium");
       setmessageBox("send-msg-up");
-      fetchUserData();
+     //  fetchUserData();
     } else {
       setShow(false);
       setContainerClass("querytype-small");
@@ -267,7 +273,7 @@ function App() {
     setShow(false);
     setContainerClass("querytype-small");
     document.body.classList.remove("scroll-hide");
-    fetchUserData();
+    // fetchUserData();
   };
 
   const handleCopyClick = (value) => {

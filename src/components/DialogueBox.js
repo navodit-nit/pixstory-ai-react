@@ -1,7 +1,7 @@
-import React, { useState,useRef } from "react";
+import React, { useState,useEffect} from "react";
 const DialogueBox = (props) => {
   const [textInput, setTextInput] = useState("");
- 
+
   const handleAddNote = () => {
     if (textInput.trim() !== "") {
       props.setStickyNotes([...props.stickyNotes, textInput]);
@@ -13,8 +13,16 @@ const DialogueBox = (props) => {
   const handleCloseDialougeBox = () => {
     props.setShow(false);
   };
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    setIsLoading(true);
+    
+    setTimeout(() => {
+      setIsLoading(false);
+     
+    }, 3000);
+  }, []);
 
- 
   
   return (
     <div
@@ -24,7 +32,6 @@ const DialogueBox = (props) => {
           : "query-section"
       }
     >
-   
       <div className={`fixed-bottom message-section ${props.messageBox}`}>
         <div className="container-fluid">
           <div className="row">
@@ -34,7 +41,7 @@ const DialogueBox = (props) => {
                   <span></span>
                 </a>
                
-                <textarea
+                <textarea disabled={isLoading}
                   className={
                     "form-control message-box" +
                     (props.show == 1 ? " largeTextArea" : "")
@@ -72,6 +79,7 @@ const DialogueBox = (props) => {
               <div className="col-md-12">
                 <div className="prompt-cont bottom-prompt-box">
                   <ul>
+                 
                   {                    
                     props.data.followup_ques.map((val, index) => (
                       <li onClick={() => props.handleQueryClick(val, index)}>
