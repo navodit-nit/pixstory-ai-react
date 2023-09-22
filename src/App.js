@@ -147,7 +147,7 @@ function App() {
   const [InputValue, setInputValue] = useState();
 
   const fetchUserData = () => {
-    fetch("http://localhost:5001/test")
+    fetch("https://www.incraftiv.com/downloads/pixstory-api.json")
       .then((resp) => {
         return resp.json();
       })
