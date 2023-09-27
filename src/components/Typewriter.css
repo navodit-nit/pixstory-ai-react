@@ -1,0 +1,33 @@
+.typing-animation {
+    display: inline-block;
+    position: relative;
+  }
+  
+  .text {
+    display: inline-block;
+    color:#fff;
+    word-wrap: break-word;
+    text-align: justify;
+    margin-bottom: 10px;
+  }
+  .d-none{display: none!important;}
+  .cursor {
+    display: inline-block;
+    position: sticky;
+    width: 8px; /* Adjust the cursor width as needed */
+    height: 24px; /* Adjust the cursor height as needed */
+    background-color: #fff;
+    animation: blink-animation 1s step-start infinite;
+    word-wrap: break-word;
+
+  }
+  
+  @keyframes blink-animation {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+  

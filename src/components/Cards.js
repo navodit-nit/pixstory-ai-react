@@ -1,48 +1,55 @@
 import MainPage from "./../components/MainPage";
 import TinderCard from "react-tinder-card";
-import React,{useState} from "react";
+import React, { useState } from "react";
 import Share from "./Share";
 import Swal from "sweetalert2";
+import Loader from "./Loader";
+import { useEffect } from "react";
+import Typewriter from "./Typewriter";
 const Cards = (props) => {
-  const [isShown, setIsShown] = useState(false);
- 
+  const [isLoader, setIsLoader] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+// loader start
+  
+  useEffect(() => {
+    setIsLoader(true);
+    setTimeout(() => {
+      setIsLoader(false);
+      console.log(isLoader)
+    }, 3000)
+  }, [props.stickyNotes]);
+// loader end
   const handleBackCard = () => {
     return props.swipe("left");
   };
- 
-  const handleClick = event => {
-    // 👇️ toggle shown state
-    setIsShown(current => !current);
-    // 👇️ or simply set it to true
-    // setIsShown(true);
-
-  };
- 
- const handlePageReload =()=>{
-    props.fetchApi()
-    let timerInterval
+  const handlePageReload = () => {
+    props.fetchApi();
+    let timerInterval;
     Swal.fire({
-      title: 'Reload',
-      html: 'Update',
+      title: "Reload",
+      html: "Update",
       timer: 100,
       timerProgressBar: true,
       didOpen: () => {
-        Swal.showLoading()
-        const b = Swal.getHtmlContainer().querySelector('b')
+        Swal.showLoading();
+        const b = Swal.getHtmlContainer().querySelector("b");
         timerInterval = setInterval(() => {
-          b.textContent = Swal.getTimerLeft()
-        }, 100)
+          b.textContent = Swal.getTimerLeft();
+        }, 100);
       },
       willClose: () => {
-        clearInterval(timerInterval)
-      }
+        clearInterval(timerInterval);
+      },
     }).then((result) => {
       /* Read more about handling dismissals below */
       if (result.dismiss === Swal.DismissReason.timer) {
-        console.log('I was closed by the timer')
+        console.log("I was closed by the timer");
       }
-    })
- }
+    });
+  };
   return (
     <div className="slider-section">
       <div className="container-fluid ">
@@ -68,10 +75,8 @@ const Cards = (props) => {
                     >
                       <div className={`card-box`}>
                         <div className="card-details">
-                      
-                     <h3>{props.data.followup_ques[0]}</h3> 
-                      
-                        
+                          <h3>{props.stickyNotes[index]}</h3>
+
                           <div className="card-logo">
                             <h4>
                               <img
@@ -94,9 +99,22 @@ const Cards = (props) => {
                               <span className="tooltiptext">Copied</span>
                             </button>
                           </div>
-                           {/* <p id={"content-to-copy" + index}>{props.getResponseAtIndex(index).response}</p>  */}
-                           <p  id={"content-to-copy" + index}>{props.data.response}</p>
+
+                          {/* <p id={"content-to-copy" + index}>{props.getResponseAtIndex(index).response}</p>  */}
+                          {/* loader  start */}
+                          <div id=""></div>
+                          {isLoader ? (
+                            <Loader />
+                          ) : (
+                            <Typewriter
+                              id={"content-to-copy" + index}
+                              text={props.data.response}
+                              speed={50}
+                            />
+                          )}
+                          {/* loader End */}
                         </div>
+
                         <div className="share-icon">
                           <h5>
                             <button className="" onClick={handleBackCard}>
@@ -113,15 +131,21 @@ const Cards = (props) => {
                             </button>
                           </h5>
                           <h5>
-                            <button className="social-btn" onClick={handleClick}>
+                            <button
+                              className="social-btn"
+                              onClick={toggleDropdown}
+                            >
                               <img
                                 src={process.env.PUBLIC_URL + "/img/share.svg"}
                                 alt="Load"
                               />
                             </button>
-                            
-                            {isShown && <Share description={"this is a basic share page"}/>}
-                           
+
+                            {isOpen && (
+                              <Share
+                                description={"this is a basic share page"}
+                              />
+                            )}
                           </h5>
                         </div>
                       </div>
@@ -135,17 +159,25 @@ const Cards = (props) => {
             ) : (
               <MainPage />
             )}
-            {console.log(props.data)}
+
             {props.stickyNotes.length > 0 && (
               <div className="prompt-cont top-query">
                 <ul>
-                {                    
-                    props.data.followup_ques.map((val, index) => (
-                      <li onClick={() => props.handleQueryClick(val, index)}>
+                  {props.data.followup_ques.map((val, index) => (
+                    <li onClick={() => props.handleQueryClick(val, index)}>
+                      <span>{val}</span>
+                    </li>
+                  ))}
+
+                  {/* {                    
+                    props.data.map((item, index) => (
+                         item.followup_ques.map((val,ind)=>
+                         <li onClick={() => props.handleQueryClick(val, index)}>
                         <span>{val}</span>
                       </li>
+                     
                     ))
-                  }
+            )} */}
                 </ul>
               </div>
             )}
