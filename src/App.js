@@ -3,6 +3,7 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import Cards from "./components/Cards";
 import DialogueBox from "./components/DialogueBox";
+import { Axios } from "axios";
 
 
 const responses = [
@@ -148,20 +149,32 @@ function App() {
 
   
   
-  const fetchUserData = () => {
+  const fetchUserData = (searchQuery) => {
+
+    axios.post("http://localhost:5001/test", {
+      query: encodeURIComponent(searchQuery),
+    })
+    // .then((response) => {
+    //   return response.json();
+    // })
+    .then((data) =>{
+      console.log(data)
+        setPost(data.data.response)
+    });
+    
    // https://www.incraftiv.com/downloads/pixstory-api.json
-    fetch("http://localhost:5001/test")
-      .then((resp) => {
-        return resp.json();
-      })
+    // fetch("http://localhost:5001/test")
+    //   .then((resp) => {
+    //     return resp.json();
+    //   })
       
-      .then((data) =>{
-          setPost(data.response)
-      });
+    //   .then((data) =>{
+    //       setPost(data.response)
+    //   });
   };
   
   useEffect(() => {
-      fetchUserData(); 
+      fetchUserData(''); 
   }, []);
    useEffect(() => {
     // 👇️ scroll to top on page load
@@ -246,7 +259,7 @@ function App() {
       setShow(true);
       setContainerClass("querytype-medium");
       setmessageBox("send-msg-up");
-      fetchUserData();
+      // fetchUserData();
     } else {
       setShow(false);
       setContainerClass("querytype-small");
@@ -274,7 +287,7 @@ function App() {
     setShow(false);
     setContainerClass("querytype-small");
     document.body.classList.remove("scroll-hide");
-     fetchUserData();
+     fetchUserData(content);
   };
 
   const handleCopyClick = (value) => {
