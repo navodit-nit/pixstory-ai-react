@@ -7,25 +7,24 @@ import Loader from "./Loader";
 import { useEffect } from "react";
 import Typewriter from "./Typewriter";
 const Cards = (props) => {
-  
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoader, setIsLoader] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
-
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+// loader start
+  
   useEffect(() => {
-    setIsLoading(true);
+    setIsLoader(true);
     setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-  }, []);
-
+      setIsLoader(false);
+      console.log(isLoader)
+    }, 3000)
+  }, [props.stickyNotes]);
+// loader end
   const handleBackCard = () => {
     return props.swipe("left");
   };
-
-
   const handlePageReload = () => {
     props.fetchApi();
     let timerInterval;
@@ -102,8 +101,9 @@ const Cards = (props) => {
                           </div>
 
                           {/* <p id={"content-to-copy" + index}>{props.getResponseAtIndex(index).response}</p>  */}
+                          {/* loader  start */}
                           <div id=""></div>
-                          {isLoading ? (
+                          {isLoader ? (
                             <Loader />
                           ) : (
                             <Typewriter
@@ -112,7 +112,9 @@ const Cards = (props) => {
                               speed={50}
                             />
                           )}
+                          {/* loader End */}
                         </div>
+
                         <div className="share-icon">
                           <h5>
                             <button className="" onClick={handleBackCard}>
@@ -139,7 +141,7 @@ const Cards = (props) => {
                               />
                             </button>
 
-                            {isOpen &&  (
+                            {isOpen && (
                               <Share
                                 description={"this is a basic share page"}
                               />

@@ -149,13 +149,14 @@ function App() {
   
   
   const fetchUserData = () => {
-   // fetch("")
+   // https://www.incraftiv.com/downloads/pixstory-api.json
     fetch("http://localhost:5001/test")
       .then((resp) => {
         return resp.json();
       })
+      
       .then((data) =>{
-        setPost(data.response)
+          setPost(data.response)
       });
   };
   
@@ -245,7 +246,7 @@ function App() {
       setShow(true);
       setContainerClass("querytype-medium");
       setmessageBox("send-msg-up");
-     //  fetchUserData();
+      fetchUserData();
     } else {
       setShow(false);
       setContainerClass("querytype-small");
@@ -273,7 +274,7 @@ function App() {
     setShow(false);
     setContainerClass("querytype-small");
     document.body.classList.remove("scroll-hide");
-    // fetchUserData();
+     fetchUserData();
   };
 
   const handleCopyClick = (value) => {
