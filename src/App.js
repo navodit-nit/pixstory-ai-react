@@ -150,7 +150,7 @@ function App() {
   
   const fetchUserData = (searchQuery) => {
 
-    axios.post("http://localhost:5001/test", {
+    axios.post("https://dev.pixstory.ai/be-node/test", {
       query: encodeURIComponent(searchQuery),
     })
     // .then((response) => {
