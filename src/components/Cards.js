@@ -71,7 +71,7 @@ const Cards = (props) => {
                       onCardLeftScreen={() =>
                         props.outOfFrame(character, index)
                       }
-                      preventSwipe={["left", "right"]}
+                      preventSwipe={["up", "down"]}
                     >
                       <div className={`card-box`}>
                         <div className="card-details">
