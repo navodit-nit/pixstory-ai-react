@@ -3,7 +3,7 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import Cards from "./components/Cards";
 import DialogueBox from "./components/DialogueBox";
-import { Axios } from "axios";
+import { axios } from "axios";
 
 
 const responses = [
