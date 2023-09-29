@@ -2,7 +2,7 @@ import MainPage from "./../components/MainPage";
 import TinderCard from "react-tinder-card";
 import React, { useState } from "react";
 import Share from "./Share";
-import Swal from "sweetalert2";
+
 import Loader from "./Loader";
 import { useEffect } from "react";
 import Typewriter from "./Typewriter";
@@ -27,28 +27,14 @@ const Cards = (props) => {
   };
   const handlePageReload = () => {
     props.fetchApi();
-    let timerInterval;
-    Swal.fire({
-      title: "Reload",
-      html: "Update",
-      timer: 100,
-      timerProgressBar: true,
-      didOpen: () => {
-        Swal.showLoading();
-        const b = Swal.getHtmlContainer().querySelector("b");
-        timerInterval = setInterval(() => {
-          b.textContent = Swal.getTimerLeft();
-        }, 100);
-      },
-      willClose: () => {
-        clearInterval(timerInterval);
-      },
-    }).then((result) => {
-      /* Read more about handling dismissals below */
-      if (result.dismiss === Swal.DismissReason.timer) {
-        console.log("I was closed by the timer");
-      }
-    });
+      setIsLoader(true);
+      setTimeout(() => {
+        setIsLoader(false);
+        console.log(isLoader)
+      }, 3000)
+    
+   
+    
   };
   return (
     <div className="slider-section">
