@@ -61,6 +61,8 @@ jobs:
           npx patch-package react-tinder-card
       - name: Building project
         run: npm run build
+        env:
+          CI: false
 
       - name: Deploy to S3 bucket
         run: aws s3 sync ./build/ s3://${{ env.BUCKET_NAME }}/test/ --delete
