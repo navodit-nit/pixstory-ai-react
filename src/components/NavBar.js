@@ -75,9 +75,7 @@ const NavBar = (props) => {
                     <li>
                       <NavLink to="/termsOfUse">Terms of Use</NavLink>
                     </li>
-                    <li>
-                      <NavLink to="/login">Login</NavLink>
-                    </li>
+                  
                   </ul>
                 </div>
                 <div className="mode-container">
