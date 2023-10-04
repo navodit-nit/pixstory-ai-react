@@ -64,10 +64,6 @@ const NavBar = (props) => {
                         Home
                       </NavLink>
                     </li> }
-                   
-                  
- 
-               
                     <li>
                       <NavLink aria-current="page" to="/about">
                         About Us
