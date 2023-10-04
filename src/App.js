@@ -149,8 +149,8 @@ function App() {
   
   
   const fetchUserData = (searchQuery) => {
-
-    axios.post("https://dev.pixstory.ai/be-node/test", {
+    console.log(process.env.REACT_APP_BASE_URL);
+    axios.post(process.env.REACT_APP_BASE_URL+"/test", {
       query: encodeURIComponent(searchQuery),
     })
     // .then((response) => {
