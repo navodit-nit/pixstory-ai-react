@@ -2,11 +2,12 @@ import React, { useState, useMemo, useRef, useEffect } from "react";
 import "./App.css";
 import NavBar from "./components/NavBar";
 
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes} from "react-router-dom";
 import About from "./components/About";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsOfUse from "./components/TermsOfUse";
 import Home from "./Home";
+import LogIn from "./components/LogIn";
 
 
 const responses = [
@@ -305,6 +306,8 @@ function App() {
       document.body.classList.add("scroll-hide");
     }
   });
+
+  
   
   return (
     <div
@@ -318,12 +321,13 @@ function App() {
       <div className="image-bg">
 
        <BrowserRouter>
-       <NavBar toggleTheme={toggleTheme} theme={theme} />
+       <NavBar toggleTheme={toggleTheme} theme={theme}  />
         <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path="/About" element={<About/>}/>
-          <Route path="/PrivacyPolicy" element={<PrivacyPolicy/>}/>
-          <Route path="/TermsOfUse" element={<TermsOfUse/>}/>
+          <Route path="/about" element={<About/>}/>
+          <Route path="/privacyPolicy" element={<PrivacyPolicy/>}/>
+          <Route path="/termsOfUse" element={<TermsOfUse/>}/>
+          <Route path="/login" element={<LogIn/>}/>
           <Route/>
         </Routes>
        </BrowserRouter>

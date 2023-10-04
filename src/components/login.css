@@ -1,0 +1,25 @@
+.login-container{
+    
+   background-color: #5FAF9F;
+    border-radius: 10px;
+    padding:40px 30px;
+}
+.from-control{
+    display: block;
+    border:none;
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 5px;
+}
+.submit-btn{
+    display: block;
+    border:none;
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 5px;
+    background-color: black;
+    font-size: 16px;
+    color:#fff
+}
