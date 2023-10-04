@@ -147,30 +147,20 @@ function Home() {
   const [InputValue, setInputValue] = useState();
 
   
+    const fetchUserData = (searchQuery) => {
+      console.log(process.env.REACT_APP_BASE_URL);
+      axios.post(process.env.REACT_APP_BASE_URL+"/test", {
+        query: encodeURIComponent(searchQuery),
+      })
+      // .then((response) => {
+      //   return response.json();
+      // })
+      .then((data) =>{
+        console.log(data)
+          setPost(data.data.response)
+      });
+    };
   
-  const fetchUserData = (searchQuery) => {
-
-    axios.post("https://dev.pixstory.ai/be-node/test", {
-      query: encodeURIComponent(searchQuery),
-    })
-    // .then((response) => {
-    //   return response.json();
-    // })
-    .then((data) =>{
-      console.log(data)
-        setPost(data.data.response)
-    });
-    
-   // https://www.incraftiv.com/downloads/pixstory-api.json
-    // fetch("http://localhost:5001/test")
-    //   .then((resp) => {
-    //     return resp.json();
-    //   })
-      
-    //   .then((data) =>{
-    //       setPost(data.response)
-    //   });
-  };
   
   useEffect(() => {
       fetchUserData(''); 

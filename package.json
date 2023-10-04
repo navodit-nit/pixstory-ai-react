@@ -10,6 +10,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.5.1",
+    "env-cmd": "^10.1.0",
     "json-server": "^0.17.3",
     "material-icons": "^1.13.12",
     "patch-package": "^8.0.0",
@@ -27,8 +28,12 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "env-cmd -f .env.local react-scripts start",
+    "start:dev": "env-cmd -f .env.dev react-scripts start",
+    "start:test": "env-cmd -f .env.test react-scripts start",
+    "build": "env-cmd -f .env.dev react-scripts build",
+    "build:dev": "env-cmd -f .env.dev react-scripts build",
+    "build:test": "env-cmd -f .env.test react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "postinstall": "patch-package"
