@@ -1016,7 +1016,7 @@ display: none;
   .bgImage .slider-section{
     width: auto;
     margin: 0px auto;
-    z-index: -2;
+    
   }
   .overlayDialogBox .message-section {
     background-color: #FDFDFD;

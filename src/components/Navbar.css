@@ -3,14 +3,14 @@
   padding: 5px 10px;
 }
 .navbar-nav li a:hover {
-  color: #333 !important;
+  color: #333;
 }
 
 .navbar-toggler:focus .navbar:after {
   display: block;
 }
 .active{
-  color: #333 !important;
+  color: #333;
 }
 .dark-theme .active{
   color: var(--yellow)!important;
@@ -37,7 +37,7 @@
   }
   .mode-container {
     position: absolute;
-    top: 17px;
+    top: 9px;
     right: 80px;
     display: inline-block;
    
@@ -57,7 +57,7 @@
   .dark-theme .navbar-toggler {
     margin: 0px 5px;
     padding: 5px 10px;
-    background-color: #ffffff;
+    
     color: white;
     border: none;
     border-radius: 5px;
@@ -112,27 +112,26 @@
   position: relative;
 }
 
-input {
+.label input {
   position: absolute;
   opacity: 0;
 }
 .moon {
   font-size:1.3em;
-  color:var(--yellow);
-  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
-  transform: scale(0);
+  color:#333;
   transition: 1s ease;
-  z-index: 2;
+  transition-delay: .8s;
+  z-index: 1;
   position: absolute;
   top: 0px;
   
 }
 .sun {
   font-size: 1.3em;
-  color: #333;
+  color: var(--yellow);
+  transform: scale(0);
   transition: 1s ease;
-  transition-delay: .8s;
-  z-index: 1;
+  z-index: 2;
   position: absolute;
   top:0px
 }
@@ -149,13 +148,19 @@ input {
     transition: 1s;
   
 }
-input:checked~.moon {
-  transform: scale(1) rotate(360deg);
-}
-input:checked~.sun {
+.label input:checked~.moon {
   transition-delay: 0s;
   transform: rotate(360deg) scale(0);
 }
-input:checked~.toggle {
+.label input:checked~.sun {
+  transform: scale(1) rotate(360deg);
+ 
+}
+.label input:checked~.toggle {
   z-index: 1;
 }
+.navbar-toggler{border: none!important;background-color: transparent;font-size: 35px;}
+.navbar-toggler:focus {
+  text-decoration: none;
+  outline: 0;
+  box-shadow:none!important}
