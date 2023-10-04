@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
+
 const DialogueBox = (props) => {
   const [textInput, setTextInput] = useState("");
-  
+
   const handleAddNote = () => {
     if (textInput.trim() !== "") {
       props.setStickyNotes([...props.stickyNotes, textInput]);
@@ -21,12 +22,13 @@ const DialogueBox = (props) => {
       setIsLoading(false);
     }, 3000);
   }, []);
+  // mouse event
 
   return (
     <>
-     
-      <div 
-        className={ props.show == 1 || (props.show > 0 && props.stickyNotes.length == 0)
+      <div
+        className={
+          props.show == 1 || (props.show > 0 && props.stickyNotes.length == 0)
             ? "overlayDialogBox"
             : "query-section"
         }
@@ -76,13 +78,17 @@ const DialogueBox = (props) => {
               {props.show && (
                 <div className="col-md-12">
                   <div className="prompt-cont bottom-prompt-box">
-                    <ul>
-                      {props.data.followup_ques.map((val, index) => (
-                        <li onClick={() => props.handleQueryClick(val, index)}>
-                          <span>{val}</span>
-                        </li>
-                      ))}
-                    </ul>
+                  
+                      <ul>
+                        {props.data.followup_ques.map((val, index) => (
+                          <li
+                            onClick={() => props.handleQueryClick(val, index)}
+                          >
+                            <span>{val}</span>
+                          </li>
+                        ))}
+                      </ul>
+                   
                   </div>
                 </div>
               )}
@@ -90,10 +96,14 @@ const DialogueBox = (props) => {
           </div>
         </div>
       </div>
-      <div  className={ props.show == 1 || (props.show > 0 && props.stickyNotes.length == 0)
+      <div
+        className={
+          props.show == 1 || (props.show > 0 && props.stickyNotes.length == 0)
             ? "overlayDialoghide"
             : "query-section-show"
-        } onClick={handleCloseDialougeBox}></div>
+        }
+        onClick={handleCloseDialougeBox}
+      ></div>
     </>
   );
 };

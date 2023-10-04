@@ -32,10 +32,10 @@ const Cards = (props) => {
         setIsLoader(false);
         console.log(isLoader)
       }, 3000)
-    
-   
-    
   };
+//Mouse event
+
+
   return (
     <div className="slider-section">
       <div className="container-fluid ">

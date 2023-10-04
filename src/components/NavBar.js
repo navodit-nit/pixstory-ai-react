@@ -1,22 +1,25 @@
 import React, { useState } from "react";
-import ReactSwitch from "react-switch";
+// import ReactSwitch from "react-switch";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 
 const NavBar = (props) => {
-  const [isOpenMenu,setOpenMenu] = useState(false)
-  const handeleMenu = ()=>{
-    setOpenMenu(!isOpenMenu)
-  }
+  const [isOpenMenu, setOpenMenu] = useState(false);
+  const handeleMenu = () => {
+    setOpenMenu(!isOpenMenu);
+  };
 
   return (
     <>
-   
       <div className="container-fluid  navBar-bg py-2 ">
         <div className="row">
           <div className="col-md-12">
-            <nav className={`navbar navbar-expand-lg navbar-light ${isOpenMenu&& "navBar-style"}`}>
-              <div className="container-fluid">
+            <nav
+              className={`navbar navbar-expand-lg navbar-light ${
+                isOpenMenu && "navBar-style"
+              }`}
+            >
+              <div className="container-fluid navbar-container">
                 <NavLink className="navbar-brand" to="/">
                   <img
                     src={process.env.PUBLIC_URL + "/img/logo.svg"}
@@ -29,7 +32,7 @@ const NavBar = (props) => {
                     className="dark-logo"
                   />
                 </NavLink>
-                 {}
+               
                 <button
                   className="navbar-toggler"
                   type="button"
@@ -42,8 +45,8 @@ const NavBar = (props) => {
                 >
                   <span className="navbar-toggler-icon"></span>
                   <div id="navbar-close" class="hidden">
-          <span class="glyphicon glyphicon-remove"></span>
-        </div>
+                    <span class="glyphicon glyphicon-remove"></span>
+                  </div>
                 </button>
                 <div
                   className="collapse navbar-collapse"
@@ -51,42 +54,41 @@ const NavBar = (props) => {
                 >
                   <ul className="navbar-nav ms-auto">
                     <li>
-                      <NavLink  aria-current="page" to="/">
+                      <NavLink aria-current="page" to="/">
                         Home
                       </NavLink>
                     </li>
 
-                    <li >
-                      <NavLink
-                        
-                        aria-current="page"
-                        to="/about"
-                      >
+                    <li>
+                      <NavLink aria-current="page" to="/about">
                         About Us
                       </NavLink>
                     </li>
-                    <li >
-                      <NavLink  to="/PrivacyPolicy">
-                        Privacy Policy
-                      </NavLink>
+                    <li>
+                      <NavLink to="/PrivacyPolicy">Privacy Policy</NavLink>
                     </li>
-                    <li >
-                      <NavLink to="termsOfUse">
-                        Terms of Use
-                      </NavLink>
+                    <li>
+                      <NavLink to="termsOfUse">Terms of Use</NavLink>
                     </li>
-                   
                   </ul>
                 </div>
-                
-                     
+                </div>
+               <div className="mode-container">
+              <label className="label">
+                <input
+                  type="checkbox"
+                  className="theme-btn"
+                  onChange={props.toggleTheme}
+                  checked={props.theme === "dark"}
+                />
+                <ion-icon name="sunny" class="sun"></ion-icon>
+                <ion-icon name="moon-outline" class="moon"></ion-icon>
+                <span className="toggle"></span>
+              </label>
               </div>
-              <ReactSwitch  className="theme-btn"
-                        onChange={props.toggleTheme}
-                        checked={props.theme === "dark"}
-                      />
+
             </nav>
-            {isOpenMenu&&<div className="overlay-menu"></div>}
+            {isOpenMenu && <div className="overlay-menu"></div>}
           </div>
         </div>
       </div>

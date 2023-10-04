@@ -300,7 +300,18 @@ body {
   width: 160px;
   box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.10);
 }
-
+.items{
+  position: relative;
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    transition: all 0.2s;
+    transform: scale(0.98);
+    will-change: transform;
+    user-select: none;
+    cursor: pointer;
+}
 .buttons button:hover {
   transform: scale(1.05);
 }
@@ -934,7 +945,7 @@ display: none;
 
 }
 .prompt-cont.top-query ul::-webkit-scrollbar {
-  height: 6px;
+  height: 10px;
   background-color: #D9D9D9;
 }
 
@@ -952,6 +963,10 @@ display: none;
 }
 
 @media only screen and (max-width: 767px) {
+  .prompt-cont.top-query ul::-webkit-scrollbar {
+    height: 6px;
+    background-color: #D9D9D9;
+  }
   .slider-section {
     /* padding-bottom: 60px; */
     width: 58%;
