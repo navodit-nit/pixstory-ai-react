@@ -3,9 +3,9 @@ import "./login.css";
 const LogIn = () => {
   return (
     <>
-      <div className="container">
+      <div className="container-fluid login-from">
         <div className="row">
-          <div className="col-md-4 mx-auto">
+          <div className="col-md-3 mx-auto">
             <div className="login-container">
               <div className="logo-section">
                 <img
