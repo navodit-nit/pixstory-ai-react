@@ -1,36 +1,96 @@
-import React from "react";
-import ReactSwitch from "react-switch";
+import React, { useState } from "react";
+// import ReactSwitch from "react-switch";
+import { NavLink } from "react-router-dom";
+import "./Navbar.css";
+
 const NavBar = (props) => {
+  const [isOpenMenu, setOpenMenu] = useState(false);
+  const handeleMenu = () => {
+    setOpenMenu(!isOpenMenu);
+  };
+
   return (
     <>
-      <div className="fixed-top">
-        <div className="container-fluid ">
-          <div className="row">
-            <div className="col-md-12">
-             <div className="topbar">
-             <a href="#">
-                <img
-                  src={process.env.PUBLIC_URL + "/img/logo.svg"}
-                  alt="Logo"
-                  className="light-logo"
+      <div className="container-fluid  navBar-bg py-2 ">
+        <div className="row">
+          <div className="col-md-12">
+            <nav
+              className={`navbar navbar-expand-lg navbar-light ${
+                isOpenMenu && "navBar-style"
+              }`}
+            >
+              <div className="container navbar-container">
+                <NavLink className="navbar-brand" to="/">
+                  <img
+                    src={process.env.PUBLIC_URL + "/img/logo.svg"}
+                    alt="Logo"
+                    className="light-logo"
+                  />
+                  <img
+                    src={process.env.PUBLIC_URL + "/img/yellow-logo.svg"}
+                    alt="Logo"
+                    className="dark-logo"
+                  />
+                </NavLink>
+               
+                <button
+                  className="navbar-toggler"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#navbarNavDropdown"
+                  aria-controls="navbarNavDropdown"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                  onClick={handeleMenu}
+                >{
+                  isOpenMenu ? <ion-icon name="close-outline"></ion-icon>:<ion-icon name="menu-outline"></ion-icon>
+                }
+                  
+                 
+                </button>
+                <div
+                  className="collapse navbar-collapse"
+                  id="navbarNavDropdown"
+                >
+                  <ul className="navbar-nav ms-auto">
+                    <li>
+                      <NavLink aria-current="page" to="/">
+                        Home
+                      </NavLink>
+                    </li>
+
+                    <li>
+                      <NavLink aria-current="page" to="/about">
+                        About Us
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/PrivacyPolicy">Privacy Policy</NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/termsOfUse">Terms of Use</NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/login">Login</NavLink>
+                    </li>
+                  </ul>
+                </div>
+                <div className="mode-container">
+              <label className="label">
+                <input
+                  type="checkbox"
+                  className="theme-btn"
+                  onChange={props.toggleTheme}
+                  checked={props.theme === "dark"}
                 />
-                <img
-                  src={process.env.PUBLIC_URL + "/img/yellow-logo.svg"}
-                  alt="Logo"
-                  className="dark-logo"
-                />
-              </a>
-              <button className="btn float-end">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1 12H23" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M1 4H23" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M1 20H23" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>             
-                
-              </button>
-              <ReactSwitch onChange={props.toggleTheme} checked={props.theme === "dark"} />
-             </div>
-            </div>
+                <ion-icon name="sunny" class="sun"></ion-icon>
+                <ion-icon name="moon-outline" class="moon"></ion-icon>
+                <span className="toggle"></span>
+              </label>
+              </div>
+                </div>
+            </nav>
+            {isOpenMenu && <div className="overlay-menu"></div>}
           </div>
         </div>
       </div>
