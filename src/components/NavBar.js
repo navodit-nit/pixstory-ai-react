@@ -8,6 +8,7 @@ const NavBar = (props) => {
   const handeleMenu = ()=>{
     setOpenMenu(!isOpenMenu)
   }
+
   return (
     <>
    
