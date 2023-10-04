@@ -19,7 +19,7 @@ const NavBar = (props) => {
                 isOpenMenu && "navBar-style"
               }`}
             >
-              <div className="container-fluid navbar-container">
+              <div className="container navbar-container">
                 <NavLink className="navbar-brand" to="/">
                   <img
                     src={process.env.PUBLIC_URL + "/img/logo.svg"}
@@ -42,11 +42,11 @@ const NavBar = (props) => {
                   aria-expanded="false"
                   aria-label="Toggle navigation"
                   onClick={handeleMenu}
-                >
-                  <span className="navbar-toggler-icon"></span>
-                  <div id="navbar-close" class="hidden">
-                    <span class="glyphicon glyphicon-remove"></span>
-                  </div>
+                >{
+                  isOpenMenu ? <ion-icon name="close-outline"></ion-icon>:<ion-icon name="menu-outline"></ion-icon>
+                }
+                  
+                 
                 </button>
                 <div
                   className="collapse navbar-collapse"
@@ -68,12 +68,14 @@ const NavBar = (props) => {
                       <NavLink to="/PrivacyPolicy">Privacy Policy</NavLink>
                     </li>
                     <li>
-                      <NavLink to="termsOfUse">Terms of Use</NavLink>
+                      <NavLink to="/termsOfUse">Terms of Use</NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/login">Login</NavLink>
                     </li>
                   </ul>
                 </div>
-                </div>
-               <div className="mode-container">
+                <div className="mode-container">
               <label className="label">
                 <input
                   type="checkbox"
@@ -86,7 +88,7 @@ const NavBar = (props) => {
                 <span className="toggle"></span>
               </label>
               </div>
-
+                </div>
             </nav>
             {isOpenMenu && <div className="overlay-menu"></div>}
           </div>
