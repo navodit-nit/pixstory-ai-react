@@ -1,16 +1,22 @@
 import React, { useState } from "react";
 // import ReactSwitch from "react-switch";
-import { NavLink } from "react-router-dom";
+import { NavLink,} from "react-router-dom";
 import "./Navbar.css";
+import { useLocation } from "react-router-dom";
+ 
 
 const NavBar = (props) => {
   const [isOpenMenu, setOpenMenu] = useState(false);
+ 
   const handeleMenu = () => {
     setOpenMenu(!isOpenMenu);
   };
-
+ 
+   const pathname = useLocation()
+   const location = pathname.pathname
   return (
     <>
+   
       <div className="container-fluid  navBar-bg py-2 ">
         <div className="row">
           <div className="col-md-12">
@@ -20,6 +26,7 @@ const NavBar = (props) => {
               }`}
             >
               <div className="container navbar-container">
+              
                 <NavLink className="navbar-brand" to="/">
                   <img
                     src={process.env.PUBLIC_URL + "/img/logo.svg"}
@@ -32,7 +39,6 @@ const NavBar = (props) => {
                     className="dark-logo"
                   />
                 </NavLink>
-               
                 <button
                   className="navbar-toggler"
                   type="button"
@@ -53,12 +59,15 @@ const NavBar = (props) => {
                   id="navbarNavDropdown"
                 >
                   <ul className="navbar-nav ms-auto">
-                    <li>
+                   {location == "/" ?  "" : <li>
                       <NavLink aria-current="page" to="/">
                         Home
                       </NavLink>
-                    </li>
-
+                    </li> }
+                   
+                  
+ 
+               
                     <li>
                       <NavLink aria-current="page" to="/about">
                         About Us
