@@ -1,13 +1,9 @@
 import React, { useState, useMemo, useRef, useEffect } from "react";
 import "./App.css";
-import NavBar from "./components/NavBar";
 
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import About from "./components/About";
-import PrivacyPolicy from "./components/PrivacyPolicy";
-import TermsOfUse from "./components/TermsOfUse";
-import Home from "./Home";
-
+import Cards from "./components/Cards";
+import DialogueBox from "./components/DialogueBox";
+import axios from 'axios';
 
 const responses = [
   {
@@ -134,7 +130,7 @@ const db = [
 //     "What are some other sites you visit frequently? Why do you like them?",
 //   ];
 
-function App() {
+function Home() {
   const [showAdvanced, setShowAdvanced] = useState(true);
   const [stickyNotes, setStickyNotes] = useState([]);
   const [stickyNotesCounts, setStickyNotesCounts] = useState();
@@ -152,20 +148,32 @@ function App() {
 
   
   
-  const fetchUserData = () => {
+  const fetchUserData = (searchQuery) => {
+
+    axios.post("https://dev.pixstory.ai/be-node/test", {
+      query: encodeURIComponent(searchQuery),
+    })
+    // .then((response) => {
+    //   return response.json();
+    // })
+    .then((data) =>{
+      console.log(data)
+        setPost(data.data.response)
+    });
+    
    // https://www.incraftiv.com/downloads/pixstory-api.json
-    fetch("http://localhost:5001/test")
-      .then((resp) => {
-        return resp.json();
-      })
+    // fetch("http://localhost:5001/test")
+    //   .then((resp) => {
+    //     return resp.json();
+    //   })
       
-      .then((data) =>{
-          setPost(data.response)
-      });
+    //   .then((data) =>{
+    //       setPost(data.response)
+    //   });
   };
   
   useEffect(() => {
-      fetchUserData(); 
+      fetchUserData(''); 
   }, []);
    useEffect(() => {
     // 👇️ scroll to top on page load
@@ -216,7 +224,7 @@ function App() {
   };
 
   const updateCurrentIndex = (val) => {
-    debugger;
+  
     setCurrentIndex(val);
     currentIndexRef.current = val;
   };
@@ -233,7 +241,7 @@ function App() {
   const canSwipe = currentIndex >= 0;
 
   const swipe = async (dir) => {
-    debugger;
+
     if (canSwipe && currentIndex < stickyNotes.length) {
       await childRefs[currentIndex].current.swipe(dir); // Swipe the card!
     }
@@ -250,7 +258,7 @@ function App() {
       setShow(true);
       setContainerClass("querytype-medium");
       setmessageBox("send-msg-up");
-      fetchUserData();
+      // fetchUserData();
     } else {
       setShow(false);
       setContainerClass("querytype-small");
@@ -278,7 +286,7 @@ function App() {
     setShow(false);
     setContainerClass("querytype-small");
     document.body.classList.remove("scroll-hide");
-     fetchUserData();
+     fetchUserData(content);
   };
 
   const handleCopyClick = (value) => {
@@ -296,18 +304,19 @@ function App() {
     window.getSelection().removeAllRanges();
   };
 
-  const toggleTheme = () => {
-    setTheme((curr) => (curr === "light" ? "dark" : "light"));
-  };
+ 
 
   useEffect(() => {
     if (stickyNotes.length > 0 && containerClass === "querytype-medium") {
       document.body.classList.add("scroll-hide");
     }
   });
-  
+
+
   return (
-    <div
+   
+       
+<> <div
       onClick={() => {
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
       }}
@@ -315,21 +324,36 @@ function App() {
         theme === "light" ? "light-theme" : "dark-theme"
       }`}
     >
-      <div className="image-bg">
+        <Cards
+          stickyNotes={stickyNotes}
+          childRefs={childRefs}
+          swiped={swiped}
+          outOfFrame={outOfFrame}
+          handleQueryClick={handleQueryClick}
+          // queries={queries}
+          getResponseAtIndex={getResponseAtIndex}
+          handleCopyClick={handleCopyClick}
+          swipe={swipe}
+          fetchApi={fetchUserData}
+          data={post}
+        />
 
-       <BrowserRouter>
-       <NavBar toggleTheme={toggleTheme} theme={theme} />
-        <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/About" element={<About/>}/>
-          <Route path="/PrivacyPolicy" element={<PrivacyPolicy/>}/>
-          <Route path="/TermsOfUse" element={<TermsOfUse/>}/>
-          <Route/>
-        </Routes>
-       </BrowserRouter>
-      </div>
-    </div>
+        <DialogueBox className="parent"
+          show={show}
+          stickyNotes={stickyNotes}
+          messageBox={messageBox}
+          containerClass={containerClass}
+          handlePropt={handlePropt}
+          textInput={textInput}
+          // queries={queries}
+          handleQueryClick={handleQueryClick}
+          setStickyNotes={setStickyNotes}
+          setShow={setShow}
+          data={post}
+        /></div>
+
+     </>
   );
 }
 
-export default App;
+export default Home;
