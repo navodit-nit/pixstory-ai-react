@@ -1,0 +1,110 @@
+diff --git a/node_modules/react-tinder-card/index.js b/node_modules/react-tinder-card/index.js
+index 7746348..e4bdc39 100644
+--- a/node_modules/react-tinder-card/index.js
++++ b/node_modules/react-tinder-card/index.js
+@@ -5,20 +5,20 @@ const height = window.innerHeight
+ const width = window.innerWidth
+ 
+ const settings = {
+-  maxTilt: 25, // in deg
++  maxTilt: 10, // in deg
+   rotationPower: 50,
+-  swipeThreshold: 0.5 // need to update this threshold for RN (1.5 seems reasonable...?)
++  swipeThreshold: 0.25 // need to update this threshold for RN (1.5 seems reasonable...?)
+ }
+ 
+ // physical properties of the spring
+ const physics = {
+   touchResponsive: {
+     friction: 50,
+-    tension: 2000
++    tension: 500
+   },
+   animateOut: {
+-    friction: 30,
+-    tension: 400
++    friction: 15,
++    tension: 200
+   },
+   animateBack: {
+     friction: 10,
+@@ -38,6 +38,7 @@ const normalize = (vector) => {
+ const animateOut = async (gesture, setSpringTarget) => {
+   const diagonal = pythagoras(height, width)
+   const velocity = pythagoras(gesture.x, gesture.y)
++  console.log('velocity: %d',velocity);
+   const finalX = diagonal * gesture.x
+   const finalY = diagonal * gesture.y
+   const finalRotation = gesture.x * 45
+@@ -172,8 +173,9 @@ const TinderCard = React.forwardRef(
+       let isClicking = false
+ 
+       element.current.addEventListener(('touchstart'), (ev) => {
++        console.log('touchstart');
+         if (!ev.srcElement.className.includes('pressable') && ev.cancelable) {
+-          ev.preventDefault()
++          // ev.preventDefault()
+         }
+ 
+         const gestureState = gestureStateFromWebEvent(ev, startPositon, lastPosition, true)
+@@ -182,6 +184,7 @@ const TinderCard = React.forwardRef(
+       })
+ 
+       element.current.addEventListener(('mousedown'), (ev) => {
++        console.log('mousedown1');
+         isClicking = true
+         const gestureState = gestureStateFromWebEvent(ev, startPositon, lastPosition, false)
+         lastPosition = gestureState
+@@ -189,12 +192,17 @@ const TinderCard = React.forwardRef(
+       })
+ 
+       const handleMove = (gestureState) => {
++        console.log('handleMove');
+         // Check fulfillment
+         if (onSwipeRequirementFulfilled || onSwipeRequirementUnfulfilled) {
+           const dir = getSwipeDirection({
+             x: swipeRequirementType === 'velocity' ? gestureState.vx : gestureState.dx,
+             y: swipeRequirementType === 'velocity' ? gestureState.vy : gestureState.dy
+           })
++          if(dir === 'up' || dir === 'down') {
++            console.log(dir);
++            return;
++          }
+           if (dir !== swipeThresholdFulfilledDirection) {
+             swipeThresholdFulfilledDirection = dir
+             if (swipeThresholdFulfilledDirection === 'none') {
+@@ -207,9 +215,10 @@ const TinderCard = React.forwardRef(
+ 
+         // use guestureState.vx / guestureState.vy for velocity calculations
+         // translate element
+-        let rot = gestureState.vx * 15 // Magic number 15 looks about right
+-        rot = Math.max(Math.min(rot, settings.maxTilt), -settings.maxTilt)
+-        setSpringTarget.start({ xyrot: [gestureState.dx, gestureState.dy, rot], config: physics.touchResponsive })
++        
++        // let rot = gestureState.vx * 15 // Magic number 15 looks about right
++        // rot = Math.max(Math.min(rot, settings.maxTilt), -settings.maxTilt)
++        // setSpringTarget.start({ xyrot: [gestureState.dx, gestureState.dy, rot], config: physics.touchResponsive })
+       }
+ 
+       window.addEventListener(('mousemove'), (ev) => {
+@@ -228,9 +237,10 @@ const TinderCard = React.forwardRef(
+       })
+ 
+       element.current.addEventListener(('touchmove'), (ev) => {
++        console.log('touchmove');
+         const gestureState = gestureStateFromWebEvent(ev, startPositon, lastPosition, true)
+         lastPosition = gestureState
+-        handleMove(gestureState)
++        // handleMove(gestureState)
+       })
+ 
+       element.current.addEventListener(('touchend'), (ev) => {
+@@ -247,7 +257,7 @@ const TinderCard = React.forwardRef(
+         ref: element,
+         className,
+         style: {
+-          transform: xyrot.to((x, y, rot) => `translate3d(${x}px, ${y}px, ${0}px) rotate(${rot}deg)`)
++           transform: xyrot.to((x, y, rot) => `translate3d(${x}px, ${y}px, ${0}px) rotate(${rot}deg)`)
+         },
+         children
+       })
