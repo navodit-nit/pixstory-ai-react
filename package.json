@@ -31,9 +31,11 @@
     "start": "env-cmd -f .env.local react-scripts start",
     "start:dev": "env-cmd -f .env.dev react-scripts start",
     "start:test": "env-cmd -f .env.test react-scripts start",
+    "start:demo": "env-cmd -f .env.demo react-scripts start",
     "build": "env-cmd -f .env.dev react-scripts build",
     "build:dev": "env-cmd -f .env.dev react-scripts build",
     "build:test": "env-cmd -f .env.test react-scripts build",
+    "build:demo": "env-cmd -f .env.demo react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "postinstall": "patch-package"

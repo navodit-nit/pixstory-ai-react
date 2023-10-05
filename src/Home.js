@@ -337,6 +337,11 @@ function Home() {
           setShow={setShow}
           data={post}
         />
+<<<<<<< HEAD
+=======
+         <p align="right">v1.0.0-051023:1524    .</p>       
+        </div>
+>>>>>>> b27eb182885e4334910328cf98310057b97fbe1d
 
      </>
   );
