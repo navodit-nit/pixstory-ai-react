@@ -340,7 +340,9 @@ function Home() {
           setStickyNotes={setStickyNotes}
           setShow={setShow}
           data={post}
-        /></div>
+        />
+         <p align="right">v1.0.0-051023:1252    .</p>       
+        </div>
 
      </>
   );
