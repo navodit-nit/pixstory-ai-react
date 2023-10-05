@@ -6,7 +6,10 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "dev_release" ]
+    branches:
+      - dev_release
+      - demo
+      - test
   #pull_request:
     #branches: [ "main" ]
 
@@ -15,7 +18,9 @@ on:
 env:
   BUCKET_NAME : "pix-fe-react-app"
   AWS_REGION : "ap-south-1"
-  CF_DISTRIBUTION_ID: "E3I8SUCRTMYXZ1"
+  CF_DISTRIBUTION_ID_DEV: "E116PBN65LUHV1"
+  CF_DISTRIBUTION_ID_TEST: "E3I8SUCRTMYXZ1"
+  CF_DISTRIBUTION_ID_DEMO: "E1UHURS8XA9LUL"
 # permission can be added at job level or workflow level    
 permissions:
   id-token: write   # This is required for requesting the JWT
@@ -32,8 +37,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
-        with:
-          ref: dev_release
+        #with:
+          #ref: dev_release
 
       - name: Installing Node.js
         uses: actions/setup-node@v3
@@ -55,12 +60,13 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Patch tinder-card library
         run: |
-          aws s3 cp s3://pix-fe-react-app/tinder-card-patch/index.js .
-          rm node_modules/react-tinder-card/index.js
-          cp index.js node_modules/react-tinder-card/index.js
+          #aws s3 cp s3://pix-fe-react-app/tinder-card-patch/index.js .
+          #rm node_modules/react-tinder-card/index.js
+          #cp index.js node_modules/react-tinder-card/index.js
           npx patch-package react-tinder-card
       - name: Building project
-        run: npm run build
+        run: | 
+          npm run build
         env:
           CI: false
 
@@ -68,4 +74,4 @@ jobs:
         run: aws s3 sync ./build/ s3://${{ env.BUCKET_NAME }}/test/ --delete
 
       - name: Create invalidation on cloudfront
-        run: aws cloudfront create-invalidation --distribution-id ${{ env.CF_DISTRIBUTION_ID }} --paths "/*" --no-cli-pager
+        run: aws cloudfront create-invalidation --distribution-id ${{ env.CF_DISTRIBUTION_ID_TEST }} --paths "/*" --no-cli-pager
