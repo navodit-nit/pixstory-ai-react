@@ -66,12 +66,49 @@ jobs:
           npx patch-package react-tinder-card
       - name: Building project
         run: | 
-          npm run build
+          #npm run build
+          if [[ $GITHUB_REF_NAME == "dev_release" ]]; 
+          then
+            npm run build:dev
+          elif [[ $GITHUB_REF_NAME == "test" ]];
+          then
+            npm run build:test
+          elif [[ $GITHUB_REF_NAME == "demo" ]];
+          then
+            npm run build:demo  
+          else
+            echo "No matching branches found"
+          fi
         env:
           CI: false
 
       - name: Deploy to S3 bucket
-        run: aws s3 sync ./build/ s3://${{ env.BUCKET_NAME }}/test/ --delete
-
+        run: |
+          #aws s3 sync ./build/ s3://${{ env.BUCKET_NAME }}/test/ --delete
+          if [[ $GITHUB_REF_NAME == "dev_release" ]]; 
+          then
+            aws s3 sync ./build/ s3://${{ env.BUCKET_NAME }}/dev/ --delete
+          elif [[ $GITHUB_REF_NAME == "test" ]];
+          then
+            aws s3 sync ./build/ s3://${{ env.BUCKET_NAME }}/test/ --delete
+          elif [[ $GITHUB_REF_NAME == "demo" ]];
+          then
+            aws s3 sync ./build/ s3://${{ env.BUCKET_NAME }}/demo/ --delete 
+          else
+            echo "No matching branches found"
+          fi
       - name: Create invalidation on cloudfront
-        run: aws cloudfront create-invalidation --distribution-id ${{ env.CF_DISTRIBUTION_ID_TEST }} --paths "/*" --no-cli-pager
+        run: |
+          #aws cloudfront create-invalidation --distribution-id ${{ env.CF_DISTRIBUTION_ID_TEST }} --paths "/*" --no-cli-pager
+          if [[ $GITHUB_REF_NAME == "dev_release" ]]; 
+          then
+            aws cloudfront create-invalidation --distribution-id ${{ env.CF_DISTRIBUTION_ID_DEV }} --paths "/*" --no-cli-pager
+          elif [[ $GITHUB_REF_NAME == "test" ]];
+          then
+            aws cloudfront create-invalidation --distribution-id ${{ env.CF_DISTRIBUTION_ID_TEST }} --paths "/*" --no-cli-pager
+          elif [[ $GITHUB_REF_NAME == "demo" ]];
+          then
+            aws cloudfront create-invalidation --distribution-id ${{ env.CF_DISTRIBUTION_ID_DEMO }} --paths "/*" --no-cli-pager
+          else
+            echo "No matching branches found"
+          fi
