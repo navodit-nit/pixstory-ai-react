@@ -69,12 +69,18 @@ jobs:
           #npm run build
           if [[ $GITHUB_REF_NAME == "dev_release" ]]; 
           then
+            rm -rf .env.dev
+            aws s3 cp s3://pix-fe-react-app/env/.env.dev .
             npm run build:dev
           elif [[ $GITHUB_REF_NAME == "test" ]];
           then
+            rm -rf .env.test
+            aws s3 cp s3://pix-fe-react-app/env/.env.test .
             npm run build:test
           elif [[ $GITHUB_REF_NAME == "demo" ]];
           then
+            rm -rf .env.demo
+            aws s3 cp s3://pix-fe-react-app/env/.env.demo .
             npm run build:demo  
           else
             echo "No matching branches found"
