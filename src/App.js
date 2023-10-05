@@ -32,8 +32,6 @@ function App() {
   if(!token){
       return <LogIn setToken={setToken}/>
   }
-
-
   return (
     <div
       onClick={() => {

@@ -3,10 +3,8 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import { useLocation } from "react-router-dom";
-
 const NavBar = (props) => {
   const [isOpenMenu, setOpenMenu] = useState(false);
-
   const handeleMenu = () => {
     setOpenMenu(!isOpenMenu);
   };

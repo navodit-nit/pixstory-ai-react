@@ -8,7 +8,6 @@ export default function LogIn({ setToken }) {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [wrongData, setWrongData] = useState("");
-
   //const[value,setValue] = useState()
   async function loginUser(credentials) {
     return fetch(

@@ -3,7 +3,7 @@ import "./App.css";
 
 import Cards from "./components/Cards";
 import DialogueBox from "./components/DialogueBox";
-import axios from 'axios';
+import axios from "axios";
 
 const responses = [
   {
@@ -146,29 +146,28 @@ function Home() {
   const [post, setPost] = useState({});
   const [InputValue, setInputValue] = useState();
 
-  
-    const fetchUserData = (searchQuery) => {
-      console.log(process.env.REACT_APP_BASE_URL);
-      axios.post(process.env.REACT_APP_BASE_URL+"/test", {
+  const fetchUserData = (searchQuery) => {
+    console.log(process.env.REACT_APP_BASE_URL);
+    axios
+      .post(process.env.REACT_APP_BASE_URL + "/test", {
         query: encodeURIComponent(searchQuery),
       })
       // .then((response) => {
       //   return response.json();
       // })
-      .then((data) =>{
-           console.log(data)
-          setPost(data.data.response)
+      .then((data) => {
+        console.log(data);
+        setPost(data.data.response);
       });
-    };
-  
-  
+  };
+
   useEffect(() => {
-      fetchUserData(''); 
+    fetchUserData("");
   }, []);
-   useEffect(() => {
+  useEffect(() => {
     // 👇️ scroll to top on page load
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
-   }, []);
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
   // const [data, setData] = useState([]);
   // useEffect(() => {
   //   fetch("./data/response.json")
@@ -214,7 +213,6 @@ function Home() {
   };
 
   const updateCurrentIndex = (val) => {
-  
     setCurrentIndex(val);
     currentIndexRef.current = val;
   };
@@ -231,7 +229,6 @@ function Home() {
   const canSwipe = currentIndex >= 0;
 
   const swipe = async (dir) => {
-
     if (canSwipe && currentIndex < stickyNotes.length) {
       await childRefs[currentIndex].current.swipe(dir); // Swipe the card!
     }
@@ -260,8 +257,6 @@ function Home() {
     const spanValue = event.target.textContent;
     setTextInput(spanValue);
     console.log(spanValue);
-   
-
   };
 
   const getResponseAtIndex = (cIdx) => {
@@ -278,9 +273,7 @@ function Home() {
     setShow(false);
     setContainerClass("querytype-small");
     document.body.classList.remove("scroll-hide");
-     fetchUserData(content);
-   
-
+    fetchUserData(content);
   };
 
   const handleCopyClick = (value) => {
@@ -298,52 +291,43 @@ function Home() {
     window.getSelection().removeAllRanges();
   };
 
- 
-
   useEffect(() => {
     if (stickyNotes.length > 0 && containerClass === "querytype-medium") {
       document.body.classList.add("scroll-hide");
     }
   });
 
-
   return (
-   
-       
-<>
-        <Cards
-          stickyNotes={stickyNotes}
-          childRefs={childRefs}
-          swiped={swiped}
-          outOfFrame={outOfFrame}
-          handleQueryClick={handleQueryClick}
-          // queries={queries}
-          getResponseAtIndex={getResponseAtIndex}
-          handleCopyClick={handleCopyClick}
-          swipe={swipe}
-          fetchApi={fetchUserData}
-          data={post}
-        />
-        <DialogueBox className="parent"
-          show={show}
-          stickyNotes={stickyNotes}
-          messageBox={messageBox}
-          containerClass={containerClass}
-          handlePropt={handlePropt}
-          textInput={textInput}
-          // queries={queries}
-          handleQueryClick={handleQueryClick}
-          setStickyNotes={setStickyNotes}
-          setShow={setShow}
-          data={post}
-        />
-<<<<<<< HEAD
-=======
-         <p align="right">v1.0.0-051023:1524    .</p>       
-        </div>
->>>>>>> b27eb182885e4334910328cf98310057b97fbe1d
-
-     </>
+    <>
+      <Cards
+        stickyNotes={stickyNotes}
+        childRefs={childRefs}
+        swiped={swiped}
+        outOfFrame={outOfFrame}
+        handleQueryClick={handleQueryClick}
+        // queries={queries}
+        getResponseAtIndex={getResponseAtIndex}
+        handleCopyClick={handleCopyClick}
+        swipe={swipe}
+        fetchApi={fetchUserData}
+        data={post}
+      />
+      <DialogueBox
+        className="parent"
+        show={show}
+        stickyNotes={stickyNotes}
+        messageBox={messageBox}
+        containerClass={containerClass}
+        handlePropt={handlePropt}
+        textInput={textInput}
+        // queries={queries}
+        handleQueryClick={handleQueryClick}
+        setStickyNotes={setStickyNotes}
+        setShow={setShow}
+        data={post}
+      />
+      <p align="right">v1.0.0-051023:1524 .</p>
+    </>
   );
 }
 
