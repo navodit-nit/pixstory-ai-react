@@ -156,7 +156,7 @@ function Home() {
       //   return response.json();
       // })
       .then((data) =>{
-        console.log(data)
+           console.log(data)
           setPost(data.data.response)
       });
     };
@@ -260,6 +260,8 @@ function Home() {
     const spanValue = event.target.textContent;
     setTextInput(spanValue);
     console.log(spanValue);
+   
+
   };
 
   const getResponseAtIndex = (cIdx) => {
@@ -277,6 +279,8 @@ function Home() {
     setContainerClass("querytype-small");
     document.body.classList.remove("scroll-hide");
      fetchUserData(content);
+   
+
   };
 
   const handleCopyClick = (value) => {
@@ -306,14 +310,7 @@ function Home() {
   return (
    
        
-<> <div
-      onClick={() => {
-        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-      }}
-      className={`app ${stickyNotes.length == 0 ? "bgImage " : "cardpage"} ${
-        theme === "light" ? "light-theme" : "dark-theme"
-      }`}
-    >
+<>
         <Cards
           stickyNotes={stickyNotes}
           childRefs={childRefs}
@@ -327,7 +324,6 @@ function Home() {
           fetchApi={fetchUserData}
           data={post}
         />
-
         <DialogueBox className="parent"
           show={show}
           stickyNotes={stickyNotes}
@@ -340,7 +336,7 @@ function Home() {
           setStickyNotes={setStickyNotes}
           setShow={setShow}
           data={post}
-        /></div>
+        />
 
      </>
   );

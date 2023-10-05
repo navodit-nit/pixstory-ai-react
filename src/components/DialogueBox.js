@@ -13,11 +13,13 @@ const DialogueBox = (props) => {
 
   const handleCloseDialougeBox = () => {
     props.setShow(false);
+  
   };
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    setIsLoading(true);
 
+    setIsLoading(true);
+ 
     setTimeout(() => {
       setIsLoading(false);
     }, 3000);

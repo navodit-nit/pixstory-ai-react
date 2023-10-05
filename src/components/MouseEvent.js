@@ -1,29 +1,49 @@
+import React, { useState } from 'react';
 
-let mouseDown = false;
-let startX, scrollLeft;
-const slider = document.querySelector('.parent');
+function Slider() {
+  const [mouseDown, setMouseDown] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
 
-const startDragging = (e) => {
-  mouseDown = true;
-  startX = e.pageX - slider.offsetLeft;
-  scrollLeft = slider.scrollLeft;
+  const startDragging = (e) => {
+    setMouseDown(true);
+    setStartX(e.pageX - e.currentTarget.offsetLeft);
+    setScrollLeft(e.currentTarget.scrollLeft);
+  };
+
+  const stopDragging = () => {
+    setMouseDown(false);
+  };
+
+  const handleMouseMove = (e) => {
+    e.preventDefault();
+    if (!mouseDown) {
+      return;
+    }
+    const x = e.pageX - e.currentTarget.offsetLeft;
+    const scroll = x - startX;
+    e.currentTarget.scrollLeft = scrollLeft - scroll;
+  };
+
+  return (
+    <div
+      id="drag"
+      onMouseDown={startDragging}
+      onMouseUp={stopDragging}
+      onMouseLeave={stopDragging}
+      onMouseMove={handleMouseMove}
+      style={{
+        cursor: mouseDown ? 'grabbing' : 'grab',
+        MozUserSelect: 'none',
+        WebkitUserSelect: 'none',
+        userSelect: 'none',
+        overflowX: 'auto',
+        whiteSpace: 'nowrap',
+      }}
+    >
+    
+    </div>
+  );
 }
 
-const stopDragging = (e) => {
-  mouseDown = false;
-}
-
-const move = (e) => {
-  e.preventDefault();
-  if(!mouseDown) { return; }
-  const x = e.pageX - slider.offsetLeft;
-  const scroll = x - startX;
-  slider.scrollLeft = scrollLeft - scroll;
-}
-
-// Add the event listeners
-slider.addEventListener('mousemove', move, false);
-slider.addEventListener('mousedown', startDragging, false);
-slider.addEventListener('mouseup', stopDragging, false);
-slider.addEventListener('mouseleave', stopDragging, false);
-
+export default Slider;
