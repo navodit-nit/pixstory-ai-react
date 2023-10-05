@@ -4,7 +4,6 @@ import "./App.css";
 import Cards from "./components/Cards";
 import DialogueBox from "./components/DialogueBox";
 import axios from "axios";
-
 const responses = [
   {
     success: true,

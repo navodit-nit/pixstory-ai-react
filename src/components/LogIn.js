@@ -2,7 +2,6 @@ import React from "react";
 import "./login.css";
 import PropTypes from "prop-types";
 import { useState } from "react";
-import NavBar from "./NavBar";
 
 export default function LogIn({ setToken }) {
   const [username, setUsername] = useState();

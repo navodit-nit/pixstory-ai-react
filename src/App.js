@@ -16,7 +16,7 @@ function App() {
   const [stickyNotes, setStickyNotes] = useState([]);
   const [containerClass, setContainerClass] = useState("");
   const [theme, setTheme] = useState("light");
-  
+
   const toggleTheme = () => {
     setTheme((curr) => (curr === "light" ? "dark" : "light"));
   };
