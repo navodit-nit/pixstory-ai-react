@@ -75,7 +75,7 @@ export default function LogIn({ setToken }) {
                   <input
                     className="from-control"
                     value={password}
-                    type="text"
+                    type="password"
                     placeholder="Enter Your Password"
                     onChange={(e) => setPassword(e.target.value)}
                     required
