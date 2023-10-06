@@ -2,7 +2,6 @@ import React from "react";
 import "./login.css";
 import PropTypes from "prop-types";
 import { useState } from "react";
-
 export default function LogIn({ setToken }) {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
@@ -30,7 +29,6 @@ export default function LogIn({ setToken }) {
   };
   return (
     <>
-    
     <div className="login-body">
       <div className="container-fluid login-from">
         <div className="row">
@@ -56,7 +54,6 @@ export default function LogIn({ setToken }) {
               <div className="text-center">
                 <p className="error text-capitalize mb-0">{wrongData}</p>
               </div>
-
               <form onSubmit={handleSubmit}>
                 <div className="my-3">
                   <label for="email">User Id *</label>
