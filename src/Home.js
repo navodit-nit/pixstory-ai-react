@@ -145,10 +145,9 @@ function Home() {
   const [post, setPost] = useState({});
   const [InputValue, setInputValue] = useState();
 
-  const fetchUserData = (searchQuery) => {
+  const fetchUserData = async(searchQuery) => {
     console.log(process.env.REACT_APP_BASE_URL);
-    axios
-      .post(process.env.REACT_APP_BASE_URL + "/test", {
+   await axios.post(process.env.REACT_APP_BASE_URL + "/test", {
         query: encodeURIComponent(searchQuery),
       })
       // .then((response) => {
@@ -158,6 +157,8 @@ function Home() {
         console.log(data);
         setPost(data.data.response);
       });
+      console.log(post)
+      
   };
 
   useEffect(() => {

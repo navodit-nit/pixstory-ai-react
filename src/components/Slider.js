@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Slider() {
+function Slider(props) {
   const [mouseDown, setMouseDown] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
@@ -41,7 +41,7 @@ function Slider() {
         whiteSpace: 'nowrap',
       }}
     >
-    
+     {props.children}
     </div>
   );
 }
