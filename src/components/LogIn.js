@@ -11,9 +11,9 @@ export default function LogIn({ setToken }) {
   async function loginUser(credentials) {
     return fetch(
       "http://localhost:5001/loginMock?email=" +
-        credentials.username +
+      encodeURIComponent(credentials.username) +
         "&password=" +
-        credentials.password
+        encodeURIComponent(credentials.password)
     ).then((res) => res.json());
   }
   const [isValid, setIsValid] = useState(true);
