@@ -9,8 +9,12 @@ import Typewriter from "./Typewriter";
 const Cards = (props) => {
   const [isLoader, setIsLoader] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
+  const [isAdd, setIsAdd] = useState(false);
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
+  };
+  const toggleAdd = () => {
+    setIsAdd(!isAdd);
   };
 // loader start
   
@@ -35,10 +39,13 @@ const Cards = (props) => {
   };
 //Mouse event
   return (
-    <div className="slider-section">
-      <div className="container-fluid ">
+    <>
+    <div className="">
+    <button className="" onClick={toggleAdd}>add</button>
+      <div className="container-fluid pt-1">
         <div className="row">
-          <div className="col-md-12 desktop-design">
+          <div className="col-md-7 mx-auto desktop-design">
+          <div>
             {props.stickyNotes.length != 0 ? (
               <div className="cardContainer">
                 {props.stickyNotes.map((character, index) => (
@@ -143,7 +150,7 @@ const Cards = (props) => {
             ) : (
               <MainPage />
             )}
-
+             
             {props.stickyNotes.length > 0 && (
               <div className="prompt-cont top-query">
                 <ul>
@@ -165,10 +172,17 @@ const Cards = (props) => {
                 </ul>
               </div>
             )}
+            </div>
           </div>
+         
+
+           {isAdd &&  <div className="col-md-3 mx-auto d-flex justify-content-center align-items-center"><div className="add"></div> </div>} 
+         
         </div>
       </div>
     </div>
+  
+    </>
   );
 };
 

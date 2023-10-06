@@ -5,7 +5,7 @@ import { useState } from "react";
 export default function LogIn({ setToken }) {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
-  const [wrongData, setWrongData] = useState("");
+ 
   //const[value,setValue] = useState()
   async function loginUser(credentials) {
     return fetch(
@@ -25,7 +25,8 @@ export default function LogIn({ setToken }) {
     const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     setIsValid(emailPattern.test(username));
     setToken(token);
-    setWrongData(token.email.msg);
+    
+    
   };
   return (
     <>
@@ -52,7 +53,6 @@ export default function LogIn({ setToken }) {
                 <p>Welcome Back!</p>
               </div>
               <div className="text-center">
-                <div className="error">{wrongData} </div>
               </div>
               <form onSubmit={handleSubmit}>
                 <div className="my-3">
@@ -65,7 +65,7 @@ export default function LogIn({ setToken }) {
                     onChange={(e) => setUsername(e.target.value)}
                     required
                   />
-                  {!isValid && <p className="error">Please enter a valid email address.</p>}
+                  {!isValid && <p className="error alert alert-danger p-1 mt-1">Please enter a valid email address.</p>}
                 </div>
                 <div className="my-3">
                   <label for="password"> Password *</label>
