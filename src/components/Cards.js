@@ -41,7 +41,7 @@ const Cards = (props) => {
   return (
     <>
     <div className="">
-    <button className="" onClick={toggleAdd}>add</button>
+    {/* <button className="" onClick={toggleAdd}>add</button> */}
       <div className="container-fluid pt-1">
         <div className="row">
           <div className="col-md-7 mx-auto desktop-design">
@@ -175,8 +175,8 @@ const Cards = (props) => {
             </div>
           </div>
          
-
-           {isAdd &&  <div className="col-md-3 mx-auto d-flex justify-content-center align-items-center"><div className="add"></div> </div>} 
+{/* 
+           {isAdd &&  <div className="col-md-3 mx-auto d-flex justify-content-center align-items-center"><div className="add"></div> </div>}  */}
          
         </div>
       </div>
