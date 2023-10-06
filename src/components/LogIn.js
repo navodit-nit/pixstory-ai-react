@@ -10,7 +10,7 @@ export default function LogIn({ setToken }) {
   //const[value,setValue] = useState()
   async function loginUser(credentials) {
     return fetch(
-      "http://localhost:5001/loginMock?email=" +
+      process.env.REACT_APP_BASE_URL +"/loginMock?email=" +
       encodeURIComponent(credentials.username) +
         "&password=" +
         encodeURIComponent(credentials.password)
