@@ -29,9 +29,9 @@ function App() {
   //get token
   const { token, setToken } = useToken();
   
-  if(!token){
-      return <LogIn setToken={setToken}/>
-  }
+  // if(!token){
+  //     return <LogIn setToken={setToken}/>
+  // }
   return (
     <div
       onClick={() => {
