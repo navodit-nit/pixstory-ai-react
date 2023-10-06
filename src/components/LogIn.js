@@ -89,6 +89,7 @@ export default function LogIn({ setToken }) {
           </div>
         </div>
       </div>
+      <p align="right">v1.0.0-061023:1116 .</p>
       </div>
     </>
   );

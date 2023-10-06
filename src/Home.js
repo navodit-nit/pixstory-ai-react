@@ -325,7 +325,7 @@ function Home() {
         setShow={setShow}
         data={post}
       />
-      <p align="right">v1.0.0-051023:1524 .</p>
+      <p align="right">v1.0.0-061023:1116 .</p>
     </>
   );
 }
