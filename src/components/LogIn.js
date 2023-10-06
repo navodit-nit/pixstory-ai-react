@@ -52,7 +52,7 @@ export default function LogIn({ setToken }) {
                 <p>Welcome Back!</p>
               </div>
               <div className="text-center">
-                <p className="error text-capitalize mb-0">{wrongData}</p>
+                <div className="error">{wrongData} </div>
               </div>
               <form onSubmit={handleSubmit}>
                 <div className="my-3">

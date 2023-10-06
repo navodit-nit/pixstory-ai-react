@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Slider from "./Slider";
 
 const DialogueBox = (props) => {
   const [textInput, setTextInput] = useState("");
@@ -13,13 +14,11 @@ const DialogueBox = (props) => {
 
   const handleCloseDialougeBox = () => {
     props.setShow(false);
-  
   };
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-
     setIsLoading(true);
- 
+
     setTimeout(() => {
       setIsLoading(false);
     }, 3000);
@@ -76,28 +75,25 @@ const DialogueBox = (props) => {
                   </button>
                 </div>
               </div>
-
+            
               {props.show && (
                 <div className="col-md-12">
-                  <div className="prompt-cont bottom-prompt-box">
-                  
-                      <ul>
-                        {props.data.followup_ques.map((val, index) => (
-                          <li
-                            onClick={() => props.handleQueryClick(val, index)}
-                          >
-                            <span>{val}</span>
-                          </li>
-                        ))}
-                      </ul>
-                   
-                  </div>
+                <Slider>
+                    <ul className="prompt-cont bottom-prompt-box">
+                      {props.data.followup_ques.map((val, index) => (
+                        <li onClick={() => props.handleQueryClick(val, index)}>
+                          <span>{val}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </Slider>
                 </div>
               )}
             </div>
           </div>
         </div>
       </div>
+    
       <div
         className={
           props.show == 1 || (props.show > 0 && props.stickyNotes.length == 0)
@@ -106,6 +102,7 @@ const DialogueBox = (props) => {
         }
         onClick={handleCloseDialougeBox}
       ></div>
+     
     </>
   );
 };
