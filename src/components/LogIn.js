@@ -9,7 +9,7 @@ export default function LogIn({ setToken }) {
   //const[value,setValue] = useState()
   async function loginUser(credentials) {
     return fetch(
-      "http://localhost:5001/loginMock?email=" +
+      process.env.REACT_APP_BASE_URL +"/loginMock?email=" +
       encodeURIComponent(credentials.username) +
         "&password=" +
         encodeURIComponent(credentials.password)
@@ -86,6 +86,7 @@ export default function LogIn({ setToken }) {
           </div>
         </div>
       </div>
+      <p align="right">v1.0.0-061023:1116 .</p>
       </div>
     </>
   );
