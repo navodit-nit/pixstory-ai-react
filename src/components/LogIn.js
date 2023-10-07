@@ -10,17 +10,21 @@ export default function LogIn({ setToken }) {
   //const[error,setErroe] = useState()
   async function loginUser(credentials) {
     try{
-    
+      setTimeout(() => {
+        setloginLoading(true)
+      }, 2000);
+   
     return fetch(
       process.env.REACT_APP_BASE_URL +"/loginMock?email=" +
       encodeURIComponent(credentials.username) +
         "&password=" +
         encodeURIComponent(credentials.password)
     ).then((res) => res.json());
+    
   } catch(err){
     setError(error);
   } finally {
-    setloginLoading(true)
+    setloginLoading(false)
   }
   }
   const [isValid, setIsValid] = useState(true);
@@ -88,7 +92,7 @@ export default function LogIn({ setToken }) {
                   />
                 </div>
                 <div className="my-3">
-                  <input type="submit" value={'login'} className="submit-btn" />
+                  <input type="submit" value={lginLoading?'waiting...':'login'} className="submit-btn" />
                 </div>
               </form>
             </div>

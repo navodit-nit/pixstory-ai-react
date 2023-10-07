@@ -130,6 +130,8 @@ const db = [
     "What are some other sites you visit frequently? Why do you like them?",
   ];
 
+  
+
 function Home() {
   const [showAdvanced, setShowAdvanced] = useState(true);
   const [stickyNotes, setStickyNotes] = useState([]);
@@ -146,7 +148,8 @@ function Home() {
   //const [post, setPost] = useState({});
   const [InputValue, setInputValue] = useState();
   const [isFetchingData,setIsFetchingData] = useState(false); 
-
+  const [newQuery,setNewQuery] = useState(queries)
+  
   const fetchUserData = async(searchQuery) => {
     setIsFetchingData(true);
     console.log(process.env.REACT_APP_BASE_URL);
@@ -160,6 +163,8 @@ function Home() {
         console.log(data);
         // setPost(data.data.response);
         responses.push(data.data.response);
+        setNewQuery(data.data.response.followup_ques.concat(queries))
+        console.log(newQuery)
         setIsFetchingData(false)
       });
       // console.log(post)
@@ -322,7 +327,7 @@ function Home() {
         containerClass={containerClass}
         handlePropt={handlePropt}
         textInput={textInput}
-        queries={queries}
+        queries={newQuery}
         handleQueryClick={handleQueryClick}
         setStickyNotes={setStickyNotes}
         setShow={setShow}
