@@ -5,11 +5,12 @@ import { useState } from "react";
 export default function LogIn({ setToken }) {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
-  // const [Loading, setLoading] = useState(true);
+ const [lginLoading, setloginLoading] = useState(false);
   const [error, setError] = useState(null);
   //const[error,setErroe] = useState()
   async function loginUser(credentials) {
     try{
+    
     return fetch(
       process.env.REACT_APP_BASE_URL +"/loginMock?email=" +
       encodeURIComponent(credentials.username) +
@@ -19,7 +20,7 @@ export default function LogIn({ setToken }) {
   } catch(err){
     setError(error);
   } finally {
-    // setLoading(false)
+    setloginLoading(true)
   }
   }
   const [isValid, setIsValid] = useState(true);
@@ -60,7 +61,7 @@ export default function LogIn({ setToken }) {
                 <p>Welcome Back!</p>
               </div>
               <div className="text-center">
-              {error ? (<div className="error alert alert-danger p-1 mt-1">Email id Not Found</div>):error}
+              {error ? (<div className="error alert alert-danger p-1 mt-1">User Not Found!</div>):error}
               </div>
               <form onSubmit={handleSubmit}>
                 <div className="my-3">
@@ -87,7 +88,7 @@ export default function LogIn({ setToken }) {
                   />
                 </div>
                 <div className="my-3">
-                  <input type="submit" value="login" className="submit-btn" />
+                  <input type="submit" value={'login'} className="submit-btn" />
                 </div>
               </form>
             </div>
