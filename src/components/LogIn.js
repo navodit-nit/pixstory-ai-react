@@ -7,7 +7,7 @@ export default function LogIn({ setToken }) {
   const [password, setPassword] = useState();
   // const [Loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  //const[value,setValue] = useState()
+  //const[error,setErroe] = useState()
   async function loginUser(credentials) {
     try{
     return fetch(
@@ -32,6 +32,7 @@ export default function LogIn({ setToken }) {
     const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     setIsValid(emailPattern.test(username));
     setToken(token);
+    setError('Eamil id not found')
   };
   return (
     <>
@@ -59,7 +60,7 @@ export default function LogIn({ setToken }) {
                 <p>Welcome Back!</p>
               </div>
               <div className="text-center">
-              {error ? (<div>Error: {error.message}</div>):''}
+              {error ? (<div className="error alert alert-danger p-1 mt-1">Email id Not Found</div>):error}
               </div>
               <form onSubmit={handleSubmit}>
                 <div className="my-3">
