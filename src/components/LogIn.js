@@ -5,15 +5,22 @@ import { useState } from "react";
 export default function LogIn({ setToken }) {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
- 
+  // const [Loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   //const[value,setValue] = useState()
   async function loginUser(credentials) {
+    try{
     return fetch(
       process.env.REACT_APP_BASE_URL +"/loginMock?email=" +
       encodeURIComponent(credentials.username) +
         "&password=" +
         encodeURIComponent(credentials.password)
     ).then((res) => res.json());
+  } catch(err){
+    setError(error);
+  } finally {
+    // setLoading(false)
+  }
   }
   const [isValid, setIsValid] = useState(true);
   const handleSubmit = async (e) => {
@@ -25,11 +32,10 @@ export default function LogIn({ setToken }) {
     const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     setIsValid(emailPattern.test(username));
     setToken(token);
-    
-    
   };
   return (
     <>
+  
     <div className="login-body">
       <div className="container-fluid login-from">
         <div className="row">
@@ -53,6 +59,7 @@ export default function LogIn({ setToken }) {
                 <p>Welcome Back!</p>
               </div>
               <div className="text-center">
+              {error ? (<div>Error: {error.message}</div>):''}
               </div>
               <form onSubmit={handleSubmit}>
                 <div className="my-3">

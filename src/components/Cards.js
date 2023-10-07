@@ -3,14 +3,15 @@ import TinderCard from "react-tinder-card";
 import React, { useState } from "react";
 import Share from "./Share";
 
-import Loader from "./Loader";
-import { useEffect } from "react";
+// import Loader from "./Loader";
+// import { useEffect } from "react";
 import Typewriter from "./Typewriter";
 const Cards = (props) => {
-  const [isLoader, setIsLoader] = useState(true);
+  // const [isLoader, setIsLoader] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const [isAdd, setIsAdd] = useState(false);
   const toggleDropdown = () => {
+    debugger
     setIsOpen(!isOpen);
   };
   const toggleAdd = () => {
@@ -18,36 +19,36 @@ const Cards = (props) => {
   };
 // loader start
   
-  useEffect(() => {
-    setIsLoader(true);
-    setTimeout(() => {
-      setIsLoader(false);
-      console.log(isLoader)
-    }, 3000)
-  }, [props.stickyNotes]);
+  // useEffect(() => {
+  //   setIsLoader(true);
+  //   setTimeout(() => {
+  //     setIsLoader(false);
+  //     console.log(isLoader)
+  //   }, 3000)
+  // }, [props.stickyNotes]);
 // loader end
   const handleBackCard = () => {
     return props.swipe("left");
   };
   const handlePageReload = () => {
-    props.fetchApi();
-      setIsLoader(true);
-      setTimeout(() => {
-        setIsLoader(false);
-        console.log(isLoader)
-      }, 3000)
+   
+      // setIsLoader(true);
+      // setTimeout(() => {
+      //   setIsLoader(false);
+      //   console.log(isLoader)
+      // }, 3000)
   };
 //Mouse event
   return (
     <>
     <div className="">
-    {/* <button className="" onClick={toggleAdd}>add</button> */}
+    <button onClick={toggleAdd} className="d-none">btn</button>
       <div className="container-fluid pt-1">
         <div className="row">
-          <div className="col-md-7 mx-auto desktop-design">
-          <div>
+          <div className="col-md-7 mx-auto ">
+      
             {props.stickyNotes.length != 0 ? (
-              <div className="cardContainer">
+              <div className="desktop-design"><div className="cardContainer">
                 {props.stickyNotes.map((character, index) => (
                   <>
                     <TinderCard
@@ -90,20 +91,14 @@ const Cards = (props) => {
                               <span className="tooltiptext">Copied</span>
                             </button>
                           </div>
-
-                          {/* <p id={"content-to-copy" + index}>{props.getResponseAtIndex(index).response}</p>  */}
-                          {/* loader  start */}
-                          <div id=""></div>
-                          {isLoader ? (
-                            <Loader />
-                          ) : (
+                        
+                       
                             <Typewriter
                               id={"content-to-copy" + index}
-                              text={props.data.response}
+                              text={props.getResponseAtIndex(index) ? props.getResponseAtIndex(index).response : "Please wait..."}
                               speed={50}
                             />
-                          )}
-                          {/* loader End */}
+                       
                         </div>
 
                         <div className="share-icon">
@@ -126,10 +121,17 @@ const Cards = (props) => {
                               className="social-btn"
                               onClick={toggleDropdown}
                             >
-                              <img
+                            {isOpen ?(<img
+                                src={process.env.PUBLIC_URL + "/img/close.svg"}
+                                alt="Load" width="17px" height="17px"
+                              /> ) : (<img
                                 src={process.env.PUBLIC_URL + "/img/share.svg"}
                                 alt="Load"
-                              />
+                              />)}
+                              {/* <img
+                                src={process.env.PUBLIC_URL + "/img/share.svg"}
+                                alt="Load"
+                              /> */}
                             </button>
 
                             {isOpen && (
@@ -146,38 +148,24 @@ const Cards = (props) => {
                     </TinderCard>
                   </>
                 ))}
-              </div>
-            ) : (
-              <MainPage />
-            )}
-             
-            {props.stickyNotes.length > 0 && (
+              </div> {props.stickyNotes.length > 0 && props.getResponseAtIndex(props.stickyNotes.length - 1) && (
               <div className="prompt-cont top-query">
                 <ul>
-                  {props.data.followup_ques.map((val, index) => (
+                  {props.getResponseAtIndex(props.stickyNotes.length - 1).followup_ques.map((val, index) => (
                     <li onClick={() => props.handleQueryClick(val, index)}>
                       <span>{val}</span>
                     </li>
                   ))}
 
-                  {/* {                    
-                    props.data.map((item, index) => (
-                         item.followup_ques.map((val,ind)=>
-                         <li onClick={() => props.handleQueryClick(val, index)}>
-                        <span>{val}</span>
-                      </li>
-                     
-                    ))
-            )} */}
+                 
                 </ul>
               </div>
+            )}</div>
+            ) : (
+              <MainPage />
             )}
-            </div>
           </div>
-         
-{/* 
-           {isAdd &&  <div className="col-md-3 mx-auto d-flex justify-content-center align-items-center"><div className="add"></div> </div>}  */}
-         
+           {isAdd && <div className="col-md-3 mx-auto d-flex justify-content-center align-items-center"><div><img src={process.env.PUBLIC_URL + "/img/add.png"}  className="img-fluid" alt=""/></div> </div>} 
         </div>
       </div>
     </div>

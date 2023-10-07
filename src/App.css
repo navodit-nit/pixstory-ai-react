@@ -12,8 +12,6 @@ body {
   --light-gray: #d9d9d9;
 }
 
-
-
 /* desktop css */
 .slider-section {
   /* padding-bottom: 60px; */
@@ -54,7 +52,8 @@ body {
   background-color: #fff;
 }
 .bgImage .desktop-design {
-  display: initial;
+  display: block;
+ 
 }
 .fixed-bottom {
   width: 58%;
@@ -65,8 +64,8 @@ body {
 .message-textarea.querytype-medium {
   padding-top: 20px;
 }
- .slider-section {
- overflow: hidden;
+.slider-section {
+  overflow: hidden;
   margin: 0px auto;
   justify-content: space-around;
 }
@@ -166,9 +165,14 @@ body {
   min-height: 300px;
   overflow-y: scroll;
 } */
-.swipe.inactive {
-  overflow-y: hidden;
+
+.swipe.inactive,
+.swipe.inactive .card-box {
+  height: 300px;
+  min-height: 300px;
+  overflow-y: scroll;
 }
+
 
 .swipe {
   grid-row-start: 1;
@@ -232,8 +236,6 @@ body {
 .cardContainer .swipe:nth-child(odd) .bottom-shadow {
   background-color: #333333;
 }
-
-
 
 .card {
   position: absolute;
@@ -822,7 +824,7 @@ body,
 .cardpage .topbar .btn path {
   stroke: var(--black);
 }
-
+.copy-btn{border-radius: 50%;width: 32px; height: 32px;padding: 5px;}
 .tooltip-show {
   position: relative;
   display: inline-block;
@@ -859,7 +861,7 @@ body,
 }
 
 .dark-theme.bgImage .image-bg {
-  background: url(../public/img/dark-bg-img.svg) 0 0 no-repeat;
+  background: url(../public/img/main-bg.png) 0 0 no-repeat;
   background-size: cover;
   background-position: 100%;
   height: 100%;
@@ -957,23 +959,32 @@ body,
 }
 
 @media only screen and (max-width: 767px) {
+  .bottom-prompt-box {
+    padding: 0;
+    display: inline-block;
+    margin-top: 16px;
+    width: 100%;
+    margin-bottom: 0;
+    padding-bottom: 14px;
+}
   .prompt-cont.top-query ul::-webkit-scrollbar {
     height: 6px;
     background-color: #d9d9d9;
   }
   .slider-section {
     /* padding-bottom: 60px; */
-   
+
     margin: 0px auto;
     height: 86vh;
     margin: 0px auto;
     overflow-x: hidden;
   }
   .desktop-design {
-   padding-top: 22px;
-    display: initial;
-    height: 82vh;
-    overflow: scroll;
+    padding-top: 15px;
+    height: 87vh;
+    display: block !important;
+    overflow: auto;
+    margin-top: 45px;
   }
   .cardContainer {
     width: 87vw;
@@ -1014,7 +1025,7 @@ body,
     margin: 0px auto;
     overflow-x: hidden;
   } */
-  
+
   .overlayDialogBox .message-section {
     background-color: #fdfdfd;
     bottom: -3px;
@@ -1022,7 +1033,7 @@ body,
   .message-section {
     background-color: #fdfdfd;
     border-radius: 8px 8px 0 0;
-    padding: 15px 15px 0 12px;
+    padding: 15px 15px 10px 12px;
     z-index: 99999999;
   }
   .slider-section {
@@ -1031,7 +1042,7 @@ body,
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin-top: 8px!important;
+    margin-top: 8px !important;
   }
   .prompt-cont.top-query {
     display: block;
@@ -1092,8 +1103,22 @@ body,
   display: none;
 }
 
-.prompt-cont li{display: inline-block;margin: 0px 10px;background-color: #e7e7e7;padding:5px 10px;border-radius: 5px;}
+.prompt-cont li {
+  display: inline-block;
+  margin: 0px 10px;
+  background-color: #e7e7e7;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
 
-.media-btns{position:absolute;display: contents;}
+.media-btns {
+  position: absolute;
+  display: contents;
+}
 
-.add{width:300px;height: 300px;background-color: red;border-radius: 10px;}
+.add {
+  width: 300px;
+  height: 300px;
+  background-color: red;
+  border-radius: 10px;
+}
