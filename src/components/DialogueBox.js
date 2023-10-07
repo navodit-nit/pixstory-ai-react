@@ -80,7 +80,7 @@ const DialogueBox = (props) => {
                 <div className="col-md-12">
                 <Slider>
                     <ul className="prompt-cont bottom-prompt-box">
-                      {props.data.followup_ques.map((val, index) => (
+                      {props.data.map((val, index) => (
                         <li onClick={() => props.handleQueryClick(val, index)}>
                           <span>{val}</span>
                         </li>

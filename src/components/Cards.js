@@ -7,7 +7,7 @@ import Loader from "./Loader";
 import { useEffect } from "react";
 import Typewriter from "./Typewriter";
 const Cards = (props) => {
-  const [isLoader, setIsLoader] = useState(true);
+  const [isLoader, setIsLoader] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isAdd, setIsAdd] = useState(false);
   const toggleDropdown = () => {
@@ -18,13 +18,13 @@ const Cards = (props) => {
   };
 // loader start
   
-  useEffect(() => {
-    setIsLoader(true);
-    setTimeout(() => {
-      setIsLoader(false);
-      console.log(isLoader)
-    }, 3000)
-  }, [props.stickyNotes]);
+  // useEffect(() => {
+  //   setIsLoader(true);
+  //   setTimeout(() => {
+  //     setIsLoader(false);
+  //     console.log(isLoader)
+  //   }, 3000)
+  // }, [props.stickyNotes]);
 // loader end
   const handleBackCard = () => {
     return props.swipe("left");
@@ -94,15 +94,16 @@ const Cards = (props) => {
                           {/* <p id={"content-to-copy" + index}>{props.getResponseAtIndex(index).response}</p>  */}
                           {/* loader  start */}
                           <div id=""></div>
-                          {isLoader ? (
+                          {/* {isLoader ? (
                             <Loader />
-                          ) : (
+                          ) : ( */}
                             <Typewriter
                               id={"content-to-copy" + index}
-                              text={props.data.response}
+                              // text={props.data.response}
+                              text = {props.getResponseAtIndex(index) ? props.getResponseAtIndex(index).response : 'Please Wait'}
                               speed={50}
                             />
-                          )}
+                          {/* )} */}
                           {/* loader End */}
                         </div>
 
@@ -154,7 +155,7 @@ const Cards = (props) => {
             {props.stickyNotes.length > 0 && (
               <div className="prompt-cont top-query">
                 <ul>
-                  {props.data.followup_ques.map((val, index) => (
+                  {props.queries.map((val, index) => (
                     <li onClick={() => props.handleQueryClick(val, index)}>
                       <span>{val}</span>
                     </li>
