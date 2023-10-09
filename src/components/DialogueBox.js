@@ -6,7 +6,8 @@ const DialogueBox = (props) => {
 
   const handleAddNote = () => {
     if (textInput.trim() !== "") {
-      props.setStickyNotes([...props.stickyNotes, textInput]);
+      // props.setStickyNotes([...props.stickyNotes, textInput]);
+      props.handleQueryClick(textInput);
       setTextInput("");
       props.setShow(false);
     }
@@ -21,7 +22,7 @@ const DialogueBox = (props) => {
 
     setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 2000);
   }, []);
   // mouse event
 
@@ -80,7 +81,7 @@ const DialogueBox = (props) => {
                 <div className="col-md-12">
                 <Slider>
                     <ul className="prompt-cont bottom-prompt-box">
-                      {props.data.followup_ques.map((val, index) => (
+                      {props.queries.map((val, index) => (
                         <li onClick={() => props.handleQueryClick(val, index)}>
                           <span>{val}</span>
                         </li>

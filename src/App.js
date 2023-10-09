@@ -10,8 +10,6 @@ import Home from "./Home";
 import LogIn from "./components/LogIn";
 import useToken from "./components/useToken";
 
-
-
 function App() {
   const [stickyNotes, setStickyNotes] = useState([]);
   const [containerClass, setContainerClass] = useState("");

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -15,8 +15,17 @@ import {
 const Share = () => {
   const shareUrl = window.location.href; // Replace with your website URL
   const title = 'Check out this awesome website!'; // Replace with your website title
-
-
+  const [copied, setCopied] = useState(false);
+  function copy() {
+    const el = document.createElement("input");
+    el.value = window.location.href;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
+    setCopied(true);
+  }
+  
 
   return (
     <div className='media-btns'>
@@ -35,6 +44,7 @@ const Share = () => {
       <WhatsappShareButton url={shareUrl} title={title}>
         <WhatsappIcon size={32} round />
       </WhatsappShareButton>
+      <button className='copy-btn' onClick={copy}>{!copied ? <ion-icon name="clipboard-outline"></ion-icon> : <ion-icon name="copy-outline"></ion-icon>}</button>
     </div>
   );
 };

@@ -5,15 +5,27 @@ import { useState } from "react";
 export default function LogIn({ setToken }) {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
- 
-  //const[value,setValue] = useState()
+ const [lginLoading, setloginLoading] = useState(false);
+  const [error, setError] = useState(null);
+  //const[error,setErroe] = useState()
   async function loginUser(credentials) {
+    try{
+      setTimeout(() => {
+        setloginLoading(true)
+      }, 2000);
+   
     return fetch(
       process.env.REACT_APP_BASE_URL +"/loginMock?email=" +
       encodeURIComponent(credentials.username) +
         "&password=" +
         encodeURIComponent(credentials.password)
     ).then((res) => res.json());
+    
+  } catch(err){
+    setError(error);
+  } finally {
+    setloginLoading(false)
+  }
   }
   const [isValid, setIsValid] = useState(true);
   const handleSubmit = async (e) => {
@@ -25,11 +37,11 @@ export default function LogIn({ setToken }) {
     const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     setIsValid(emailPattern.test(username));
     setToken(token);
-    
-    
+    setError('Eamil id not found')
   };
   return (
     <>
+  
     <div className="login-body">
       <div className="container-fluid login-from">
         <div className="row">
@@ -53,6 +65,7 @@ export default function LogIn({ setToken }) {
                 <p>Welcome Back!</p>
               </div>
               <div className="text-center">
+              {error ? (<div className="error alert alert-danger p-1 mt-1">User Not Found!</div>):error}
               </div>
               <form onSubmit={handleSubmit}>
                 <div className="my-3">
@@ -79,7 +92,7 @@ export default function LogIn({ setToken }) {
                   />
                 </div>
                 <div className="my-3">
-                  <input type="submit" value="login" className="submit-btn" />
+                  <input type="submit" value={lginLoading?'waiting...':'login'} className="submit-btn" />
                 </div>
               </form>
             </div>
