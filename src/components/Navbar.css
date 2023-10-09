@@ -18,8 +18,20 @@
 .mode-container {
  margin-top: 10px;
 }
-
+.navBar-style{
+  box-shadow: none;
+  border-radius: 0;
+}
+.overlay-menu{display: none;}
+.dark-theme .navbar-nav li a:hover {
+  color: #e9ff07;
+}
 @media (max-width: 768px) {
+  .overlay-menu{display: block;}
+  .navBar-style {
+    box-shadow: 0px 0px 10px #333;
+    border-radius: 0px 0px 20px 20px;
+  }
   .label {
     width: 30px;
     height: 30px;
@@ -95,10 +107,7 @@
     z-index: 999;
 }
 
-.navBar-style {
-  box-shadow: 0px 0px 10px #333;
-  border-radius: 0px 0px 20px 20px;
-}
+
 
 /* theme mode */
 .label {

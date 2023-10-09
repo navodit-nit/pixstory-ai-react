@@ -3,14 +3,17 @@ import Slider from "./Slider";
 
 const DialogueBox = (props) => {
   const [textInput, setTextInput] = useState("");
-
+   
   const handleAddNote = () => {
-    if (textInput.trim() !== "") {
-      props.setStickyNotes([...props.stickyNotes, textInput]);
-      setTextInput("");
+    
+    if (textInput.trim()!== "") {
+     props.setStickyNotes([...props.stickyNotes, textInput]);
       props.setShow(false);
     }
+    props.fetchUserData();
   };
+
+ 
 
   const handleCloseDialougeBox = () => {
     props.setShow(false);
@@ -81,7 +84,7 @@ const DialogueBox = (props) => {
                 <Slider>
                     <ul className="prompt-cont bottom-prompt-box">
                       {props.queries.map((val, index) => (
-                        <li onClick={() => props.handleQueryClick(val, index)}>
+                        <li key={index} onClick={() => props.handleQueryClick(val, index)}>
                           <span>{val}</span>
                         </li>
                       ))}

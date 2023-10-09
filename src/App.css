@@ -360,10 +360,11 @@ body {
   opacity: 1;
 }
 
-.landing-page-heading {
-  height: 100vh;
-}
 
+
+.landing-page-heading {
+  height: 76vh;
+}
 .message-btn:focus {
   outline: 0 !important;
 }
@@ -804,11 +805,11 @@ body,
   z-index: -1;
 }
 .bgImage .image-bg {
-  height: 100%;
-  display: flex;
+ 
+  /* display: flex;
   justify-content: space-between;
   flex-direction: column;
-  height: 100vh;
+  height: 100vh; */
 }
 .copy-icon {
   width: 32px;
@@ -864,11 +865,10 @@ body,
   background: url(../public/img/main-bg.png) 0 0 no-repeat;
   background-size: cover;
   background-position: 100%;
-  height: 100%;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  height: 100vh;
+ 
 }
 .dark-theme .main-page-content {
   color: var(--light-white);
@@ -896,7 +896,7 @@ body,
     linear-gradient(180deg, #ffffff -121.05%, rgba(255, 255, 255, 0) 159.05%);
 }
 .dark-theme .bottom-prompt-box span {
-  color: rgba(170, 170, 170, 1);
+  color: #333954;
 }
 .cardpage.dark-theme .image-bg {
   background: none;
@@ -959,6 +959,9 @@ body,
 }
 
 @media only screen and (max-width: 767px) {
+  .landing-page-heading {
+    height: 95vh;
+  }
   .bottom-prompt-box {
     padding: 0;
     display: inline-block;
@@ -980,7 +983,7 @@ body,
     overflow-x: hidden;
   }
   .desktop-design {
-    padding-top: 15px;
+    padding-top: 24px;
     height: 87vh;
     display: block !important;
     overflow: auto;
@@ -1105,7 +1108,7 @@ body,
 
 .prompt-cont li {
   display: inline-block;
-  margin: 0px 10px;
+  margin: 0px 10px 0px 0px ;
   background-color: #e7e7e7;
   padding: 5px 10px;
   border-radius: 5px;
@@ -1122,3 +1125,16 @@ body,
   background-color: red;
   border-radius: 10px;
 }
+
+
+.text-warning {
+  color: #e9ff07!important;
+}
+.page-height{
+  height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.version{color:#333}
+.dark-theme .version{color:#fff}

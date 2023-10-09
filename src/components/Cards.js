@@ -11,7 +11,7 @@ const Cards = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isAdd, setIsAdd] = useState(false);
   const toggleDropdown = () => {
-    debugger
+    
     setIsOpen(!isOpen);
   };
   const toggleAdd = () => {
@@ -46,19 +46,18 @@ const Cards = (props) => {
       <div className="container-fluid pt-1">
         <div className="row">
           <div className="col-md-7 mx-auto ">
-      
-            {props.stickyNotes.length != 0 ? (
+            {props.stickyNotes.length !== 0 ? (
               <div className="desktop-design"><div className="cardContainer">
                 {props.stickyNotes.map((character, index) => (
                   <>
-                    <TinderCard
+                    <TinderCard key={character.id}
                       ref={props.childRefs[index]}
                       className={`swipe ${
                         index === props.stickyNotes.length - 1
                           ? "active"
                           : "inactive"
                       }`}
-                      key={index}
+                     
                       onSwipe={(dir) => props.swiped(dir, character, index)}
                       onCardLeftScreen={() =>
                         props.outOfFrame(character, index)
@@ -68,7 +67,6 @@ const Cards = (props) => {
                       <div className={`card-box`}>
                         <div className="card-details">
                           <h3>{props.stickyNotes[index]}</h3>
-
                           <div className="card-logo">
                             <h4>
                               <img
@@ -91,16 +89,13 @@ const Cards = (props) => {
                               <span className="tooltiptext">Copied</span>
                             </button>
                           </div>
-                        
-                       
                             <Typewriter
                               id={"content-to-copy" + index}
                               text={props.getResponseAtIndex(index) ? props.getResponseAtIndex(index).response : "Please wait..."}
                               speed={50}
                             />
-                       
+                          {console.log(props.getResponseAtIndex(index))}
                         </div>
-
                         <div className="share-icon">
                           <h5>
                             <button className="" onClick={handleBackCard}>
