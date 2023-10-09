@@ -6,7 +6,8 @@ const DialogueBox = (props) => {
 
   const handleAddNote = () => {
     if (textInput.trim() !== "") {
-      props.setStickyNotes([...props.stickyNotes, textInput]);
+      // props.setStickyNotes([...props.stickyNotes, textInput]);
+      props.handleQueryClick(textInput);
       setTextInput("");
       props.setShow(false);
     }
@@ -21,7 +22,7 @@ const DialogueBox = (props) => {
 
     setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 2000);
   }, []);
   // mouse event
 
