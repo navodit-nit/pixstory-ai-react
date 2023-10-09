@@ -153,7 +153,9 @@ function Home() {
   const fetchUserData = async(searchQuery) => {
     setIsFetchingData(true);
     console.log(process.env.REACT_APP_BASE_URL);
-   await axios.post(process.env.REACT_APP_BASE_URL + "/inference", {
+   const TEMP_URL =  "https://dev-api.pixstory.ai/be-node";
+    await axios.post(TEMP_URL + "/inference", {
+  //  await axios.post(process.env.REACT_APP_BASE_URL + "/inference", {
         query: encodeURIComponent(searchQuery),
       })
       // .then((response) => {
