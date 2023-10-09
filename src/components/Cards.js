@@ -38,6 +38,8 @@ const Cards = (props) => {
       //   console.log(isLoader)
       // }, 3000)
   };
+
+  
 //Mouse event
   return (
     <>
@@ -91,7 +93,7 @@ const Cards = (props) => {
                           </div>
                             <Typewriter
                               id={"content-to-copy" + index}
-                              text={props.getResponseAtIndex(index) ? props.getResponseAtIndex(index).response : "Please wait..."}
+                              text={props.getResponseAtIndex(index) ? decodeURIComponent(props.getResponseAtIndex(index).response) : "Please wait..."}
                               speed={50}
                             />
                           {console.log(props.getResponseAtIndex(index))}

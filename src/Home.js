@@ -154,7 +154,7 @@ function Home() {
    
     setIsFetchingData(true);
     console.log(process.env.REACT_APP_BASE_URL);
-   await axios.post(process.env.REACT_APP_BASE_URL + "/test", {
+   await axios.post(process.env.REACT_APP_BASE_URL + "/inferenceMock", {
         query: encodeURIComponent(searchQuery),
       })
       // .then((response) => {
@@ -163,8 +163,8 @@ function Home() {
       .then((data) => {
         console.log(data);
         // setPost(data.data.response);
-        responses.push(data.data.response);
-        setNewQuery(data.data.response.followup_ques.concat(queries))
+        responses.push(data.data);
+        setNewQuery(data.data.followup_ques.concat(queries))
         console.log(newQuery)
         console.log(responses)
         setIsFetchingData(false);
