@@ -153,7 +153,7 @@ function Home() {
   const fetchUserData = async(searchQuery) => {
     setIsFetchingData(true);
     console.log(process.env.REACT_APP_BASE_URL);
-   await axios.post(process.env.REACT_APP_BASE_URL + "/inference", {
+   await axios.post(process.env.REACT_APP_BASE_URL + "/inferenceMock", {
         query: encodeURIComponent(searchQuery),
       })
       // .then((response) => {
