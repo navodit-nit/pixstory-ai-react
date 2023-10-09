@@ -5,19 +5,13 @@ const DialogueBox = (props) => {
   const [textInput, setTextInput] = useState("");
    
   const handleAddNote = () => {
-<<<<<<< HEAD
-    
-    if (textInput.trim()!== "") {
-     props.setStickyNotes([...props.stickyNotes, textInput]);
-=======
     if (textInput.trim() !== "") {
       // props.setStickyNotes([...props.stickyNotes, textInput]);
       props.handleQueryClick(textInput);
       setTextInput("");
->>>>>>> be1ca436a87d7b8c8e6a40a1cb8a51be536481f4
       props.setShow(false);
     }
-    props.fetchUserData();
+  
   };
 
  

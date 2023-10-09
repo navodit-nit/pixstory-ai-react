@@ -363,7 +363,7 @@ body {
 
 
 .landing-page-heading {
-  height: 76vh;
+  height: 89vh;
 }
 .message-btn:focus {
   outline: 0 !important;
@@ -1136,5 +1136,5 @@ body,
     justify-content: center;
     align-items: center;
 }
-.version{color:#333}
+.version{color:#333;position: fixed;bottom: 0px;right: 0px;}
 .dark-theme .version{color:#fff}
