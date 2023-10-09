@@ -97,7 +97,7 @@ const Cards = (props) => {
                        
                             <Typewriter
                               id={"content-to-copy" + index}
-                              text={props.getResponseAtIndex(index) ? decodeURIComponent(props.getResponseAtIndex(index).response) : "Please wait..."}
+                              text={props.getResponseAtIndex(index) ? decodeURIComponent(props.getResponseAtIndex(index).response) : ""}
                               speed={50}
                             />
                        
