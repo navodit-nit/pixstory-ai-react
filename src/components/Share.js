@@ -44,7 +44,7 @@ const Share = () => {
       <WhatsappShareButton url={shareUrl} title={title}>
         <WhatsappIcon size={32} round />
       </WhatsappShareButton>
-      <button className='copy-btn' onClick={copy}>{!copied ? <ion-icon name="clipboard-outline"></ion-icon> : <ion-icon name="copy-outline"></ion-icon>}</button>
+      <button className='copy-btn' onClick={copy}>{!copied ? <ion-icon name="clipboard-outline"></ion-icon> : <ion-icon name="checkmark-done-outline"></ion-icon>}</button>
     </div>
   );
 };

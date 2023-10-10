@@ -7,7 +7,7 @@ export default function TermsOfUse() {
     <div className='row'>
         <div className='col-md-12'>
             <div className='d-flex justify-content-center align-content-center'>
-                <div className=''><h1>Terms of Use</h1></div>
+                <div className='text-warning'><h1>Terms of Use</h1></div>
             </div>
         </div>
     </div>

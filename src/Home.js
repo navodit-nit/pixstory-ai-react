@@ -151,6 +151,7 @@ function Home() {
   const [newQuery,setNewQuery] = useState(queries)
   
   const fetchUserData = async(searchQuery) => {
+   
     setIsFetchingData(true);
     console.log(process.env.REACT_APP_BASE_URL);
    const TEMP_URL =  "https://dev-api.pixstory.ai/be-node";
@@ -167,7 +168,9 @@ function Home() {
         responses.push(data.data);
         setNewQuery(data.data.followup_ques)
         console.log(newQuery)
-        setIsFetchingData(false)
+        console.log(responses)
+        setIsFetchingData(false);
+        
       });
       // console.log(post)
   };
@@ -254,7 +257,7 @@ function Home() {
   };
 
   const handlePropt = () => {
-    if (show == false) {
+    if (show === false) {
       setShow(true);
       setContainerClass("querytype-medium");
       setmessageBox("send-msg-up");
@@ -266,26 +269,28 @@ function Home() {
     }
   };
 
-  const handleSpanClick = (event) => {
-    const spanValue = event.target.textContent;
-    setTextInput(spanValue);
-    console.log(spanValue);
-  };
+  // const handleSpanClick = (event) => {
+  //   const spanValue = event.target.textContent;
+  //   setTextInput(spanValue);
+  //   console.log(spanValue);
+
+  // };
 
   const getResponseAtIndex = (cIdx) => {
     return responses[cIdx];
   };
 
   const handleQueryClick = (content) => {
+  
     setStickyNotes((prevCards) => [...prevCards, content]);
     setStickyNotesCounts(stickyNotes.length);
-    // let queries = getResponseAtIndex(stickyNotes.length).followup_ques;
+   // let queries = getResponseAtIndex(stickyNotes.length).followup_ques;
     setShow(false);
     setContainerClass("querytype-small");
     document.body.classList.remove("scroll-hide");
     fetchUserData(content);
-  };
 
+  } 
   const handleCopyClick = (value) => {
     const contentToCopy = document.getElementById("content-to-copy" + value);
     const range = document.createRange();
@@ -344,8 +349,10 @@ function Home() {
         setStickyNotes={setStickyNotes}
         setShow={setShow}
         // data={post}
+        fetchUserData={fetchUserData}
+       
       />
-      <p align="right">v1.0.0-061023:1630 .</p>
+     <p align="right" className="my-1 version">v1.0.0-061023:1116 .</p> 
     </>
   );
 }

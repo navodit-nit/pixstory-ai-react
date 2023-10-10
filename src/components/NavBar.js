@@ -9,7 +9,6 @@ const NavBar = (props) => {
     setOpenMenu(!isOpenMenu);
   };
   const handleCollapse = () => {
-    console.log("handleCollapse");
     var nav = document.getElementById("navbarNavDropdown");
     var btn = document.getElementById("navbarBtn");
     nav.classList.remove("show");
@@ -20,7 +19,7 @@ const NavBar = (props) => {
   const location = pathname.pathname;
   return (
     <>
-      <div className="container-fluid  navBar-bg py-2 ">
+      <div className="container-fluid  navBar-bg ">
         <div className="row">
           <div className="col-md-12">
             <nav
@@ -67,13 +66,13 @@ const NavBar = (props) => {
                       ""
                     ) : (
                       <li>
-                        <NavLink aria-current="page" to="/" onClick={handleCollapse}>
+                        <NavLink  to="/" onClick={handleCollapse}>
                           Home
                         </NavLink>
                       </li>
                     )}
                     <li>
-                      <NavLink aria-current="page" to="/about" onClick={handleCollapse}>
+                      <NavLink  to="/about" onClick={handleCollapse}>
                         About Us
                       </NavLink>
                     </li>
