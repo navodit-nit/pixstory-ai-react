@@ -95,12 +95,12 @@ const Cards = (props) => {
                           </div>
                         
                             
-                            <div
+                            <span
                               id={"content-to-copy" + index}
                               text={props.getResponseAtIndex(index) ? props.getResponseAtIndex(index).response : ""}
                               speed={50}
                             >{props.getResponseAtIndex(index) ? props.getResponseAtIndex(index).response : "Please Wait..."}
-                            </div>
+                            </span>
                        
                         </div>
 
