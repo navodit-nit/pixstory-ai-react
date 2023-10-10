@@ -165,7 +165,7 @@ function Home() {
         console.log(data);
         // setPost(data.data.response);
         responses.push(data.data);
-        setNewQuery(data.data.followup_ques.concat(queries))
+        setNewQuery(data.data.followup_ques)
         console.log(newQuery)
         setIsFetchingData(false)
       });
