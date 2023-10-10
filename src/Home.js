@@ -198,7 +198,7 @@ function Home() {
 
   const outOfFrame = (name, idx) => {
     // console.log(`List item at index ${idx} was outOfFrame`);
-    currentIndexRef.current >= idx && childRefs[idx].current.restoreCard();
+    //currentIndexRef.current >= idx && childRefs[idx].current.restoreCard();
     //  const newList = stickyNotes.filter((_, index1) => index1 !== idx);
 
     // console.log(newList);
@@ -210,9 +210,11 @@ function Home() {
       console.log(`index : ${index}`);
       stickyNotes.splice(index, 1);
       setStickyNotesCounts(stickyNotes.length);
+      childRefs.splice(index, 1);
+      responses.splice(index, 1);
       console.log(
         `New List : ${stickyNotes.length}, ChildRefs : ${childRefs.length} when ${idx} was outOfFrame`
-      );
+      )
     }
     // initialiseChildRefs();
   };
