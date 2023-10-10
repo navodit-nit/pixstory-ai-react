@@ -94,12 +94,13 @@ const Cards = (props) => {
                             </button>
                           </div>
                         
-                       
-                            <Typewriter
+                            
+                            <div
                               id={"content-to-copy" + index}
                               text={props.getResponseAtIndex(index) ? props.getResponseAtIndex(index).response : ""}
                               speed={50}
-                            />
+                            >{props.getResponseAtIndex(index) ? props.getResponseAtIndex(index).response : "Please Wait..."}
+                            </div>
                        
                         </div>
 
@@ -111,7 +112,7 @@ const Cards = (props) => {
                                 alt="Load"
                               />
                             </button>
-                            <button onClick={handlePageReload}>
+                            <button onClick={props.handlePageReload}>
                               <img
                                 src={process.env.PUBLIC_URL + "/img/load.svg"}
                                 alt="Load"

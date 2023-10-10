@@ -307,6 +307,13 @@ function Home() {
     }
   });
 
+  const handlePageReload = ()=>{
+    // fetchUpdateUserData(stickyNotes[stickyNotes.length -1]);
+    responses.splice(-1);
+    setIsFetchingData(true);
+    fetchUserData(stickyNotes[stickyNotes.length -1]);    
+    
+  }
   return (
     <>
       <Cards
@@ -322,6 +329,7 @@ function Home() {
         fetchApi={fetchUserData}
         isFetchingData = {isFetchingData}
         //data={post}
+        handlePageReload={handlePageReload}
       />
       <DialogueBox
         className="parent"
