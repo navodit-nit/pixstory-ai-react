@@ -54,7 +54,7 @@ const Cards = (props) => {
                 {props.stickyNotes.map((character, index) => (
                   <>
                     <TinderCard
-                      ref={props.childRefs[index]}
+                      // ref={props.childRefs[index]}
                       className={`swipe ${
                         index === props.stickyNotes.length - 1
                           ? "active"
@@ -97,7 +97,7 @@ const Cards = (props) => {
                        
                             <Typewriter
                               id={"content-to-copy" + index}
-                              text={props.getResponseAtIndex(index) ? decodeURIComponent(props.getResponseAtIndex(index).response) : ""}
+                              text={props.getResponseAtIndex(index) ? props.getResponseAtIndex(index).response : ""}
                               speed={50}
                             />
                        
