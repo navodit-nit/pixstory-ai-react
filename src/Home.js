@@ -155,7 +155,7 @@ function Home() {
     setIsFetchingData(true);
     console.log(process.env.REACT_APP_BASE_URL);
    const TEMP_URL =  "https://dev-api.pixstory.ai/be-node";
-    await axios.post(TEMP_URL + "/inference", {
+    await axios.post(TEMP_URL + "/inferenceMock", {
   //  await axios.post(process.env.REACT_APP_BASE_URL + "/inference", {
         query: encodeURIComponent(searchQuery),
       })
@@ -165,8 +165,8 @@ function Home() {
       .then((data) => {
         console.log(data);
         // setPost(data.data.response);
-        responses.push(data.data);
-        setNewQuery(data.data.followup_ques)
+        responses.push(data.data.response);
+        setNewQuery(data.data.response.followup_ques)
         console.log(newQuery)
         console.log(responses)
         setIsFetchingData(false);
